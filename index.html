@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>T�,M ĐỨC | Kết n�'i nhân tài, thúc �'ẩy doanh nghi�?p</title>
-  <meta name="description" content="Công ty CP Cung Ứng Nhân Lực Tâm Đức - tuy�fn dụng, cung ứng nhân lực và h�- trợ doanh nghi�?p." />
+  <title>TÂM ĐỨC | Kết nối nhân tài, thúc đẩy doanh nghiệp</title>
+  <meta name="description" content="Công ty CP Cung Ứng Nhân Lực Tâm Đức - tuyển dụng, cung ứng nhân lực và h�- trợ doanh nghi�?p." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{colors:{ink:'#102A43',blue:'#174A96',sky:'#EAF3FF',orange:'#F59E0B',paper:'#F6F8FB'},fontFamily:{sans:['Times New Roman','serif'],display:['Times New Roman','serif']},boxShadow:{soft:'0 16px 42px rgba(16,42,67,.10)'}}}}</script>
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -57,6 +57,92 @@
     const modal=document.getElementById('applicationModal');if(modal){modal.querySelector('h2').textContent='\u0110\u0103ng k\u00fd \u1ee9ng tuy\u1ec3n';['H\u1ecd v\u00e0 t\u00ean','S\u1ed1 \u0111i\u1ec7n tho\u1ea1i','Email','CCCD','N\u0103m sinh','Gi\u1edbi t\u00ednh','Khu v\u1ef1c mong mu\u1ed1n','\u0110\u1ecba ch\u1ec9','Kinh nghi\u1ec7m','Ghi ch\u00fa'].forEach((label,index)=>{const node=modal.querySelectorAll('#applicationForm label')[index]?.firstChild;if(node)node.nodeValue=label});modal.querySelector('#applicationForm button[type="submit"]').textContent='G\u1eedi h\u1ed3 s\u01a1 \u1ee9ng tuy\u1ec3n';modal.querySelector('#applicationPosition').textContent='Ch\u1ecdn v\u1ecb tr\u00ed ph\u00f9 h\u1ee3p v\u1edbi b\u1ea1n';}
     setInterval(()=>{document.querySelectorAll('.job-card .apply-job').forEach(button=>button.textContent='\u1ee8ng tuy\u1ec3n');document.querySelectorAll('.job-card .detail-job').forEach(button=>button.textContent='Chi ti\u1ebft');document.querySelectorAll('.job-card').forEach(card=>{const tags=card.querySelectorAll('.rounded-md');if(tags[2])tags[2].textContent='Li\u00ean h\u1ec7 \u0111\u1ec3 bi\u1ebft l\u01b0\u01a1ng'});setAll('main > section:nth-of-type(5) p',['Th\u00f4ng tin tuy\u1ec3n d\u1ee5ng \u0111\u1ea7y \u0111\u1ee7, minh b\u1ea1ch.','\u0110\u1ed3ng h\u00e0nh c\u00f9ng \u1ee9ng vi\u00ean trong qu\u00e1 tr\u00ecnh \u1ee9ng tuy\u1ec3n.','K\u1ebft n\u1ed1i nhi\u1ec1u doanh nghi\u1ec7p v\u00e0 v\u1ecb tr\u00ed.','H\u1ed7 tr\u1ee3 t\u1eeb l\u00fac \u0111\u0103ng k\u00fd \u0111\u1ebfn khi nh\u1eadn vi\u1ec7c.']);},500);
   },1000);
+</script>
+<script>
+(() => {
+  const text = (selector, value) => { const element = document.querySelector(selector); if (element) element.textContent = value; };
+  const texts = (selector, values) => document.querySelectorAll(selector).forEach((element, index) => { if (values[index] !== undefined) element.textContent = values[index]; });
+  setTimeout(() => {
+    text('header nav a:nth-child(1)', 'Trang ch\u1ee7'); text('header nav a:nth-child(2)', 'Gi\u1edbi thi\u1ec7u'); text('header nav a:nth-child(3)', 'Vi\u1ec7c l\u00e0m'); text('header nav a:nth-child(4)', 'D\u00e0nh cho \u1ee9ng vi\u00ean'); text('header nav a:nth-child(5)', 'D\u00e0nh cho doanh nghi\u1ec7p'); text('header nav a:nth-child(6)', 'Tin t\u1ee9c'); text('header nav a:nth-child(7)', 'Li\u00ean h\u1ec7');
+    texts('#about > div > div > div h3', ['T\u1ea7m nh\u00ecn','S\u1ee9 m\u1ec7nh','Gi\u00e1 tr\u1ecb']);
+    texts('#about > div > div > div h3 + p', ['Tr\u1edf th\u00e0nh c\u1ea7u n\u1ed1i nh\u00e2n l\u1ef1c h\u00e0ng \u0111\u1ea7u.','T\u1ea1o c\u01a1 h\u1ed9i vi\u1ec7c l\u00e0m b\u1ec1n v\u1eefng.','Minh b\u1ea1ch, t\u1eadn t\u00e2m, chuy\u00ean nghi\u1ec7p.']);
+    texts('#jobs .job-filter', ['T\u1ea5t c\u1ea3','S\u1ea3n xu\u1ea5t','Kho v\u1eadn','V\u0103n ph\u00f2ng','K\u1ef9 thu\u1eadt','Th\u1eddi v\u1ee5']);
+    texts('main > section:nth-of-type(5) h3', ['Vi\u1ec7c l\u00e0m r\u00f5 r\u00e0ng','H\u1ed7 tr\u1ee3 t\u1eadn t\u00ecnh','Nhi\u1ec1u c\u01a1 h\u1ed9i vi\u1ec7c l\u00e0m','Quy tr\u00ecnh chuy\u00ean nghi\u1ec7p']);
+    texts('main > section:nth-of-type(5) h3 + p', ['Th\u00f4ng tin tuy\u1ec3n d\u1ee5ng \u0111\u1ea7y \u0111\u1ee7, minh b\u1ea1ch.','\u0110\u1ed3ng h\u00e0nh c\u00f9ng \u1ee9ng vi\u00ean trong qu\u00e1 tr\u00ecnh \u1ee9ng tuy\u1ec3n.','K\u1ebft n\u1ed1i nhi\u1ec1u doanh nghi\u1ec7p v\u00e0 v\u1ecb tr\u00ed.','H\u1ed7 tr\u1ee3 t\u1eeb l\u00fac \u0111\u0103ng k\u00fd \u0111\u1ebfn khi nh\u1eadn vi\u1ec7c.']);
+    texts('main > section:nth-of-type(6) h3', ['\u0110\u0103ng k\u00fd','T\u01b0 v\u1ea5n','Ph\u1ecfng v\u1ea5n','Nh\u1eadn vi\u1ec7c']);
+    texts('main > section:nth-of-type(6) h3 + p', ['\u1ee8ng vi\u00ean g\u1eedi th\u00f4ng tin.','Nh\u00e2n vi\u00ean T\u00e2m \u0110\u1ee9c li\u00ean h\u1ec7.','K\u1ebft n\u1ed1i v\u1edbi doanh nghi\u1ec7p.','Ho\u00e0n t\u1ea5t h\u1ed3 s\u01a1, b\u1eaft \u0111\u1ea7u c\u00f4ng vi\u1ec7c.']);
+    texts('#news article h3', ['C\u01a1 h\u1ed9i vi\u1ec7c l\u00e0m m\u1edbi trong th\u00e1ng','5 \u0111i\u1ec1u c\u1ea7n chu\u1ea9n b\u1ecb tr\u01b0\u1edbc ph\u1ecfng v\u1ea5n','H\u01b0\u1edbng d\u1eabn ng\u01b0\u1eddi lao \u0111\u1ed9ng m\u1edbi']);
+    texts('#news article h3 + p', ['C\u1eadp nh\u1eadt nh\u1eefng v\u1ecb tr\u00ed \u0111ang tuy\u1ec3n v\u00e0 c\u01a1 h\u1ed9i d\u00e0nh cho ng\u01b0\u1eddi lao \u0111\u1ed9ng.','M\u1eb9o nh\u1ecf gi\u00fap b\u1ea1n t\u1ef1 tin h\u01a1n v\u00e0 t\u1ea1o \u1ea5n t\u01b0\u1ee3ng t\u1ed1t.','Nh\u1eefng \u0111i\u1ec1u c\u1ea7n bi\u1ebft tr\u01b0\u1edbc ng\u00e0y \u0111\u1ea7u nh\u1eadn vi\u1ec7c.']);
+  }, 1300);
+})();
+</script>
+<script>
+(() => {
+  setTimeout(() => {
+    const text=(selector,value)=>{const item=document.querySelector(selector);if(item)item.textContent=value};
+    const values=(selector,list)=>document.querySelectorAll(selector).forEach((item,index)=>{if(list[index]!==undefined)item.textContent=list[index]});
+    values('header .font-display',['T\u0110','T\u00c2M \u0110\u1ee8C']);
+    text('#about > div > div > p.mt-5','C\u00f4ng ty CP Cung \u1ee8ng Nh\u00e2n L\u1ef1c T\u00e2m \u0110\u1ee9c cung c\u1ea5p gi\u1ea3i ph\u00e1p tuy\u1ec3n d\u1ee5ng v\u00e0 cung \u1ee9ng nh\u00e2n l\u1ef1c \u0111\u00e1ng tin c\u1eady cho ng\u01b0\u1eddi lao \u0111\u1ed9ng v\u00e0 doanh nghi\u1ec7p t\u1ea1i Vi\u1ec7t Nam.');
+    values('#searchCategory option',['Ng\u00e0nh ngh\u1ec1','S\u1ea3n xu\u1ea5t','Kho v\u1eadn','V\u0103n ph\u00f2ng','K\u1ef9 thu\u1eadt','Nh\u00e2n s\u1ef1']);
+    values('#searchType option',['Lo\u1ea1i c\u00f4ng vi\u1ec7c','To\u00e0n th\u1eddi gian','B\u00e1n th\u1eddi gian','T\u1eeb xa']);
+    text('#about > div > div > p:first-child','V\u1ec0 T\u00c2M \u0110\u1ee8C');text('#jobs > div > div > div > p','C\u01a0 h\u1ed9i ngh\u1ec1 nghi\u1ec7p');text('#news > div > div > div > p','C\u1eacP NH\u1eacT M\u1edaI NH\u1ea4T');
+  },1600);
+})();
+</script>
+<script>
+setInterval(()=>{
+  const text=(selector,value)=>{const item=document.querySelector(selector);if(item)item.textContent=value};
+  const values=(selector,list)=>document.querySelectorAll(selector).forEach((item,index)=>{if(list[index]!==undefined)item.textContent=list[index]});
+  text('#jobResult','4 c\u01a1 h\u1ed9i \u0111ang hi\u1ec3n th\u1ecb');
+  values('#jobGrid .job-card > p',['Venture Labs \u00b7 Th\u00e0nh ph\u1ed1 H\u1ed3 Ch\u00ed Minh','Lumen Group \u00b7 T\u1eeb xa / H\u00e0 N\u1ed9i','Satori Foods \u00b7 \u0110\u00e0 N\u1eb5ng','NEXA Human Capital \u00b7 H\u00e0 N\u1ed9i']);
+  text('main > section:nth-of-type(7) > div > div > p','C\u1eadp nh\u1eadt m\u1edbi nh\u1ea5t');
+  text('main > section:nth-of-type(7) h2','Tin t\u1ee9c tuy\u1ec3n d\u1ee5ng');
+  values('main > section:nth-of-type(6) h3',['\u0110\u0103ng k\u00fd','T\u01b0 v\u1ea5n','Ph\u1ecfng v\u1ea5n','Nh\u1eadn vi\u1ec7c']);
+  values('main > section:nth-of-type(6) h3 + p',['\u1ee8ng vi\u00ean g\u1eedi th\u00f4ng tin.','Nh\u00e2n vi\u00ean T\u00e2m \u0110\u1ee9c li\u00ean h\u1ec7.','K\u1ebft n\u1ed1i v\u1edbi doanh nghi\u1ec7p.','Ho\u00e0n t\u1ea5t h\u1ed3 s\u01a1, b\u1eaft \u0111\u1ea7u c\u00f4ng vi\u1ec7c.']);
+  text('footer > div > div:nth-child(1) > p.mt-5','C\u00f4ng ty CP Cung \u1ee8ng Nh\u00e2n L\u1ef1c T\u00e2m \u0110\u1ee9c - c\u1ea7u n\u1ed1i tin c\u1eady gi\u1eefa ng\u01b0\u1eddi lao \u0111\u1ed9ng v\u00e0 doanh nghi\u1ec7p.');
+  values('footer a',['Trang ch\u1ee7','Gi\u1edbi thi\u1ec7u','Vi\u1ec7c l\u00e0m','\u1ee8ng vi\u00ean','Doanh nghi\u1ec7p','Tin t\u1ee9c']);
+},2200);
+</script>
+<script>
+setTimeout(()=>{
+  const text=(selector,value)=>{const item=document.querySelector(selector);if(item)item.textContent=value};
+  const values=(selector,list)=>document.querySelectorAll(selector).forEach((item,index)=>{if(list[index]!==undefined)item.textContent=list[index]});
+  text('main > section:nth-of-type(7) > div > div > p','QUY TR\u00ccNH \u0110\u01a0N GI\u1ea2N');
+  text('main > section:nth-of-type(7) h2','T\u1eeb \u0110\u0103NG K\u00dd \u0110\u1ebeN NH\u1eacN VI\u1ec6C');
+  values('main > section:nth-of-type(7) h3',['\u0110\u0103ng k\u00fd','T\u01b0 v\u1ea5n','Ph\u1ecfng v\u1ea5n','Nh\u1eadn vi\u1ec7c']);
+  values('main > section:nth-of-type(7) h3 + p',['\u1ee8ng vi\u00ean g\u1eedi th\u00f4ng tin.','Nh\u00e2n vi\u00ean T\u00e2m \u0110\u1ee9c li\u00ean h\u1ec7.','K\u1ebft n\u1ed1i v\u1edbi doanh nghi\u1ec7p.','Ho\u00e0n t\u1ea5t h\u1ed3 s\u01a1, b\u1eaft \u0111\u1ea7u c\u00f4ng vi\u1ec7c.']);
+  text('main > section:nth-of-type(8) h2','Tin t\u1ee9c tuy\u1ec3n d\u1ee5ng');
+  values('main > section:nth-of-type(8) article p:first-child',['TH\u00d4NG TIN TUY\u1ec2N D\u1ee4NG \u00b7 20/09/2024','KINH NGHI\u1ec6M \u00b7 18/09/2024','H\u01af\u1edaNG D\u1eaaN \u00b7 15/09/2024']);
+  values('footer > div > div:nth-child(2) a',['Trang ch\u1ee7','Gi\u1edbi thi\u1ec7u','Vi\u1ec7c l\u00e0m','\u1ee8ng vi\u00ean','Doanh nghi\u1ec7p','Tin t\u1ee9c']);
+  text('footer > div > div:nth-child(3) h3','K\u1ebft n\u1ed1i v\u1edbi T\u00e2m \u0110\u1ee9c');text('footer > div > div:nth-child(3) p','Theo d\u00f5i th\u00f4ng tin vi\u1ec7c l\u00e0m m\u1edbi v\u00e0 nh\u1eadn t\u01b0 v\u1ea5n t\u1eeb \u0111\u1ed9i ng\u0169 c\u1ee7a ch\u00fang t\u00f4i.');
+  text('footer > div:last-child','\u00a9 2024 C\u00d4NG TY CP CUNG \u1ee8NG NH\u00c2N L\u1ef0C T\u00c2M \u0110\u1ee8C. T\u1ea5t c\u1ea3 quy\u1ec1n \u0111\u01b0\u1ee3c b\u1ea3o l\u01b0u.');
+},2800);
+</script>
+<script>
+setInterval(()=>{
+  const section=document.querySelectorAll('main > section');
+  const set=(selector,value)=>{const item=document.querySelector(selector);if(item)item.textContent=value};
+  const many=(selector,list)=>document.querySelectorAll(selector).forEach((item,index)=>{if(list[index]!==undefined)item.textContent=list[index]});
+  set('main > section:nth-of-type(7) > div > div > p','QUY TR\u00ccNH \u0110\u01a0N GI\u1ea2N');set('main > section:nth-of-type(7) h2','T\u1eeb \u0110\u0102NG K\u00dd \u0110\u1ebeN NH\u1eacN VI\u1ec6C');many('main > section:nth-of-type(7) h3',['\u0110\u0103ng k\u00fd','T\u01b0 v\u1ea5n','Ph\u1ecfng v\u1ea5n','Nh\u1eadn vi\u1ec7c']);many('main > section:nth-of-type(7) h3 + p',['\u1ee8ng vi\u00ean g\u1eedi th\u00f4ng tin.','Nh\u00e2n vi\u00ean T\u00e2m \u0110\u1ee9c li\u00ean h\u1ec7.','K\u1ebft n\u1ed1i v\u1edbi doanh nghi\u1ec7p.','Ho\u00e0n t\u1ea5t h\u1ed3 s\u01a1, b\u1eaft \u0111\u1ea7u c\u00f4ng vi\u1ec7c.']);set('main > section:nth-of-type(8) h2','Tin t\u1ee9c tuy\u1ec3n d\u1ee5ng');many('main > section:nth-of-type(8) article p:first-child',['TH\u00d4NG TIN TUY\u1ec2N D\u1ee4NG \u00b7 20/09/2024','KINH NGHI\u1ec6M \u00b7 18/09/2024','H\u01af\u1edaNG D\u1eaaN \u00b7 15/09/2024']);set('jobResult','4 c\u01a1 h\u1ed9i \u0111ang hi\u1ec3n th\u1ecb');many('#jobGrid .job-card > p',['Venture Labs \u00b7 Th\u00e0nh ph\u1ed1 H\u1ed3 Ch\u00ed Minh','Lumen Group \u00b7 T\u1eeb xa / H\u00e0 N\u1ed9i','Satori Foods \u00b7 \u0110\u00e0 N\u1eb5ng','NEXA Human Capital \u00b7 H\u00e0 N\u1ed9i']);set('footer > div:last-child','\u00a9 2024 C\u00d4NG TY CP CUNG \u1ee8NG NH\u00c2N L\u1ef0C T\u00c2M \u0110\u1ee8C. T\u1ea5t c\u1ea3 quy\u1ec1n \u0111\u01b0\u1ee3c b\u1ea3o l\u01b0u.');
+  set('main > section:nth-of-type(6) > div > div > p','\u0110\u1ed2NG H\u00c0NH C\u00d9NG B\u1ea0N');set('main > section:nth-of-type(6) h2','V\u00ec sao ch\u1ecdn T\u00e2m \u0110\u1ee9c?');many('main > section:nth-of-type(6) h3',['Vi\u1ec7c l\u00e0m r\u00f5 r\u00e0ng','H\u1ed7 tr\u1ee3 t\u1eadn t\u00ecnh','Nhi\u1ec1u c\u01a1 h\u1ed9i vi\u1ec7c l\u00e0m','Quy tr\u00ecnh chuy\u00ean nghi\u1ec7p']);many('main > section:nth-of-type(6) h3 + p',['Th\u00f4ng tin tuy\u1ec3n d\u1ee5ng \u0111\u1ea7y \u0111\u1ee7, minh b\u1ea1ch.','\u0110\u1ed3ng h\u00e0nh c\u00f9ng \u1ee9ng vi\u00ean trong qu\u00e1 tr\u00ecnh \u1ee9ng tuy\u1ec3n.','K\u1ebft n\u1ed1i nhi\u1ec1u doanh nghi\u1ec7p v\u00e0 v\u1ecb tr\u00ed.','H\u1ed7 tr\u1ee3 t\u1eeb l\u00fac \u0111\u0103ng k\u00fd \u0111\u1ebfn khi nh\u1eadn vi\u1ec7c.']);
+  set('footer .container > div:nth-child(2) > h3','Li\u00ean k\u1ebft nhanh');many('footer .container > div:nth-child(2) div a',['Trang ch\u1ee7','Gi\u1edbi thi\u1ec7u','Vi\u1ec7c l\u00e0m','\u1ee8ng vi\u00ean','Doanh nghi\u1ec7p','Tin t\u1ee9c']);
+  set('footer .container > div:nth-child(3) > h3','K\u1ebft n\u1ed1i v\u1edbi T\u00e2m \u0110\u1ee9c');set('footer .container > div:nth-child(3) > p','Theo d\u00f5i th\u00f4ng tin vi\u1ec7c l\u00e0m m\u1edbi v\u00e0 nh\u1eadn t\u01b0 v\u1ea5n t\u1eeb \u0111\u1ed9i ng\u0169 c\u1ee7a ch\u00fang t\u00f4i.');set('footer > div:last-child','\u00a9 2024 C\u00d4NG TY CP CUNG \u1ee8NG NH\u00c2N L\u1ef0C T\u00c2M \u0110\u1ee8C. T\u1ea5t c\u1ea3 quy\u1ec1n \u0111\u01b0\u1ee3c b\u1ea3o l\u01b0u.');
+},500);
+</script>
+<script>
+setInterval(()=>{
+  const set=(selector,value)=>{const item=document.querySelector(selector);if(item)item.textContent=value};
+  set('#jobResult','4 c\u01a1 h\u1ed9i \u0111ang hi\u1ec3n th\u1ecb');
+  set('footer .container > div:first-child > p.mt-5','C\u00f4ng ty CP Cung \u1ee8ng Nh\u00e2n L\u1ef1c T\u00e2m \u0110\u1ee9c - c\u1ea7u n\u1ed1i tin c\u1eady gi\u1eefa ng\u01b0\u1eddi lao \u0111\u1ed9ng v\u00e0 doanh nghi\u1ec7p.');
+  set('footer .container > div:first-child > p.mt-4','\u0110\u1ecba ch\u1ec9: B\u00ecnh D\u01b0\u01a1ng, Vi\u1ec7t Nam\nHotline: 0901 234 567\nEmail: nguyentienchuc.08082004@gmail.com');
+},500);
+</script>
+<script>
+setInterval(()=>{
+  const set=(selector,value)=>{const item=document.querySelector(selector);if(item)item.textContent=value};
+  const many=(selector,value)=>document.querySelectorAll(selector).forEach(item=>item.textContent=value);
+  many('header .font-display','T\u00c2M \u0110\u1ee8C');set('#searchCategory option:nth-child(4)','V\u0103n ph\u00f2ng');set('#searchType option:first-child','Lo\u1ea1i c\u00f4ng vi\u1ec7c');set('#about > div > div > p.mt-5','C\u00f4ng ty CP Cung \u1ee8ng Nh\u00e2n L\u1ef1c T\u00e2m \u0110\u1ee9c cung c\u1ea5p gi\u1ea3i ph\u00e1p tuy\u1ec3n d\u1ee5ng v\u00e0 cung \u1ee9ng nh\u00e2n l\u1ef1c \u0111\u00e1ng tin c\u1eady cho ng\u01b0\u1eddi lao \u0111\u1ed9ng v\u00e0 doanh nghi\u1ec7p t\u1ea1i Vi\u1ec7t Nam.');many('#jobGrid .job-card .rounded-md:last-child','Li\u00ean h\u1ec7 \u0111\u1ec3 bi\u1ebft l\u01b0\u01a1ng');many('#jobGrid .apply-job','\u1ee8ng tuy\u1ec3n');set('#news > div > div > div > p','C\u1eacP NH\u1eacT M\u1edaI NH\u1ea4T');
+},500);
 </script>
 </html>
 
