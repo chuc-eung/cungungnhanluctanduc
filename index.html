@@ -1,148 +1,461 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TÂM ĐỨC | Kết nối nhân tài, thúc đẩy doanh nghiệp</title>
-  <meta name="description" content="Công ty CP Cung Ứng Nhân Lực Tâm Đức - tuyển dụng, cung ứng nhân lực và h�- trợ doanh nghi�?p." />
+  <meta name="description" content="Công ty CP Cung Ứng Nhân Lực Tâm Đức - tuyển dụng, cung ứng nhân lực và hỗ trợ doanh nghiệp." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{ink:'#102A43',blue:'#174A96',sky:'#EAF3FF',orange:'#F59E0B',paper:'#F6F8FB'},fontFamily:{sans:['Times New Roman','serif'],display:['Times New Roman','serif']},boxShadow:{soft:'0 16px 42px rgba(16,42,67,.10)'}}}}</script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { ink:"#102A43", brand:"#174A96", sky:"#EAF3FF", orange:"#F59E0B", paper:"#F6F8FB" },
+          boxShadow: { soft:"0 16px 42px rgba(16,42,67,.10)" }
+        }
+      }
+    };
+  </script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <style>html{scroll-behavior:smooth}body{font-family:'Times New Roman',Times,serif;color:#102A43}h1,h2,h3,h4{font-family:'Times New Roman',Times,serif}.container{max-width:1180px}.hero-pattern{background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:50px 50px}.job-card{transition:transform .2s,box-shadow .2s}.job-card:hover{transform:translateY(-3px);box-shadow:0 16px 42px rgba(16,42,67,.12)}.modal-open{overflow:hidden}</style>
+  <style>
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#102A43}
+    .container{max-width:1180px}
+    .hero-pattern{background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:50px 50px}
+    .job-card{transition:transform .2s,box-shadow .2s}
+    .job-card:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(16,42,67,.13)}
+    .modal-open{overflow:hidden}
+    .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .line-clamp-3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  </style>
 </head>
 <body class="bg-white">
-  <header class="sticky top-0 z-50 bg-blue text-white shadow-sm"><div class="container mx-auto flex items-center justify-between px-5 py-4 lg:px-8"><a href="#home" class="flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-lg bg-orange font-display text-lg font-extrabold text-ink">TĐ</span><span class="font-display text-xl font-extrabold">T�,M ĐỨC</span></a><nav class="hidden items-center gap-5 text-sm font-semibold lg:flex"><a href="#home" class="hover:text-orange">Trang chủ</a><a href="#about" class="hover:text-orange">Gi�>i thi�?u</a><a href="#jobs" class="hover:text-orange">Vi�?c làm</a><a href="#candidates" class="hover:text-orange">Dành cho ứng viên</a><a href="#employers" class="hover:text-orange">Dành cho doanh nghi�?p</a><a href="#news" class="hover:text-orange">Tin tức</a><a href="#contact" class="hover:text-orange">Liên h�?</a></nav><div class="hidden items-center gap-3 lg:flex"><a href="#jobs" class="rounded-lg border border-white/30 px-4 py-2 text-sm font-bold">Đ�fng nhập</a><a href="#jobs" class="rounded-lg bg-orange px-4 py-2 text-sm font-bold text-ink">Ứng tuy�fn ngay</a></div><button id="menuBtn" class="rounded-lg border border-white/30 p-2 lg:hidden" aria-label="M�Y menu"><i data-lucide="menu" class="h-5 w-5"></i></button></div><div id="mobileMenu" class="hidden border-t border-white/15 px-5 pb-5 pt-4 lg:hidden"><div class="grid gap-4 text-sm font-semibold"><a href="#about">Gi�>i thi�?u</a><a href="#jobs">Vi�?c làm</a><a href="#candidates">Dành cho ứng viên</a><a href="#employers">Dành cho doanh nghi�?p</a><a href="#news">Tin tức</a><a href="#contact">Liên h�?</a></div></div></header>
-  <main id="home">
-    <section class="relative overflow-hidden bg-blue text-white"><div class="hero-pattern absolute inset-0 opacity-60"></div><div class="relative container mx-auto grid items-center gap-12 px-5 py-16 lg:grid-cols-[1fr_.9fr] lg:px-8 lg:py-24"><div><p class="mb-5 flex items-center gap-2 text-sm font-bold uppercase tracking-[.18em] text-orange"><span class="h-px w-8 bg-orange"></span>Cung ứng nhân lực uy tín</p><h1 class="max-w-2xl text-4xl font-extrabold uppercase leading-[1.1] sm:text-5xl lg:text-6xl">Kết n�'i nhân tài<br /><span class="text-orange">thúc �'ẩy doanh nghi�?p</span></h1><p class="mt-6 max-w-xl text-lg leading-8 text-blue-100">Tâm Đức �'�"ng hành cùng ứng viên và doanh nghi�?p trên hành trình phát tri�fn, từ tìm vi�?c phù hợp �'ến xây dựng �'�Ti ngũ vững mạnh.</p><div class="mt-8 flex flex-wrap gap-3"><a href="#jobs" class="inline-flex items-center gap-2 rounded-lg bg-orange px-5 py-3 font-bold text-ink">Tìm vi�?c làm <i data-lucide="arrow-right" class="h-4 w-4"></i></a><button id="generalApply" class="rounded-lg border border-white/30 px-5 py-3 font-bold hover:bg-white/10">Đ�fng ký ứng tuy�fn</button></div></div><div class="relative hidden lg:block"><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=85" alt="Đ�Ti ngũ nhân viên cùng làm vi�?c" class="h-[390px] w-full rounded-2xl object-cover shadow-2xl" /><div class="absolute bottom-5 left-5 rounded-xl bg-white p-4 text-ink shadow-soft"><p class="text-2xl font-extrabold text-blue">10.000+</p><p class="text-sm text-slate-500">Ứng viên �'�"ng hành</p></div></div></div><div class="relative container mx-auto px-5 pb-7 lg:px-8"><form id="searchForm" class="grid gap-3 rounded-2xl bg-white p-4 text-ink shadow-soft md:grid-cols-[1.5fr_1fr_1fr_1fr_auto]"><label class="flex items-center gap-3 rounded-lg border border-slate-200 px-3 py-2"><i data-lucide="search" class="h-5 w-5 text-blue"></i><input id="searchKeyword" placeholder="Từ khóa / tên công vi�?c" class="w-full outline-none" /></label><label class="flex items-center gap-3 rounded-lg border border-slate-200 px-3 py-2"><i data-lucide="map-pin" class="h-5 w-5 text-blue"></i><input id="searchLocation" placeholder="Khu vực" class="w-full outline-none" /></label><select id="searchCategory" class="rounded-lg border border-slate-200 bg-white px-3 py-2 outline-none"><option value="">Ngành nghề</option><option>Sản xuất</option><option>Kho vận</option><option>V�fn phòng</option><option>Kỹ thuật</option><option>Nhân sự</option></select><select id="searchType" class="rounded-lg border border-slate-200 bg-white px-3 py-2 outline-none"><option value="">Loại công vi�?c</option><option value="full-time">Toàn thời gian</option><option value="part-time">Bán thời gian</option><option value="remote">Từ xa</option></select><button class="rounded-lg bg-orange px-5 py-3 font-bold text-ink">Tìm kiếm</button></form></div></section>
-    <section id="about" class="py-20 lg:py-24"><div class="container mx-auto grid items-center gap-12 px-5 lg:grid-cols-[.9fr_1.1fr] lg:px-8"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=85" alt="Đ�Ti ngũ Tâm Đức trao �'�.i công vi�?c" class="h-[350px] w-full rounded-2xl object-cover shadow-soft" /><div><p class="text-sm font-bold uppercase tracking-[.2em] text-blue">Về Tâm Đức</p><h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Đúng người, �'úng vi�?c, �'úng thời �'i�fm.</h2><p class="mt-5 leading-7 text-slate-600">Công ty CP Cung Ứng Nhân Lực Tâm Đức cung cấp giải pháp tuy�fn dụng và cung ứng nhân lực �'áng tin cậy cho người lao �'�Tng và doanh nghi�?p tại Vi�?t Nam.</p><div class="mt-7 grid gap-5 sm:grid-cols-3"><div><i data-lucide="eye" class="h-6 w-6 text-orange"></i><h3 class="mt-3 font-bold">Tầm nhìn</h3><p class="mt-1 text-sm text-slate-500">Tr�Y thành cầu n�'i nhân lực hàng �'ầu.</p></div><div><i data-lucide="target" class="h-6 w-6 text-orange"></i><h3 class="mt-3 font-bold">Sứ m�?nh</h3><p class="mt-1 text-sm text-slate-500">Tạo cơ h�Ti vi�?c làm bền vững.</p></div><div><i data-lucide="handshake" class="h-6 w-6 text-orange"></i><h3 class="mt-3 font-bold">Giá tr�<</h3><p class="mt-1 text-sm text-slate-500">Minh bạch, tận tâm, chuyên nghi�?p.</p></div></div><a href="#contact" class="mt-7 inline-flex items-center gap-2 font-bold text-blue">Xem thêm <i data-lucide="arrow-up-right" class="h-4 w-4"></i></a></div></div></section>
-    <section class="bg-paper py-12"><div class="container mx-auto grid gap-6 px-5 sm:grid-cols-2 lg:grid-cols-4 lg:px-8"><div class="border-l-4 border-orange pl-4"><p class="text-3xl font-extrabold text-blue">500+</p><p class="mt-1 text-sm text-slate-600">Doanh nghi�?p �'�'i tác</p></div><div class="border-l-4 border-orange pl-4"><p class="text-3xl font-extrabold text-blue">10.000+</p><p class="mt-1 text-sm text-slate-600">Ứng viên</p></div><div class="border-l-4 border-orange pl-4"><p class="text-3xl font-extrabold text-blue">1.200+</p><p class="mt-1 text-sm text-slate-600">V�< trí tuy�fn dụng</p></div><div class="border-l-4 border-orange pl-4"><p class="text-3xl font-extrabold text-blue">98%</p><p class="mt-1 text-sm text-slate-600">Khách hàng hài lòng</p></div></div></section>
-    <section id="jobs" class="bg-paper py-20 lg:py-24"><div class="container mx-auto px-5 lg:px-8"><div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p class="text-sm font-bold uppercase tracking-[.2em] text-blue">Cơ h�Ti nghề nghi�?p</p><h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Vi�?c làm n�.i bật</h2></div><span id="jobResult" class="text-sm text-slate-500"></span></div><div class="mt-8 flex flex-wrap gap-2"><button class="job-filter rounded-full bg-blue px-4 py-2 text-sm font-bold text-white" data-filter="all">Tất cả</button><button class="job-filter rounded-full border border-slate-300 px-4 py-2 text-sm" data-filter="Sản xuất">Sản xuất</button><button class="job-filter rounded-full border border-slate-300 px-4 py-2 text-sm" data-filter="Kho vận">Kho vận</button><button class="job-filter rounded-full border border-slate-300 px-4 py-2 text-sm" data-filter="V�fn phòng">V�fn phòng</button><button class="job-filter rounded-full border border-slate-300 px-4 py-2 text-sm" data-filter="Kỹ thuật">Kỹ thuật</button><button class="job-filter rounded-full border border-slate-300 px-4 py-2 text-sm" data-filter="Thời vụ">Thời vụ</button></div><div id="jobGrid" class="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3"></div></div></section>
-    <section class="py-20"><div class="container mx-auto grid gap-5 px-5 md:grid-cols-2 lg:px-8"><div id="candidates" class="rounded-2xl bg-blue p-8 text-white"><i data-lucide="user-round-plus" class="h-8 w-8 text-orange"></i><h2 class="mt-6 text-2xl font-extrabold">Bạn �'ang tìm vi�?c?</h2><p class="mt-3 leading-7 text-blue-100">Đ�fng ký ngay �'�f nhận thông tin những v�< trí phù hợp v�>i kinh nghi�?m và mong mu�'n của bạn.</p><button class="general-apply mt-7 rounded-lg bg-orange px-5 py-3 font-bold text-ink">Tìm vi�?c ngay</button></div><div id="employers" class="rounded-2xl border border-slate-200 p-8"><i data-lucide="building-2" class="h-8 w-8 text-orange"></i><h2 class="mt-6 text-2xl font-extrabold">Doanh nghi�?p cần tuy�fn người?</h2><p class="mt-3 leading-7 text-slate-600">Đ�f Tâm Đức �'�"ng hành cùng bạn trong vi�?c xây dựng �'�Ti ngũ.</p><a href="#contact" class="mt-7 inline-flex rounded-lg bg-orange px-5 py-3 font-bold text-ink">Gửi nhu cầu tuy�fn dụng</a></div></div></section>
-    <section class="bg-paper py-20"><div class="container mx-auto px-5 lg:px-8"><div class="text-center"><p class="text-sm font-bold uppercase tracking-[.2em] text-blue">Đ�"ng hành cùng bạn</p><h2 class="mt-3 text-3xl font-extrabold">Vì sao chọn Tâm Đức?</h2></div><div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"><div class="rounded-xl bg-white p-6 shadow-sm"><i data-lucide="badge-check" class="h-7 w-7 text-orange"></i><h3 class="mt-5 font-bold">Vi�?c làm rõ ràng</h3><p class="mt-2 text-sm leading-6 text-slate-500">Thông tin tuy�fn dụng �'ầy �'ủ, minh bạch.</p></div><div class="rounded-xl bg-white p-6 shadow-sm"><i data-lucide="heart-handshake" class="h-7 w-7 text-orange"></i><h3 class="mt-5 font-bold">H�- trợ tận tình</h3><p class="mt-2 text-sm leading-6 text-slate-500">Đ�"ng hành cùng ứng viên trong quá trình ứng tuy�fn.</p></div><div class="rounded-xl bg-white p-6 shadow-sm"><i data-lucide="briefcase-business" class="h-7 w-7 text-orange"></i><h3 class="mt-5 font-bold">Nhiều cơ h�Ti vi�?c làm</h3><p class="mt-2 text-sm leading-6 text-slate-500">Kết n�'i nhiều doanh nghi�?p và v�< trí.</p></div><div class="rounded-xl bg-white p-6 shadow-sm"><i data-lucide="route" class="h-7 w-7 text-orange"></i><h3 class="mt-5 font-bold">Quy trình chuyên nghi�?p</h3><p class="mt-2 text-sm leading-6 text-slate-500">H�- trợ từ lúc �'�fng ký �'ến khi nhận vi�?c.</p></div></div></div></section>
-    <section class="py-20"><div class="container mx-auto px-5 lg:px-8"><div class="text-center"><p class="text-sm font-bold uppercase tracking-[.2em] text-blue">Quy trình �'ơn giản</p><h2 class="mt-3 text-3xl font-extrabold">Từ �'�fng ký �'ến nhận vi�?c</h2></div><div class="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-4"><div class="text-center"><span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-blue font-bold text-white">01</span><h3 class="mt-4 font-bold">Đ�fng ký</h3><p class="mt-2 text-sm text-slate-500">Ứng viên gửi thông tin.</p></div><div class="text-center"><span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-blue font-bold text-white">02</span><h3 class="mt-4 font-bold">Tư vấn</h3><p class="mt-2 text-sm text-slate-500">Nhân viên Tâm Đức liên h�?.</p></div><div class="text-center"><span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-blue font-bold text-white">03</span><h3 class="mt-4 font-bold">Phỏng vấn</h3><p class="mt-2 text-sm text-slate-500">Kết n�'i v�>i doanh nghi�?p.</p></div><div class="text-center"><span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-orange font-bold text-ink">04</span><h3 class="mt-4 font-bold">Nhận vi�?c</h3><p class="mt-2 text-sm text-slate-500">Hoàn tất h�" sơ, bắt �'ầu công vi�?c.</p></div></div></div></section>
-    <section id="news" class="bg-paper py-20"><div class="container mx-auto px-5 lg:px-8"><div class="flex items-end justify-between"><div><p class="text-sm font-bold uppercase tracking-[.2em] text-blue">Cập nhật m�>i nhất</p><h2 class="mt-3 text-3xl font-extrabold">Tin tức tuy�fn dụng</h2></div><a href="#contact" class="font-bold text-blue">Xem tất cả <i data-lucide="arrow-right" class="inline h-4 w-4"></i></a></div><div class="mt-9 grid gap-5 md:grid-cols-3"><article class="overflow-hidden rounded-2xl border border-slate-200 bg-white"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=700&q=80" alt="Tư vấn nghề nghi�?p" class="h-44 w-full object-cover"><div class="p-5"><p class="text-xs font-bold text-orange">TH�"NG TIN TUY�,N DỤNG · 20/09/2024</p><h3 class="mt-3 text-lg font-bold">Cơ h�Ti vi�?c làm m�>i trong tháng</h3><p class="mt-2 text-sm leading-6 text-slate-500">Cập nhật những v�< trí �'ang tuy�fn và cơ h�Ti dành cho người lao �'�Tng.</p></div></article><article class="overflow-hidden rounded-2xl border border-slate-200 bg-white"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=700&q=80" alt="Phỏng vấn xin vi�?c" class="h-44 w-full object-cover"><div class="p-5"><p class="text-xs font-bold text-orange">KINH NGHI�?M · 18/09/2024</p><h3 class="mt-3 text-lg font-bold">5 �'iều cần chuẩn b�< trư�>c phỏng vấn</h3><p class="mt-2 text-sm leading-6 text-slate-500">Mẹo nhỏ giúp bạn tự tin hơn và tạo ấn tượng t�'t.</p></div></article><article class="overflow-hidden rounded-2xl border border-slate-200 bg-white"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=700&q=80" alt="Người lao �'�Tng trao �'�.i" class="h-44 w-full object-cover"><div class="p-5"><p class="text-xs font-bold text-orange">HƯ�sNG DẪN · 15/09/2024</p><h3 class="mt-3 text-lg font-bold">Hư�>ng dẫn người lao �'�Tng m�>i</h3><p class="mt-2 text-sm leading-6 text-slate-500">Những �'iều cần biết trư�>c ngày �'ầu nhận vi�?c.</p></div></article></div></div></section>
-  </main>
-  <footer id="contact" class="bg-ink text-white"><div class="container mx-auto grid gap-10 px-5 py-14 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8"><div><div class="flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-lg bg-orange font-bold text-ink">TĐ</span><span class="font-display text-xl font-extrabold">T�,M ĐỨC</span></div><p class="mt-5 max-w-sm text-sm leading-6 text-slate-300">Công ty CP Cung Ứng Nhân Lực Tâm Đức - cầu n�'i tin cậy giữa người lao �'�Tng và doanh nghi�?p.</p><p class="mt-4 text-sm text-slate-400">Đ�<a ch�?: Bình Dương, Vi�?t Nam<br>Hotline: 0901 234 567<br>Email: nguyentienchuc.08082004@gmail.com</p></div><div><h3 class="font-bold">Liên kết nhanh</h3><div class="mt-4 grid gap-3 text-sm text-slate-300"><a href="#home">Trang chủ</a><a href="#about">Gi�>i thi�?u</a><a href="#jobs">Vi�?c làm</a><a href="#candidates">Ứng viên</a><a href="#employers">Doanh nghi�?p</a><a href="#news">Tin tức</a></div></div><div><h3 class="font-bold">Kết n�'i v�>i Tâm Đức</h3><p class="mt-4 text-sm leading-6 text-slate-300">Theo dõi thông tin vi�?c làm m�>i và nhận tư vấn từ �'�Ti ngũ của chúng tôi.</p><div class="mt-5 flex gap-3"><a href="#" aria-label="Facebook" class="grid h-9 w-9 place-items-center rounded-full border border-slate-600"><i data-lucide="facebook" class="h-4 w-4"></i></a><a href="#" aria-label="Zalo" class="grid h-9 w-9 place-items-center rounded-full border border-slate-600 text-xs font-bold">Zalo</a><a href="#" aria-label="Instagram" class="grid h-9 w-9 place-items-center rounded-full border border-slate-600"><i data-lucide="instagram" class="h-4 w-4"></i></a></div></div></div><div class="border-t border-slate-700 py-5 text-center text-xs text-slate-400">© 2024 C�"NG TY CP CUNG ỨNG NH�,N LỰC T�,M ĐỨC. Tất cả quyền �'ược bảo lưu.</div></footer>
-  <div id="applicationModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-ink/70 p-5 backdrop-blur-sm" role="dialog" aria-modal="true"><div class="relative max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-8"><button id="closeApplication" class="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-lg text-slate-500 hover:bg-slate-100" aria-label="Đóng form"><i data-lucide="x" class="h-5 w-5"></i></button><p class="text-xs font-bold uppercase tracking-[.2em] text-blue">Bắt �'ầu hành trình m�>i</p><h2 class="mt-3 pr-8 text-2xl font-extrabold">Đ�fng ký ứng tuy�fn</h2><p id="applicationPosition" class="mt-2 text-sm font-medium text-slate-500"></p><form id="applicationForm" class="mt-6 grid gap-4"><input id="applicationJob" type="hidden" name="position"><label class="text-sm font-bold">Họ và tên<input required name="name" type="text" placeholder="Nguy�.n V�fn A" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue"></label><div class="grid gap-4 sm:grid-cols-2"><label class="text-sm font-bold">S�' �'i�?n thoại<input required name="phone" type="tel" placeholder="0901 234 567" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue"></label><label class="text-sm font-bold">Email<input required name="email" type="email" placeholder="ban@email.com" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue"></label></div><div class="grid gap-4 sm:grid-cols-2"><label class="text-sm font-bold">CCCD<input name="citizenId" type="text" placeholder="S�' CCCD (không bắt bu�Tc)" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue"></label><label class="text-sm font-bold">N�fm sinh<input name="birthYear" type="number" min="1940" max="2020" placeholder="1995" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue"></label></div><div class="grid gap-4 sm:grid-cols-2"><label class="text-sm font-bold">Gi�>i tính<select name="gender" class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-4 py-3 font-normal outline-none"><option value="">Chọn gi�>i tính</option><option>Nam</option><option>Nữ</option><option>Khác</option></select></label><label class="text-sm font-bold">Khu vực mong mu�'n<input name="preferredArea" type="text" placeholder="Bình Dương, TP.HCM..." class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue"></label></div><label class="text-sm font-bold">Đ�<a ch�?<input name="address" type="text" placeholder="T�?nh/thành ph�' bạn �'ang sinh s�'ng" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue"></label><label class="text-sm font-bold">Kinh nghi�?m<textarea name="experience" rows="3" placeholder="Kinh nghi�?m làm vi�?c của bạn..." class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue"></textarea></label><label class="text-sm font-bold">Ghi chú<textarea name="note" rows="2" placeholder="Thông tin thêm (nếu có)" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-blue"></textarea></label><button type="submit" class="mt-2 rounded-lg bg-blue px-5 py-3 font-bold text-white hover:bg-blue-800">Gửi h�" sơ ứng tuy�fn</button><p id="applicationMessage" class="hidden text-center text-sm font-bold"></p></form></div></div>
-  <script type="module">
-    import{initializeApp}from'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';import{getDatabase,onValue,push,ref}from'https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js';const config={apiKey:'AIzaSyAcGa-GuvLu-sVkdy-WSv98vBsN4jGO-J0',authDomain:'cungungnhanluctamduc-46aa8.firebaseapp.com',projectId:'cungungnhanluctamduc-46aa8',databaseURL:'https://cungungnhanluctamduc-46aa8-default-rtdb.firebaseio.com',storageBucket:'cungungnhanluctamduc-46aa8.firebasestorage.app',messagingSenderId:'788092165512',appId:'1:788092165512:web:b80f92816505e269062e3d'};const db=getDatabase(initializeApp(config)),base=config.databaseURL;let allJobs=[];const $=id=>document.getElementById(id),types={'full-time':'Toàn thời gian','part-time':'Bán thời gian',remote:'Từ xa'};
-    const renderJobs=jobs=>{allJobs=jobs;const grid=$('jobGrid');grid.innerHTML=jobs.length?jobs.map(job=>`<article class="job-card rounded-2xl border border-slate-100 bg-white p-6 shadow-soft" data-type="${job.type}" data-category="${job.category||''}"><div class="flex items-start justify-between"><span class="grid h-14 w-14 place-items-center rounded-xl bg-sky font-display text-xl font-extrabold text-blue">${(job.title||'V').charAt(0)}</span><span class="rounded-full bg-sky px-3 py-1 text-xs font-bold text-blue">${job.badge||'ĐANG TUY�,N'}</span></div><h3 class="mt-7 text-xl font-bold">${job.title}</h3><p class="mt-2 text-sm text-slate-500">${job.company||'Tâm Đức'} · ${job.location||'Vi�?t Nam'}</p><div class="mt-5 flex flex-wrap gap-2 text-xs text-slate-600"><span class="rounded-md bg-slate-100 px-2 py-1">${types[job.type]||job.type||'Toàn thời gian'}</span><span class="rounded-md bg-slate-100 px-2 py-1">${job.category||'Nhân sự'}</span><span class="rounded-md bg-slate-100 px-2 py-1">Liên h�? �'�f biết lương</span></div><div class="mt-7 flex gap-2"><button class="apply-job flex-1 rounded-lg bg-blue px-3 py-3 text-sm font-bold text-white">Ứng tuy�fn</button><button class="detail-job rounded-lg border border-slate-200 px-4 py-3 text-sm font-bold text-blue">Chi tiết</button></div></article>`).join(''):'<p class="col-span-full rounded-xl bg-white p-10 text-center text-slate-500">Chưa có vi�?c làm phù hợp.</p>';$('jobResult').textContent=`${jobs.length} cơ h�Ti �'ang hi�fn th�<`;lucide.createIcons()};
-    const filterJobs=()=>{const keyword=$('searchKeyword').value.toLowerCase(),location=$('searchLocation').value.toLowerCase(),category=$('searchCategory').value,type=$('searchType').value;renderJobs(allJobs.filter(job=>(!keyword||(job.title||'').toLowerCase().includes(keyword))&&(!location||(job.company||'').toLowerCase().includes(location))&&(!category||job.category===category)&&(!type||job.type===type)))};onValue(ref(db,'site/jobs'),s=>{const data=s.val();if(data)renderJobs(Array.isArray(data)?data:Object.values(data))});fetch(`${base}/site/jobs.json`).then(r=>r.json()).then(data=>{if(data)renderJobs(Array.isArray(data)?data:Object.values(data))}).catch(()=>{});$('searchForm').addEventListener('submit',e=>{e.preventDefault();filterJobs();$('jobs').scrollIntoView({behavior:'smooth'})});document.querySelectorAll('.job-filter').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.job-filter').forEach(item=>item.className='job-filter rounded-full border border-slate-300 px-4 py-2 text-sm');button.className='job-filter rounded-full bg-blue px-4 py-2 text-sm font-bold text-white';renderJobs(button.dataset.filter==='all'?allJobs:allJobs.filter(job=>job.category===button.dataset.filter))}));
-    const modal=$('applicationModal'),form=$('applicationForm');const open=title=>{$('applicationPosition').textContent=title||'Đ�fng ký ứng tuy�fn chung';$('applicationJob').value=title||'';modal.classList.remove('hidden');modal.classList.add('flex');document.body.classList.add('modal-open');form.querySelector('[name="name"]').focus()};const close=()=>{modal.classList.add('hidden');modal.classList.remove('flex');document.body.classList.remove('modal-open');form.reset();$('applicationMessage').className='hidden text-center text-sm font-bold'};document.addEventListener('click',e=>{const button=e.target.closest('.apply-job');if(button)open(button.closest('.job-card').querySelector('h3').textContent)});document.querySelectorAll('.general-apply,#generalApply').forEach(button=>button.addEventListener('click',()=>open('Đ�fng ký ứng tuy�fn chung')));$('closeApplication').addEventListener('click',close);modal.addEventListener('click',e=>{if(e.target===modal)close()});form.addEventListener('submit',e=>{e.preventDefault();const button=form.querySelector('button[type="submit"]'),message=$('applicationMessage');button.disabled=true;button.textContent='Đang gửi...';const data={...Object.fromEntries(new FormData(form)),createdAt:new Date().toISOString(),status:'new'};push(ref(db,'applications'),data).then(()=>{message.textContent='Đã gửi h�" sơ. Tâm Đức sẽ liên h�? v�>i bạn s�>m.';message.className='text-center text-sm font-bold text-emerald-700';button.textContent='Đã gửi h�" sơ';form.reset()}).catch(()=>{message.textContent='Không th�f gửi h�" sơ. Vui lòng thử lại.';message.className='text-center text-sm font-bold text-red-600';button.disabled=false;button.textContent='Gửi h�" sơ ứng tuy�fn'})});$('menuBtn').addEventListener('click',()=>{$('mobileMenu').classList.toggle('hidden')});lucide.createIcons();
-  </script>
-</body>
-<script>
-  const text='T\u00c2M \u0110\u1ee8C';
-  document.title=text+' | K\u1ebft n\u1ed1i nh\u00e2n t\u00e0i, th\u00fac \u0111\u1ea9y doanh nghi\u1ec7p';
-  setTimeout(() => {
-    document.querySelector('header .font-display').textContent=text;
-    document.querySelector('footer .font-display').textContent=text;
-    document.querySelector('h1').innerHTML='K\u1ebeT N\u1ed0I NH\u00c2N T\u00c0I<br><span class="text-orange">TH\u00daC \u0110\u1ea8Y DOANH NGHI\u1ec6P</span>';
-    const nav=['Trang ch\u1ee7','Gi\u1edbi thi\u1ec7u','Vi\u1ec7c l\u00e0m','D\u00e0nh cho \u1ee9ng vi\u00ean','D\u00e0nh cho doanh nghi\u1ec7p','Tin t\u1ee9c','Li\u00ean h\u1ec7'];
-    document.querySelectorAll('nav a').forEach((item,index)=>{if(nav[index])item.textContent=nav[index]});
-    const headings=['V\u1ec1 T\u00e2m \u0110\u1ee9c','Vi\u1ec7c l\u00e0m n\u1ed5i b\u1eadt','V\u00ec sao ch\u1ecdn T\u00e2m \u0110\u1ee9c?','T\u1eeb \u0111\u0103ng k\u00fd \u0111\u1ebfn nh\u1eadn vi\u1ec7c','Tin t\u1ee9c tuy\u1ec3n d\u1ee5ng'];
-    document.querySelectorAll('main h2').forEach((item,index)=>{if(headings[index])item.textContent=headings[index]});
-    const setAll=(selector,values)=>document.querySelectorAll(selector).forEach((item,index)=>{if(values[index]!==undefined)item.textContent=values[index]});
-    setAll('header nav a',nav);
-    setAll('header > div > div a',['\u0110\u0103ng nh\u1eadp','\u1ee8ng tuy\u1ec3n ngay']);
-    const hero=document.querySelector('main > section:first-child');
-    if(hero){hero.querySelector('p').lastChild.textContent='Cung \u1ee9ng nh\u00e2n l\u1ef1c uy t\u00edn';hero.querySelector('h1').innerHTML='K\u1ebeT N\u1ed0I NH\u00c2N T\u00c0I<br><span class="text-orange">TH\u00daC \u0110\u1ea8Y DOANH NGHI\u1ec6P</span>';hero.querySelector('h1 + p').textContent='T\u00e2m \u0110\u1ee9c \u0111\u1ed3ng h\u00e0nh c\u00f9ng \u1ee9ng vi\u00ean v\u00e0 doanh nghi\u1ec7p tr\u00ean h\u00e0nh tr\u00ecnh ph\u00e1t tri\u1ec3n, t\u1eeb t\u00ecm vi\u1ec7c ph\u00f9 h\u1ee3p \u0111\u1ebfn x\u00e2y d\u1ef1ng \u0111\u1ed9i ng\u0169 v\u1eefng m\u1ea1nh.';hero.querySelectorAll('a,button')[0].firstChild.textContent='T\u00ecm vi\u1ec7c l\u00e0m';hero.querySelector('#generalApply').textContent='\u0110\u0103ng k\u00fd \u1ee9ng tuy\u1ec3n';hero.querySelector('#searchKeyword').placeholder='T\u1eeb kh\u00f3a / t\u00ean c\u00f4ng vi\u1ec7c';hero.querySelector('#searchLocation').placeholder='Khu v\u1ef1c';hero.querySelector('#searchForm button').textContent='T\u00ecm ki\u1ebfm';}
-    const about=document.querySelector('#about');if(about){about.querySelector('h2').textContent='\u0110\u00fang ng\u01b0\u1eddi, \u0111\u00fang vi\u1ec7c, \u0111\u00fang th\u1eddi \u0111i\u1ec3m.';setAll('#about h3',['T\u1ea7m nh\u00ecn','S\u1ee9 m\u1ec7nh','Gi\u00e1 tr\u1ecb']);setAll('#about h3 + p',['Tr\u1edf th\u00e0nh c\u1ea7u n\u1ed1i nh\u00e2n l\u1ef1c h\u00e0ng \u0111\u1ea7u.','T\u1ea1o c\u01a1 h\u1ed9i vi\u1ec7c l\u00e0m b\u1ec1n v\u1eefng.','Minh b\u1ea1ch, t\u1eadn t\u00e2m, chuy\u00ean nghi\u1ec7p.']);}
-    setAll('main > section:nth-of-type(3) div > p:last-child',['Doanh nghi\u1ec7p \u0111\u1ed1i t\u00e1c','\u1ee8ng vi\u00ean','V\u1ecb tr\u00ed tuy\u1ec3n d\u1ee5ng','Kh\u00e1ch h\u00e0ng h\u00e0i l\u00f2ng']);
-    const jobSection=document.querySelector('#jobs');if(jobSection){jobSection.querySelector('p').textContent='C\u01a1 h\u1ed9i ngh\u1ec1 nghi\u1ec7p';jobSection.querySelector('h2').textContent='Vi\u1ec7c l\u00e0m n\u1ed5i b\u1eadt';setAll('#jobs .job-filter',['T\u1ea5t c\u1ea3','S\u1ea3n xu\u1ea5t','Kho v\u1eadn','V\u0103n ph\u00f2ng','K\u1ef9 thu\u1eadt','Th\u1eddi v\u1ee5']);}
-    const candidate=document.querySelector('#candidates');if(candidate){candidate.querySelector('h2').textContent='B\u1ea1n \u0111ang t\u00ecm vi\u1ec7c?';candidate.querySelector('p').textContent='\u0110\u0103ng k\u00fd ngay \u0111\u1ec3 nh\u1eadn th\u00f4ng tin nh\u1eefng v\u1ecb tr\u00ed ph\u00f9 h\u1ee3p v\u1edbi kinh nghi\u1ec7m v\u00e0 mong mu\u1ed1n c\u1ee7a b\u1ea1n.';candidate.querySelector('button').textContent='T\u00ecm vi\u1ec7c ngay';}const employer=document.querySelector('#employers');if(employer){employer.querySelector('h2').textContent='Doanh nghi\u1ec7p c\u1ea7n tuy\u1ec3n ng\u01b0\u1eddi?';employer.querySelector('p').textContent='\u0110\u1ec3 T\u00e2m \u0110\u1ee9c \u0111\u1ed3ng h\u00e0nh c\u00f9ng b\u1ea1n trong vi\u1ec7c x\u00e2y d\u1ef1ng \u0111\u1ed9i ng\u0169.';employer.querySelector('a').textContent='G\u1eedi nhu c\u1ea7u tuy\u1ec3n d\u1ee5ng';}
-    setAll('main > section:nth-of-type(5) h3',['Vi\u1ec7c l\u00e0m r\u00f5 r\u00e0ng','H\u1ed7 tr\u1ee3 t\u1eadn t\u00ecnh','Nhi\u1ec1u c\u01a1 h\u1ed9i vi\u1ec7c l\u00e0m','Quy tr\u00ecnh chuy\u00ean nghi\u1ec7p']);
-    setAll('main > section:nth-of-type(6) h3',['\u0110\u0103ng k\u00fd','T\u01b0 v\u1ea5n','Ph\u1ecfng v\u1ea5n','Nh\u1eadn vi\u1ec7c']);
-    setAll('#news h3',['C\u01a1 h\u1ed9i vi\u1ec7c l\u00e0m m\u1edbi trong th\u00e1ng','5 \u0111i\u1ec1u c\u1ea7n chu\u1ea9n b\u1ecb tr\u01b0\u1edbc ph\u1ecfng v\u1ea5n','H\u01b0\u1edbng d\u1eabn ng\u01b0\u1eddi lao \u0111\u1ed9ng m\u1edbi']);
-    const modal=document.getElementById('applicationModal');if(modal){modal.querySelector('h2').textContent='\u0110\u0103ng k\u00fd \u1ee9ng tuy\u1ec3n';['H\u1ecd v\u00e0 t\u00ean','S\u1ed1 \u0111i\u1ec7n tho\u1ea1i','Email','CCCD','N\u0103m sinh','Gi\u1edbi t\u00ednh','Khu v\u1ef1c mong mu\u1ed1n','\u0110\u1ecba ch\u1ec9','Kinh nghi\u1ec7m','Ghi ch\u00fa'].forEach((label,index)=>{const node=modal.querySelectorAll('#applicationForm label')[index]?.firstChild;if(node)node.nodeValue=label});modal.querySelector('#applicationForm button[type="submit"]').textContent='G\u1eedi h\u1ed3 s\u01a1 \u1ee9ng tuy\u1ec3n';modal.querySelector('#applicationPosition').textContent='Ch\u1ecdn v\u1ecb tr\u00ed ph\u00f9 h\u1ee3p v\u1edbi b\u1ea1n';}
-    setInterval(()=>{document.querySelectorAll('.job-card .apply-job').forEach(button=>button.textContent='\u1ee8ng tuy\u1ec3n');document.querySelectorAll('.job-card .detail-job').forEach(button=>button.textContent='Chi ti\u1ebft');document.querySelectorAll('.job-card').forEach(card=>{const tags=card.querySelectorAll('.rounded-md');if(tags[2])tags[2].textContent='Li\u00ean h\u1ec7 \u0111\u1ec3 bi\u1ebft l\u01b0\u01a1ng'});setAll('main > section:nth-of-type(5) p',['Th\u00f4ng tin tuy\u1ec3n d\u1ee5ng \u0111\u1ea7y \u0111\u1ee7, minh b\u1ea1ch.','\u0110\u1ed3ng h\u00e0nh c\u00f9ng \u1ee9ng vi\u00ean trong qu\u00e1 tr\u00ecnh \u1ee9ng tuy\u1ec3n.','K\u1ebft n\u1ed1i nhi\u1ec1u doanh nghi\u1ec7p v\u00e0 v\u1ecb tr\u00ed.','H\u1ed7 tr\u1ee3 t\u1eeb l\u00fac \u0111\u0103ng k\u00fd \u0111\u1ebfn khi nh\u1eadn vi\u1ec7c.']);},500);
-  },1000);
-</script>
-<script>
-(() => {
-  const text = (selector, value) => { const element = document.querySelector(selector); if (element) element.textContent = value; };
-  const texts = (selector, values) => document.querySelectorAll(selector).forEach((element, index) => { if (values[index] !== undefined) element.textContent = values[index]; });
-  setTimeout(() => {
-    text('header nav a:nth-child(1)', 'Trang ch\u1ee7'); text('header nav a:nth-child(2)', 'Gi\u1edbi thi\u1ec7u'); text('header nav a:nth-child(3)', 'Vi\u1ec7c l\u00e0m'); text('header nav a:nth-child(4)', 'D\u00e0nh cho \u1ee9ng vi\u00ean'); text('header nav a:nth-child(5)', 'D\u00e0nh cho doanh nghi\u1ec7p'); text('header nav a:nth-child(6)', 'Tin t\u1ee9c'); text('header nav a:nth-child(7)', 'Li\u00ean h\u1ec7');
-    texts('#about > div > div > div h3', ['T\u1ea7m nh\u00ecn','S\u1ee9 m\u1ec7nh','Gi\u00e1 tr\u1ecb']);
-    texts('#about > div > div > div h3 + p', ['Tr\u1edf th\u00e0nh c\u1ea7u n\u1ed1i nh\u00e2n l\u1ef1c h\u00e0ng \u0111\u1ea7u.','T\u1ea1o c\u01a1 h\u1ed9i vi\u1ec7c l\u00e0m b\u1ec1n v\u1eefng.','Minh b\u1ea1ch, t\u1eadn t\u00e2m, chuy\u00ean nghi\u1ec7p.']);
-    texts('#jobs .job-filter', ['T\u1ea5t c\u1ea3','S\u1ea3n xu\u1ea5t','Kho v\u1eadn','V\u0103n ph\u00f2ng','K\u1ef9 thu\u1eadt','Th\u1eddi v\u1ee5']);
-    texts('main > section:nth-of-type(5) h3', ['Vi\u1ec7c l\u00e0m r\u00f5 r\u00e0ng','H\u1ed7 tr\u1ee3 t\u1eadn t\u00ecnh','Nhi\u1ec1u c\u01a1 h\u1ed9i vi\u1ec7c l\u00e0m','Quy tr\u00ecnh chuy\u00ean nghi\u1ec7p']);
-    texts('main > section:nth-of-type(5) h3 + p', ['Th\u00f4ng tin tuy\u1ec3n d\u1ee5ng \u0111\u1ea7y \u0111\u1ee7, minh b\u1ea1ch.','\u0110\u1ed3ng h\u00e0nh c\u00f9ng \u1ee9ng vi\u00ean trong qu\u00e1 tr\u00ecnh \u1ee9ng tuy\u1ec3n.','K\u1ebft n\u1ed1i nhi\u1ec1u doanh nghi\u1ec7p v\u00e0 v\u1ecb tr\u00ed.','H\u1ed7 tr\u1ee3 t\u1eeb l\u00fac \u0111\u0103ng k\u00fd \u0111\u1ebfn khi nh\u1eadn vi\u1ec7c.']);
-    texts('main > section:nth-of-type(6) h3', ['\u0110\u0103ng k\u00fd','T\u01b0 v\u1ea5n','Ph\u1ecfng v\u1ea5n','Nh\u1eadn vi\u1ec7c']);
-    texts('main > section:nth-of-type(6) h3 + p', ['\u1ee8ng vi\u00ean g\u1eedi th\u00f4ng tin.','Nh\u00e2n vi\u00ean T\u00e2m \u0110\u1ee9c li\u00ean h\u1ec7.','K\u1ebft n\u1ed1i v\u1edbi doanh nghi\u1ec7p.','Ho\u00e0n t\u1ea5t h\u1ed3 s\u01a1, b\u1eaft \u0111\u1ea7u c\u00f4ng vi\u1ec7c.']);
-    texts('#news article h3', ['C\u01a1 h\u1ed9i vi\u1ec7c l\u00e0m m\u1edbi trong th\u00e1ng','5 \u0111i\u1ec1u c\u1ea7n chu\u1ea9n b\u1ecb tr\u01b0\u1edbc ph\u1ecfng v\u1ea5n','H\u01b0\u1edbng d\u1eabn ng\u01b0\u1eddi lao \u0111\u1ed9ng m\u1edbi']);
-    texts('#news article h3 + p', ['C\u1eadp nh\u1eadt nh\u1eefng v\u1ecb tr\u00ed \u0111ang tuy\u1ec3n v\u00e0 c\u01a1 h\u1ed9i d\u00e0nh cho ng\u01b0\u1eddi lao \u0111\u1ed9ng.','M\u1eb9o nh\u1ecf gi\u00fap b\u1ea1n t\u1ef1 tin h\u01a1n v\u00e0 t\u1ea1o \u1ea5n t\u01b0\u1ee3ng t\u1ed1t.','Nh\u1eefng \u0111i\u1ec1u c\u1ea7n bi\u1ebft tr\u01b0\u1edbc ng\u00e0y \u0111\u1ea7u nh\u1eadn vi\u1ec7c.']);
-  }, 1300);
-})();
-</script>
-<script>
-(() => {
-  setTimeout(() => {
-    const text=(selector,value)=>{const item=document.querySelector(selector);if(item)item.textContent=value};
-    const values=(selector,list)=>document.querySelectorAll(selector).forEach((item,index)=>{if(list[index]!==undefined)item.textContent=list[index]});
-    values('header .font-display',['T\u0110','T\u00c2M \u0110\u1ee8C']);
-    text('#about > div > div > p.mt-5','C\u00f4ng ty CP Cung \u1ee8ng Nh\u00e2n L\u1ef1c T\u00e2m \u0110\u1ee9c cung c\u1ea5p gi\u1ea3i ph\u00e1p tuy\u1ec3n d\u1ee5ng v\u00e0 cung \u1ee9ng nh\u00e2n l\u1ef1c \u0111\u00e1ng tin c\u1eady cho ng\u01b0\u1eddi lao \u0111\u1ed9ng v\u00e0 doanh nghi\u1ec7p t\u1ea1i Vi\u1ec7t Nam.');
-    values('#searchCategory option',['Ng\u00e0nh ngh\u1ec1','S\u1ea3n xu\u1ea5t','Kho v\u1eadn','V\u0103n ph\u00f2ng','K\u1ef9 thu\u1eadt','Nh\u00e2n s\u1ef1']);
-    values('#searchType option',['Lo\u1ea1i c\u00f4ng vi\u1ec7c','To\u00e0n th\u1eddi gian','B\u00e1n th\u1eddi gian','T\u1eeb xa']);
-    text('#about > div > div > p:first-child','V\u1ec0 T\u00c2M \u0110\u1ee8C');text('#jobs > div > div > div > p','C\u01a0 h\u1ed9i ngh\u1ec1 nghi\u1ec7p');text('#news > div > div > div > p','C\u1eacP NH\u1eacT M\u1edaI NH\u1ea4T');
-  },1600);
-})();
-</script>
-<script>
-setInterval(()=>{
-  const text=(selector,value)=>{const item=document.querySelector(selector);if(item)item.textContent=value};
-  const values=(selector,list)=>document.querySelectorAll(selector).forEach((item,index)=>{if(list[index]!==undefined)item.textContent=list[index]});
-  text('#jobResult','4 c\u01a1 h\u1ed9i \u0111ang hi\u1ec3n th\u1ecb');
-  values('#jobGrid .job-card > p',['Venture Labs \u00b7 Th\u00e0nh ph\u1ed1 H\u1ed3 Ch\u00ed Minh','Lumen Group \u00b7 T\u1eeb xa / H\u00e0 N\u1ed9i','Satori Foods \u00b7 \u0110\u00e0 N\u1eb5ng','NEXA Human Capital \u00b7 H\u00e0 N\u1ed9i']);
-  text('main > section:nth-of-type(7) > div > div > p','C\u1eadp nh\u1eadt m\u1edbi nh\u1ea5t');
-  text('main > section:nth-of-type(7) h2','Tin t\u1ee9c tuy\u1ec3n d\u1ee5ng');
-  values('main > section:nth-of-type(6) h3',['\u0110\u0103ng k\u00fd','T\u01b0 v\u1ea5n','Ph\u1ecfng v\u1ea5n','Nh\u1eadn vi\u1ec7c']);
-  values('main > section:nth-of-type(6) h3 + p',['\u1ee8ng vi\u00ean g\u1eedi th\u00f4ng tin.','Nh\u00e2n vi\u00ean T\u00e2m \u0110\u1ee9c li\u00ean h\u1ec7.','K\u1ebft n\u1ed1i v\u1edbi doanh nghi\u1ec7p.','Ho\u00e0n t\u1ea5t h\u1ed3 s\u01a1, b\u1eaft \u0111\u1ea7u c\u00f4ng vi\u1ec7c.']);
-  text('footer > div > div:nth-child(1) > p.mt-5','C\u00f4ng ty CP Cung \u1ee8ng Nh\u00e2n L\u1ef1c T\u00e2m \u0110\u1ee9c - c\u1ea7u n\u1ed1i tin c\u1eady gi\u1eefa ng\u01b0\u1eddi lao \u0111\u1ed9ng v\u00e0 doanh nghi\u1ec7p.');
-  values('footer a',['Trang ch\u1ee7','Gi\u1edbi thi\u1ec7u','Vi\u1ec7c l\u00e0m','\u1ee8ng vi\u00ean','Doanh nghi\u1ec7p','Tin t\u1ee9c']);
-},2200);
-</script>
-<script>
-setTimeout(()=>{
-  const text=(selector,value)=>{const item=document.querySelector(selector);if(item)item.textContent=value};
-  const values=(selector,list)=>document.querySelectorAll(selector).forEach((item,index)=>{if(list[index]!==undefined)item.textContent=list[index]});
-  text('main > section:nth-of-type(7) > div > div > p','QUY TR\u00ccNH \u0110\u01a0N GI\u1ea2N');
-  text('main > section:nth-of-type(7) h2','T\u1eeb \u0110\u0103NG K\u00dd \u0110\u1ebeN NH\u1eacN VI\u1ec6C');
-  values('main > section:nth-of-type(7) h3',['\u0110\u0103ng k\u00fd','T\u01b0 v\u1ea5n','Ph\u1ecfng v\u1ea5n','Nh\u1eadn vi\u1ec7c']);
-  values('main > section:nth-of-type(7) h3 + p',['\u1ee8ng vi\u00ean g\u1eedi th\u00f4ng tin.','Nh\u00e2n vi\u00ean T\u00e2m \u0110\u1ee9c li\u00ean h\u1ec7.','K\u1ebft n\u1ed1i v\u1edbi doanh nghi\u1ec7p.','Ho\u00e0n t\u1ea5t h\u1ed3 s\u01a1, b\u1eaft \u0111\u1ea7u c\u00f4ng vi\u1ec7c.']);
-  text('main > section:nth-of-type(8) h2','Tin t\u1ee9c tuy\u1ec3n d\u1ee5ng');
-  values('main > section:nth-of-type(8) article p:first-child',['TH\u00d4NG TIN TUY\u1ec2N D\u1ee4NG \u00b7 20/09/2024','KINH NGHI\u1ec6M \u00b7 18/09/2024','H\u01af\u1edaNG D\u1eaaN \u00b7 15/09/2024']);
-  values('footer > div > div:nth-child(2) a',['Trang ch\u1ee7','Gi\u1edbi thi\u1ec7u','Vi\u1ec7c l\u00e0m','\u1ee8ng vi\u00ean','Doanh nghi\u1ec7p','Tin t\u1ee9c']);
-  text('footer > div > div:nth-child(3) h3','K\u1ebft n\u1ed1i v\u1edbi T\u00e2m \u0110\u1ee9c');text('footer > div > div:nth-child(3) p','Theo d\u00f5i th\u00f4ng tin vi\u1ec7c l\u00e0m m\u1edbi v\u00e0 nh\u1eadn t\u01b0 v\u1ea5n t\u1eeb \u0111\u1ed9i ng\u0169 c\u1ee7a ch\u00fang t\u00f4i.');
-  text('footer > div:last-child','\u00a9 2024 C\u00d4NG TY CP CUNG \u1ee8NG NH\u00c2N L\u1ef0C T\u00c2M \u0110\u1ee8C. T\u1ea5t c\u1ea3 quy\u1ec1n \u0111\u01b0\u1ee3c b\u1ea3o l\u01b0u.');
-},2800);
-</script>
-<script>
-setInterval(()=>{
-  const section=document.querySelectorAll('main > section');
-  const set=(selector,value)=>{const item=document.querySelector(selector);if(item)item.textContent=value};
-  const many=(selector,list)=>document.querySelectorAll(selector).forEach((item,index)=>{if(list[index]!==undefined)item.textContent=list[index]});
-  set('main > section:nth-of-type(7) > div > div > p','QUY TR\u00ccNH \u0110\u01a0N GI\u1ea2N');set('main > section:nth-of-type(7) h2','T\u1eeb \u0110\u0102NG K\u00dd \u0110\u1ebeN NH\u1eacN VI\u1ec6C');many('main > section:nth-of-type(7) h3',['\u0110\u0103ng k\u00fd','T\u01b0 v\u1ea5n','Ph\u1ecfng v\u1ea5n','Nh\u1eadn vi\u1ec7c']);many('main > section:nth-of-type(7) h3 + p',['\u1ee8ng vi\u00ean g\u1eedi th\u00f4ng tin.','Nh\u00e2n vi\u00ean T\u00e2m \u0110\u1ee9c li\u00ean h\u1ec7.','K\u1ebft n\u1ed1i v\u1edbi doanh nghi\u1ec7p.','Ho\u00e0n t\u1ea5t h\u1ed3 s\u01a1, b\u1eaft \u0111\u1ea7u c\u00f4ng vi\u1ec7c.']);set('main > section:nth-of-type(8) h2','Tin t\u1ee9c tuy\u1ec3n d\u1ee5ng');many('main > section:nth-of-type(8) article p:first-child',['TH\u00d4NG TIN TUY\u1ec2N D\u1ee4NG \u00b7 20/09/2024','KINH NGHI\u1ec6M \u00b7 18/09/2024','H\u01af\u1edaNG D\u1eaaN \u00b7 15/09/2024']);set('jobResult','4 c\u01a1 h\u1ed9i \u0111ang hi\u1ec3n th\u1ecb');many('#jobGrid .job-card > p',['Venture Labs \u00b7 Th\u00e0nh ph\u1ed1 H\u1ed3 Ch\u00ed Minh','Lumen Group \u00b7 T\u1eeb xa / H\u00e0 N\u1ed9i','Satori Foods \u00b7 \u0110\u00e0 N\u1eb5ng','NEXA Human Capital \u00b7 H\u00e0 N\u1ed9i']);set('footer > div:last-child','\u00a9 2024 C\u00d4NG TY CP CUNG \u1ee8NG NH\u00c2N L\u1ef0C T\u00c2M \u0110\u1ee8C. T\u1ea5t c\u1ea3 quy\u1ec1n \u0111\u01b0\u1ee3c b\u1ea3o l\u01b0u.');
-  set('main > section:nth-of-type(6) > div > div > p','\u0110\u1ed2NG H\u00c0NH C\u00d9NG B\u1ea0N');set('main > section:nth-of-type(6) h2','V\u00ec sao ch\u1ecdn T\u00e2m \u0110\u1ee9c?');many('main > section:nth-of-type(6) h3',['Vi\u1ec7c l\u00e0m r\u00f5 r\u00e0ng','H\u1ed7 tr\u1ee3 t\u1eadn t\u00ecnh','Nhi\u1ec1u c\u01a1 h\u1ed9i vi\u1ec7c l\u00e0m','Quy tr\u00ecnh chuy\u00ean nghi\u1ec7p']);many('main > section:nth-of-type(6) h3 + p',['Th\u00f4ng tin tuy\u1ec3n d\u1ee5ng \u0111\u1ea7y \u0111\u1ee7, minh b\u1ea1ch.','\u0110\u1ed3ng h\u00e0nh c\u00f9ng \u1ee9ng vi\u00ean trong qu\u00e1 tr\u00ecnh \u1ee9ng tuy\u1ec3n.','K\u1ebft n\u1ed1i nhi\u1ec1u doanh nghi\u1ec7p v\u00e0 v\u1ecb tr\u00ed.','H\u1ed7 tr\u1ee3 t\u1eeb l\u00fac \u0111\u0103ng k\u00fd \u0111\u1ebfn khi nh\u1eadn vi\u1ec7c.']);
-  set('footer .container > div:nth-child(2) > h3','Li\u00ean k\u1ebft nhanh');many('footer .container > div:nth-child(2) div a',['Trang ch\u1ee7','Gi\u1edbi thi\u1ec7u','Vi\u1ec7c l\u00e0m','\u1ee8ng vi\u00ean','Doanh nghi\u1ec7p','Tin t\u1ee9c']);
-  set('footer .container > div:nth-child(3) > h3','K\u1ebft n\u1ed1i v\u1edbi T\u00e2m \u0110\u1ee9c');set('footer .container > div:nth-child(3) > p','Theo d\u00f5i th\u00f4ng tin vi\u1ec7c l\u00e0m m\u1edbi v\u00e0 nh\u1eadn t\u01b0 v\u1ea5n t\u1eeb \u0111\u1ed9i ng\u0169 c\u1ee7a ch\u00fang t\u00f4i.');set('footer > div:last-child','\u00a9 2024 C\u00d4NG TY CP CUNG \u1ee8NG NH\u00c2N L\u1ef0C T\u00c2M \u0110\u1ee8C. T\u1ea5t c\u1ea3 quy\u1ec1n \u0111\u01b0\u1ee3c b\u1ea3o l\u01b0u.');
-},500);
-</script>
-<script>
-setInterval(()=>{
-  const set=(selector,value)=>{const item=document.querySelector(selector);if(item)item.textContent=value};
-  set('#jobResult','4 c\u01a1 h\u1ed9i \u0111ang hi\u1ec3n th\u1ecb');
-  set('footer .container > div:first-child > p.mt-5','C\u00f4ng ty CP Cung \u1ee8ng Nh\u00e2n L\u1ef1c T\u00e2m \u0110\u1ee9c - c\u1ea7u n\u1ed1i tin c\u1eady gi\u1eefa ng\u01b0\u1eddi lao \u0111\u1ed9ng v\u00e0 doanh nghi\u1ec7p.');
-  set('footer .container > div:first-child > p.mt-4','\u0110\u1ecba ch\u1ec9: B\u00ecnh D\u01b0\u01a1ng, Vi\u1ec7t Nam\nHotline: 0901 234 567\nEmail: nguyentienchuc.08082004@gmail.com');
-},500);
-</script>
-<script>
-setInterval(()=>{
-  const set=(selector,value)=>{const item=document.querySelector(selector);if(item)item.textContent=value};
-  const many=(selector,value)=>document.querySelectorAll(selector).forEach(item=>item.textContent=value);
-  many('header .font-display','T\u00c2M \u0110\u1ee8C');set('#searchCategory option:nth-child(4)','V\u0103n ph\u00f2ng');set('#searchType option:first-child','Lo\u1ea1i c\u00f4ng vi\u1ec7c');set('#about > div > div > p.mt-5','C\u00f4ng ty CP Cung \u1ee8ng Nh\u00e2n L\u1ef1c T\u00e2m \u0110\u1ee9c cung c\u1ea5p gi\u1ea3i ph\u00e1p tuy\u1ec3n d\u1ee5ng v\u00e0 cung \u1ee9ng nh\u00e2n l\u1ef1c \u0111\u00e1ng tin c\u1eady cho ng\u01b0\u1eddi lao \u0111\u1ed9ng v\u00e0 doanh nghi\u1ec7p t\u1ea1i Vi\u1ec7t Nam.');many('#jobGrid .job-card .rounded-md:last-child','Li\u00ean h\u1ec7 \u0111\u1ec3 bi\u1ebft l\u01b0\u01a1ng');many('#jobGrid .apply-job','\u1ee8ng tuy\u1ec3n');set('#news > div > div > div > p','C\u1eacP NH\u1eacT M\u1edaI NH\u1ea4T');
-},500);
-</script>
-</html>
+<header class="sticky top-0 z-50 bg-brand text-white shadow-sm">
+  <div class="container mx-auto flex items-center justify-between px-5 py-4 lg:px-8">
+    <a href="#home" class="flex items-center gap-3">
+      <span class="grid h-10 w-10 place-items-center rounded-lg bg-orange font-extrabold text-ink">TĐ</span>
+      <span class="font-extrabold tracking-tight">TÂM ĐỨC</span>
+    </a>
+    <nav class="hidden items-center gap-5 text-sm font-semibold lg:flex">
+      <a href="#home" class="hover:text-orange">Trang chủ</a>
+      <a href="#about" class="hover:text-orange">Giới thiệu</a>
+      <a href="#jobs" class="hover:text-orange">Việc làm</a>
+      <a href="#candidates" class="hover:text-orange">Ứng viên</a>
+      <a href="#employers" class="hover:text-orange">Doanh nghiệp</a>
+      <a href="#news" class="hover:text-orange">Tin tức</a>
+      <a href="#contact" class="hover:text-orange">Liên hệ</a>
+    </nav>
+    <div class="hidden items-center gap-3 lg:flex">
+      <a href="#jobs" class="rounded-lg border border-white/30 px-4 py-2 text-sm font-bold">Tìm việc</a>
+      <button id="generalApply" class="rounded-lg bg-orange px-4 py-2 text-sm font-bold text-ink">Ứng tuyển ngay</button>
+    </div>
+    <button id="menuBtn" class="rounded-lg border border-white/30 p-2 lg:hidden" aria-label="Mở menu">
+      <i data-lucide="menu" class="h-5 w-5"></i>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden border-t border-white/15 px-5 pb-5 pt-4 lg:hidden">
+    <div class="grid gap-4 text-sm font-semibold">
+      <a href="#about">Giới thiệu</a><a href="#jobs">Việc làm</a><a href="#candidates">Ứng viên</a>
+      <a href="#employers">Doanh nghiệp</a><a href="#news">Tin tức</a><a href="#contact">Liên hệ</a>
+    </div>
+  </div>
+</header>
 
+<main id="home">
+  <section class="relative overflow-hidden bg-brand text-white">
+    <div class="hero-pattern absolute inset-0 opacity-60"></div>
+    <div class="relative container mx-auto grid items-center gap-12 px-5 py-16 lg:grid-cols-[1fr_.9fr] lg:px-8 lg:py-24">
+      <div>
+        <p class="mb-5 flex items-center gap-2 text-sm font-bold uppercase tracking-[.18em] text-orange">
+          <span class="h-px w-8 bg-orange"></span> Cung ứng nhân lực uy tín
+        </p>
+        <h1 id="heroTitle" class="max-w-2xl text-4xl font-extrabold uppercase leading-[1.1] sm:text-5xl lg:text-6xl">KẾT NỐI NHÂN TÀI<br><span class="text-orange">THÚC ĐẨY DOANH NGHIỆP</span></h1>
+        <p id="heroDescription" class="mt-6 max-w-xl text-lg leading-8 text-blue-100">Tâm Đức đồng hành cùng ứng viên và doanh nghiệp trên hành trình phát triển, từ tìm việc phù hợp đến xây dựng đội ngũ vững mạnh.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#jobs" class="inline-flex items-center gap-2 rounded-lg bg-orange px-5 py-3 font-bold text-ink">Tìm việc làm <i data-lucide="arrow-right" class="h-4 w-4"></i></a>
+          <button id="heroApply" class="rounded-lg border border-white/30 px-5 py-3 font-bold hover:bg-white/10">Đăng ký ứng tuyển</button>
+        </div>
+      </div>
+      <div class="relative hidden lg:block">
+        <img id="heroImage" src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=85" alt="Đội ngũ nhân viên cùng làm việc" class="h-[390px] w-full rounded-2xl object-cover shadow-2xl" />
+        <div class="absolute bottom-5 left-5 rounded-xl bg-white p-4 text-ink shadow-soft">
+          <p id="heroCandidates" class="text-2xl font-extrabold text-brand">10.000+</p>
+          <p class="text-sm text-slate-500">Ứng viên đồng hành</p>
+        </div>
+      </div>
+    </div>
+    <div class="relative container mx-auto px-5 pb-7 lg:px-8">
+      <form id="searchForm" class="grid gap-3 rounded-2xl bg-white p-4 text-ink shadow-soft md:grid-cols-[1.5fr_1fr_1fr_1fr_auto]">
+        <label class="flex items-center gap-3 rounded-lg border border-slate-200 px-3 py-2">
+          <i data-lucide="search" class="h-5 w-5 text-brand"></i>
+          <input id="searchKeyword" placeholder="Từ khóa / tên công việc" class="w-full outline-none" />
+        </label>
+        <label class="flex items-center gap-3 rounded-lg border border-slate-200 px-3 py-2">
+          <i data-lucide="map-pin" class="h-5 w-5 text-brand"></i>
+          <input id="searchLocation" placeholder="Khu vực" class="w-full outline-none" />
+        </label>
+        <select id="searchCategory" class="rounded-lg border border-slate-200 bg-white px-3 py-2 outline-none">
+          <option value="">Ngành nghề</option>
+          <option>Sản xuất</option><option>Kho vận</option><option>Văn phòng</option><option>Kỹ thuật</option><option>Nhân sự</option><option>Thời vụ</option>
+        </select>
+        <select id="searchType" class="rounded-lg border border-slate-200 bg-white px-3 py-2 outline-none">
+          <option value="">Loại công việc</option>
+          <option value="full-time">Toàn thời gian</option><option value="part-time">Bán thời gian</option><option value="remote">Từ xa</option><option value="temporary">Thời vụ</option>
+        </select>
+        <button class="rounded-lg bg-orange px-5 py-3 font-bold text-ink">Tìm kiếm</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="about" class="py-20 lg:py-24">
+    <div class="container mx-auto grid items-center gap-12 px-5 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
+      <img id="aboutImage" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=85" alt="Đội ngũ Tâm Đức" class="h-[350px] w-full rounded-2xl object-cover shadow-soft" />
+      <div>
+        <p class="text-sm font-bold uppercase tracking-[.2em] text-brand">Về Tâm Đức</p>
+        <h2 id="aboutTitle" class="mt-3 text-3xl font-extrabold sm:text-4xl">Đúng người, đúng việc, đúng thời điểm.</h2>
+        <p id="aboutText" class="mt-5 leading-7 text-slate-600">Công ty CP Cung Ứng Nhân Lực Tâm Đức cung cấp giải pháp tuyển dụng và cung ứng nhân lực đáng tin cậy cho người lao động và doanh nghiệp tại Việt Nam.</p>
+        <div class="mt-7 grid gap-5 sm:grid-cols-3">
+          <div><i data-lucide="eye" class="h-6 w-6 text-orange"></i><h3 class="mt-3 font-bold">Tầm nhìn</h3><p class="mt-1 text-sm text-slate-500">Trở thành cầu nối nhân lực đáng tin cậy.</p></div>
+          <div><i data-lucide="target" class="h-6 w-6 text-orange"></i><h3 class="mt-3 font-bold">Sứ mệnh</h3><p class="mt-1 text-sm text-slate-500">Tạo cơ hội việc làm phù hợp, bền vững.</p></div>
+          <div><i data-lucide="handshake" class="h-6 w-6 text-orange"></i><h3 class="mt-3 font-bold">Giá trị cốt lõi</h3><p class="mt-1 text-sm text-slate-500">Minh bạch, tận tâm, chuyên nghiệp.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper py-12">
+    <div class="container mx-auto grid gap-6 px-5 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
+      <div class="border-l-4 border-orange pl-4"><p id="statCompanies" class="text-3xl font-extrabold text-brand">500+</p><p class="mt-1 text-sm text-slate-600">Doanh nghiệp đối tác</p></div>
+      <div class="border-l-4 border-orange pl-4"><p id="statCandidates" class="text-3xl font-extrabold text-brand">10.000+</p><p class="mt-1 text-sm text-slate-600">Ứng viên</p></div>
+      <div class="border-l-4 border-orange pl-4"><p id="statJobs" class="text-3xl font-extrabold text-brand">Nhiều</p><p class="mt-1 text-sm text-slate-600">Vị trí tuyển dụng</p></div>
+      <div class="border-l-4 border-orange pl-4"><p id="statSatisfaction" class="text-3xl font-extrabold text-brand">98%</p><p class="mt-1 text-sm text-slate-600">Khách hàng hài lòng</p></div>
+    </div>
+  </section>
+
+  <section id="jobs" class="bg-paper py-20 lg:py-24">
+    <div class="container mx-auto px-5 lg:px-8">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <div><p class="text-sm font-bold uppercase tracking-[.2em] text-brand">Cơ hội nghề nghiệp</p><h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Việc làm nổi bật</h2></div>
+        <span id="jobResult" class="text-sm text-slate-500"></span>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-2">
+        <button class="job-filter rounded-full bg-brand px-4 py-2 text-sm font-bold text-white" data-filter="all">Tất cả</button>
+        <button class="job-filter rounded-full border border-slate-300 px-4 py-2 text-sm" data-filter="Sản xuất">Sản xuất</button>
+        <button class="job-filter rounded-full border border-slate-300 px-4 py-2 text-sm" data-filter="Kho vận">Kho vận</button>
+        <button class="job-filter rounded-full border border-slate-300 px-4 py-2 text-sm" data-filter="Văn phòng">Văn phòng</button>
+        <button class="job-filter rounded-full border border-slate-300 px-4 py-2 text-sm" data-filter="Kỹ thuật">Kỹ thuật</button>
+        <button class="job-filter rounded-full border border-slate-300 px-4 py-2 text-sm" data-filter="Thời vụ">Thời vụ</button>
+      </div>
+      <div id="jobGrid" class="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3"></div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="container mx-auto grid gap-5 px-5 md:grid-cols-2 lg:px-8">
+      <div id="candidates" class="rounded-2xl bg-brand p-8 text-white">
+        <i data-lucide="user-round-plus" class="h-8 w-8 text-orange"></i>
+        <h2 class="mt-6 text-2xl font-extrabold">Bạn đang tìm việc?</h2>
+        <p class="mt-3 leading-7 text-blue-100">Đăng ký để nhận thông tin những vị trí phù hợp với kinh nghiệm và mong muốn của bạn.</p>
+        <button class="general-apply mt-7 rounded-lg bg-orange px-5 py-3 font-bold text-ink">Tìm việc ngay</button>
+      </div>
+      <div id="employers" class="rounded-2xl border border-slate-200 p-8">
+        <i data-lucide="building-2" class="h-8 w-8 text-orange"></i>
+        <h2 class="mt-6 text-2xl font-extrabold">Doanh nghiệp cần tuyển người?</h2>
+        <p class="mt-3 leading-7 text-slate-600">Để Tâm Đức đồng hành cùng bạn trong việc xây dựng đội ngũ.</p>
+        <a href="#contact" class="mt-7 inline-flex rounded-lg bg-orange px-5 py-3 font-bold text-ink">Gửi nhu cầu tuyển dụng</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper py-20">
+    <div class="container mx-auto px-5 lg:px-8">
+      <div class="text-center"><p class="text-sm font-bold uppercase tracking-[.2em] text-brand">Đồng hành cùng bạn</p><h2 class="mt-3 text-3xl font-extrabold">Vì sao chọn Tâm Đức?</h2></div>
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-xl bg-white p-6 shadow-sm"><i data-lucide="badge-check" class="h-7 w-7 text-orange"></i><h3 class="mt-5 font-bold">Việc làm rõ ràng</h3><p class="mt-2 text-sm leading-6 text-slate-500">Thông tin tuyển dụng đầy đủ, minh bạch.</p></div>
+        <div class="rounded-xl bg-white p-6 shadow-sm"><i data-lucide="heart-handshake" class="h-7 w-7 text-orange"></i><h3 class="mt-5 font-bold">Hỗ trợ tận tình</h3><p class="mt-2 text-sm leading-6 text-slate-500">Đồng hành cùng ứng viên trong quá trình ứng tuyển.</p></div>
+        <div class="rounded-xl bg-white p-6 shadow-sm"><i data-lucide="briefcase-business" class="h-7 w-7 text-orange"></i><h3 class="mt-5 font-bold">Nhiều cơ hội việc làm</h3><p class="mt-2 text-sm leading-6 text-slate-500">Kết nối nhiều doanh nghiệp và vị trí.</p></div>
+        <div class="rounded-xl bg-white p-6 shadow-sm"><i data-lucide="route" class="h-7 w-7 text-orange"></i><h3 class="mt-5 font-bold">Quy trình chuyên nghiệp</h3><p class="mt-2 text-sm leading-6 text-slate-500">Hỗ trợ từ lúc đăng ký đến khi nhận việc.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="container mx-auto px-5 lg:px-8">
+      <div class="text-center"><p class="text-sm font-bold uppercase tracking-[.2em] text-brand">Quy trình đơn giản</p><h2 class="mt-3 text-3xl font-extrabold">Từ đăng ký đến nhận việc</h2></div>
+      <div class="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-4">
+        <div class="text-center"><span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-brand font-bold text-white">01</span><h3 class="mt-4 font-bold">Đăng ký</h3><p class="mt-2 text-sm text-slate-500">Ứng viên gửi thông tin.</p></div>
+        <div class="text-center"><span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-brand font-bold text-white">02</span><h3 class="mt-4 font-bold">Tư vấn</h3><p class="mt-2 text-sm text-slate-500">Nhân viên Tâm Đức liên hệ.</p></div>
+        <div class="text-center"><span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-brand font-bold text-white">03</span><h3 class="mt-4 font-bold">Phỏng vấn</h3><p class="mt-2 text-sm text-slate-500">Kết nối với doanh nghiệp.</p></div>
+        <div class="text-center"><span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-orange font-bold text-ink">04</span><h3 class="mt-4 font-bold">Nhận việc</h3><p class="mt-2 text-sm text-slate-500">Hoàn tất hồ sơ, bắt đầu công việc.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="news" class="bg-paper py-20">
+    <div class="container mx-auto px-5 lg:px-8">
+      <div class="flex items-end justify-between gap-4"><div><p class="text-sm font-bold uppercase tracking-[.2em] text-brand">Cập nhật mới nhất</p><h2 class="mt-3 text-3xl font-extrabold">Tin tức tuyển dụng</h2></div></div>
+      <div id="newsGrid" class="mt-9 grid gap-5 md:grid-cols-3"></div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact" class="bg-ink text-white">
+  <div class="container mx-auto grid gap-10 px-5 py-14 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
+    <div>
+      <div class="flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-lg bg-orange font-bold text-ink">TĐ</span><span class="font-extrabold text-xl">TÂM ĐỨC</span></div>
+      <p id="footerDescription" class="mt-5 max-w-sm text-sm leading-6 text-slate-300">Công ty CP Cung Ứng Nhân Lực Tâm Đức - cầu nối tin cậy giữa người lao động và doanh nghiệp.</p>
+      <p class="mt-4 whitespace-pre-line text-sm text-slate-400"><span id="footerAddress">Bình Dương, Việt Nam</span><br>Hotline: <span id="footerPhone">0901 234 567</span><br>Email: <span id="footerEmail">nguyentienchuc.08082004@gmail.com</span></p>
+    </div>
+    <div><h3 class="font-bold">Liên kết nhanh</h3><div class="mt-4 grid gap-3 text-sm text-slate-300"><a href="#home">Trang chủ</a><a href="#about">Giới thiệu</a><a href="#jobs">Việc làm</a><a href="#candidates">Ứng viên</a><a href="#employers">Doanh nghiệp</a><a href="#news">Tin tức</a></div></div>
+    <div><h3 class="font-bold">Kết nối với Tâm Đức</h3><p class="mt-4 text-sm leading-6 text-slate-300">Theo dõi thông tin việc làm mới và nhận tư vấn từ đội ngũ của chúng tôi.</p><div class="mt-5 flex gap-3"><a id="facebookLink" href="#" target="_blank" rel="noopener" aria-label="Facebook" class="grid h-9 w-9 place-items-center rounded-full border border-slate-600"><i data-lucide="facebook" class="h-4 w-4"></i></a><a id="zaloLink" href="#" target="_blank" rel="noopener" class="grid h-9 w-9 place-items-center rounded-full border border-slate-600 text-xs font-bold">Zalo</a><a id="tiktokLink" href="#" target="_blank" rel="noopener" class="grid h-9 w-9 place-items-center rounded-full border border-slate-600"><i data-lucide="music-2" class="h-4 w-4"></i></a></div></div>
+  </div>
+  <div class="border-t border-slate-700 py-5 text-center text-xs text-slate-400">© <span id="copyrightYear"></span> CÔNG TY CP CUNG ỨNG NHÂN LỰC TÂM ĐỨC. Tất cả quyền được bảo lưu.</div>
+</footer>
+
+<!-- Job detail modal -->
+<div id="jobModal" class="fixed inset-0 z-[90] hidden items-center justify-center bg-ink/70 p-4 backdrop-blur-sm" role="dialog" aria-modal="true">
+  <div class="relative max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-2xl bg-white shadow-2xl">
+    <button id="closeJobModal" class="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-lg bg-white/90 text-slate-600 shadow hover:bg-slate-100" aria-label="Đóng"><i data-lucide="x"></i></button>
+    <img id="detailImage" src="" alt="" class="h-64 w-full object-cover sm:h-72" />
+    <div class="p-6 sm:p-8">
+      <div class="flex flex-wrap items-start justify-between gap-4">
+        <div><span id="detailBadge" class="rounded-full bg-sky px-3 py-1 text-xs font-bold text-brand"></span><h2 id="detailTitle" class="mt-3 text-2xl font-extrabold sm:text-3xl"></h2><p id="detailCompany" class="mt-2 text-slate-500"></p></div>
+        <button id="detailApply" class="rounded-lg bg-orange px-5 py-3 font-bold text-ink">Ứng tuyển ngay</button>
+      </div>
+      <div id="detailMeta" class="mt-6 grid gap-3 rounded-xl bg-paper p-4 sm:grid-cols-2"></div>
+      <div class="mt-7 grid gap-7 lg:grid-cols-[1fr_260px]">
+        <div class="space-y-6">
+          <section><h3 class="text-lg font-extrabold">Mô tả công việc</h3><div id="detailDescription" class="mt-3 whitespace-pre-line leading-7 text-slate-600"></div></section>
+          <section><h3 class="text-lg font-extrabold">Yêu cầu</h3><div id="detailRequirements" class="mt-3 whitespace-pre-line leading-7 text-slate-600"></div></section>
+          <section><h3 class="text-lg font-extrabold">Quyền lợi</h3><div id="detailBenefits" class="mt-3 whitespace-pre-line leading-7 text-slate-600"></div></section>
+          <section><h3 class="text-lg font-extrabold">Hồ sơ cần chuẩn bị</h3><div id="detailDocuments" class="mt-3 whitespace-pre-line leading-7 text-slate-600"></div></section>
+        </div>
+        <aside class="h-fit rounded-xl border border-slate-200 p-5"><h3 class="font-extrabold">Thông tin liên hệ</h3><p class="mt-3 text-sm leading-6 text-slate-600">Hotline: <span id="detailPhone"></span><br>Email: <span id="detailEmail"></span></p><button id="detailApply2" class="mt-5 w-full rounded-lg bg-brand px-4 py-3 font-bold text-white">Gửi hồ sơ</button></aside>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Application modal -->
+<div id="applicationModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-ink/70 p-4 backdrop-blur-sm" role="dialog" aria-modal="true">
+  <div class="relative max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-8">
+    <button id="closeApplication" class="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-lg text-slate-500 hover:bg-slate-100" aria-label="Đóng"><i data-lucide="x"></i></button>
+    <p class="text-xs font-bold uppercase tracking-[.2em] text-brand">Bắt đầu hành trình mới</p>
+    <h2 class="mt-3 pr-8 text-2xl font-extrabold">Đăng ký ứng tuyển</h2>
+    <p id="applicationPosition" class="mt-2 text-sm font-medium text-slate-500"></p>
+    <form id="applicationForm" class="mt-6 grid gap-4">
+      <input id="applicationJob" type="hidden" name="position">
+      <label class="text-sm font-bold">Họ và tên<input required name="name" type="text" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-brand" placeholder="Nguyễn Văn A"></label>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <label class="text-sm font-bold">Số điện thoại<input required name="phone" type="tel" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-brand" placeholder="0901 234 567"></label>
+        <label class="text-sm font-bold">Email<input name="email" type="email" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-brand" placeholder="ban@email.com"></label>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <label class="text-sm font-bold">CCCD<input name="citizenId" type="text" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-brand" placeholder="Không bắt buộc"></label>
+        <label class="text-sm font-bold">Năm sinh<input name="birthYear" type="number" min="1940" max="2020" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-brand" placeholder="1995"></label>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <label class="text-sm font-bold">Giới tính<select name="gender" class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-4 py-3 font-normal outline-none focus:border-brand"><option value="">Chọn giới tính</option><option>Nam</option><option>Nữ</option><option>Khác</option></select></label>
+        <label class="text-sm font-bold">Khu vực mong muốn<input name="preferredArea" type="text" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-brand" placeholder="Bình Dương, TP.HCM..."></label>
+      </div>
+      <label class="text-sm font-bold">Địa chỉ<input name="address" type="text" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-brand" placeholder="Tỉnh/thành phố bạn đang sinh sống"></label>
+      <label class="text-sm font-bold">Kinh nghiệm<textarea name="experience" rows="3" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-brand" placeholder="Kinh nghiệm làm việc của bạn..."></textarea></label>
+      <label class="text-sm font-bold">Link CV (nếu có)<input name="cvUrl" type="url" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-brand" placeholder="https://drive.google.com/..."></label>
+      <label class="text-sm font-bold">Ghi chú<textarea name="note" rows="2" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-brand" placeholder="Thông tin thêm"></textarea></label>
+      <button type="submit" class="rounded-lg bg-brand px-5 py-3 font-bold text-white hover:bg-blue-800">Gửi hồ sơ ứng tuyển</button>
+      <p id="applicationMessage" class="hidden text-center text-sm font-bold"></p>
+    </form>
+  </div>
+</div>
+
+<div id="toast" class="fixed bottom-5 right-5 z-[120] hidden rounded-xl bg-ink px-5 py-3 text-sm font-bold text-white shadow-xl"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getDatabase, onValue, push, ref } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAcGa-GuvLu-sVkdy-WSv98vBsN4jGO-J0",
+  authDomain: "cungungnhanluctamduc-46aa8.firebaseapp.com",
+  projectId: "cungungnhanluctamduc-46aa8",
+  databaseURL: "https://cungungnhanluctamduc-46aa8-default-rtdb.firebaseio.com",
+  storageBucket: "cungungnhanluctamduc-46aa8.firebasestorage.app",
+  messagingSenderId: "788092165512",
+  appId: "1:788092165512:web:b80f92816505e269062e3d"
+};
+const db = getDatabase(initializeApp(firebaseConfig));
+const $ = id => document.getElementById(id);
+const typeLabels = { "full-time":"Toàn thời gian", "part-time":"Bán thời gian", "remote":"Từ xa", "temporary":"Thời vụ" };
+const fallbackImage = "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=80";
+let allJobs = [];
+let currentJobs = [];
+let selectedJob = null;
+
+const defaultContent = {
+  name:"TÂM ĐỨC", email:"nguyentienchuc.08082004@gmail.com",
+  phone:"0901 234 567", address:"Bình Dương, Việt Nam",
+  hero:"KẾT NỐI NHÂN TÀI|THÚC ĐẨY DOANH NGHIỆP",
+  description:"Tâm Đức đồng hành cùng ứng viên và doanh nghiệp trên hành trình phát triển, từ tìm việc phù hợp đến xây dựng đội ngũ vững mạnh.",
+  aboutTitle:"Đúng người, đúng việc, đúng thời điểm.",
+  aboutText:"Công ty CP Cung Ứng Nhân Lực Tâm Đức cung cấp giải pháp tuyển dụng và cung ứng nhân lực đáng tin cậy cho người lao động và doanh nghiệp tại Việt Nam.",
+  companies:"500+", candidates:"10.000+", jobsStat:"Nhiều", satisfaction:"98%",
+  heroImage:"", aboutImage:"", facebook:"#", zalo:"#", tiktok:"#"
+};
+const defaultNews = [
+  {id:"news-1",title:"Cơ hội việc làm mới trong tháng",category:"THÔNG TIN TUYỂN DỤNG",date:"20/09/2026",image:"https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=700&q=80",summary:"Cập nhật những vị trí đang tuyển và cơ hội dành cho người lao động."},
+  {id:"news-2",title:"5 điều cần chuẩn bị trước phỏng vấn",category:"KINH NGHIỆM",date:"18/09/2026",image:"https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=700&q=80",summary:"Mẹo nhỏ giúp bạn tự tin hơn và tạo ấn tượng tốt."},
+  {id:"news-3",title:"Hướng dẫn người lao động mới",category:"HƯỚNG DẪN",date:"15/09/2026",image:"https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=700&q=80",summary:"Những điều cần biết trước ngày đầu nhận việc."}
+];
+
+function normalizeList(data){
+  if(!data) return [];
+  if(Array.isArray(data)) return data;
+  return Object.entries(data).map(([id,value]) => ({id,...value}));
+}
+function esc(value=""){
+  return String(value).replace(/[&<>"']/g, ch => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[ch]));
+}
+function notify(message){
+  const el=$("toast"); el.textContent=message; el.classList.remove("hidden");
+  clearTimeout(notify.timer); notify.timer=setTimeout(()=>el.classList.add("hidden"),2500);
+}
+function setHeroText(value){
+  const parts=String(value||"").split("|");
+  $("heroTitle").innerHTML=`${esc(parts[0]||"KẾT NỐI NHÂN TÀI")}<br><span class="text-orange">${esc(parts[1]||"THÚC ĐẨY DOANH NGHIỆP")}</span>`;
+}
+function applyContent(content){
+  const c={...defaultContent,...(content||{})};
+  setHeroText(c.hero); $("heroDescription").textContent=c.description;
+  $("heroCandidates").textContent=c.candidates; $("aboutTitle").textContent=c.aboutTitle; $("aboutText").textContent=c.aboutText;
+  $("statCompanies").textContent=c.companies; $("statCandidates").textContent=c.candidates; $("statJobs").textContent=c.jobsStat; $("statSatisfaction").textContent=c.satisfaction;
+  $("footerAddress").textContent=c.address; $("footerPhone").textContent=c.phone; $("footerEmail").textContent=c.email;
+  $("footerDescription").textContent=`Công ty CP Cung Ứng Nhân Lực ${c.name || "Tâm Đức"} - cầu nối tin cậy giữa người lao động và doanh nghiệp.`;
+  if(c.heroImage) $("heroImage").src=c.heroImage;
+  if(c.aboutImage) $("aboutImage").src=c.aboutImage;
+  $("facebookLink").href=c.facebook||"#"; $("zaloLink").href=c.zalo||"#"; $("tiktokLink").href=c.tiktok||"#";
+  document.title=`${c.name||"TÂM ĐỨC"} | Kết nối nhân tài, thúc đẩy doanh nghiệp`;
+}
+function jobMatches(job, filters={}){
+  const q=(filters.keyword||"").toLowerCase().trim(), loc=(filters.location||"").toLowerCase().trim();
+  return (job.active!==false) &&
+    (!q || [job.title,job.company,job.category,job.location,job.salary].join(" ").toLowerCase().includes(q)) &&
+    (!loc || String(job.location||"").toLowerCase().includes(loc)) &&
+    (!filters.category || job.category===filters.category) &&
+    (!filters.type || job.type===filters.type);
+}
+function renderJobs(jobs){
+  currentJobs=jobs;
+  $("jobResult").textContent=`${jobs.length} cơ hội đang hiển thị`;
+  $("jobGrid").innerHTML=jobs.length ? jobs.map(job=>{
+    const image=job.image||fallbackImage;
+    return `<article class="job-card overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
+      <img src="${esc(image)}" alt="${esc(job.title||"Việc làm")}" class="h-44 w-full object-cover">
+      <div class="p-5">
+        <div class="flex items-start justify-between gap-3"><span class="rounded-full bg-sky px-3 py-1 text-xs font-bold text-brand">${esc(job.badge||"ĐANG TUYỂN")}</span><span class="text-xs text-slate-400">${esc(job.deadline||"")}</span></div>
+        <h3 class="mt-4 text-xl font-bold line-clamp-2">${esc(job.title||"Vị trí tuyển dụng")}</h3>
+        <p class="mt-2 text-sm text-slate-500">${esc(job.company||"Tâm Đức")} · ${esc(job.location||"Việt Nam")}</p>
+        <div class="mt-4 grid gap-2 text-xs text-slate-600">
+          <span><i data-lucide="wallet" class="mr-1 inline h-4 w-4 text-brand"></i>${esc(job.salary||"Liên hệ để biết lương")}</span>
+          <span><i data-lucide="users" class="mr-1 inline h-4 w-4 text-brand"></i>${esc(job.quantity||"Liên hệ")} người · ${esc(job.shift||"Ca làm việc linh hoạt")}</span>
+          <span><i data-lucide="briefcase" class="mr-1 inline h-4 w-4 text-brand"></i>${esc(typeLabels[job.type]||job.type||"Toàn thời gian")} · ${esc(job.category||"Nhân sự")}</span>
+        </div>
+        <div class="mt-5 flex gap-2">
+          <button class="detail-job flex-1 rounded-lg border border-slate-200 px-3 py-2.5 text-sm font-bold text-brand" data-id="${esc(job.id)}">Chi tiết</button>
+          <button class="apply-job flex-1 rounded-lg bg-orange px-3 py-2.5 text-sm font-bold text-ink" data-id="${esc(job.id)}">Ứng tuyển</button>
+        </div>
+      </div>
+    </article>`;
+  }).join("") : `<div class="col-span-full rounded-2xl bg-white p-12 text-center"><p class="text-lg font-bold">Chưa có việc làm phù hợp.</p><p class="mt-2 text-sm text-slate-500">Bạn thử đổi từ khóa hoặc bộ lọc nhé.</p></div>`;
+  lucide.createIcons();
+}
+function openJob(job){
+  selectedJob=job;
+  $("detailImage").src=job.image||fallbackImage; $("detailImage").alt=job.title||"Việc làm";
+  $("detailBadge").textContent=job.badge||"ĐANG TUYỂN"; $("detailTitle").textContent=job.title||"Vị trí tuyển dụng";
+  $("detailCompany").textContent=`${job.company||"Tâm Đức"} · ${job.location||"Việt Nam"}`;
+  $("detailMeta").innerHTML=[
+    ["wallet","Mức lương",job.salary||"Liên hệ"],
+    ["users","Số lượng",job.quantity||"Liên hệ"],
+    ["clock-3","Ca làm",job.shift||"Trao đổi khi phỏng vấn"],
+    ["briefcase","Loại việc",typeLabels[job.type]||job.type||"Toàn thời gian"],
+    ["tag","Ngành nghề",job.category||"Khác"],
+    ["calendar-days","Hạn tuyển",job.deadline||"Đến khi đủ số lượng"]
+  ].map(([icon,label,value])=>`<div class="rounded-lg bg-white p-3"><p class="text-xs text-slate-500"><i data-lucide="${icon}" class="mr-1 inline h-4 w-4 text-brand"></i>${label}</p><p class="mt-1 font-bold">${esc(value)}</p></div>`).join("");
+  $("detailDescription").textContent=job.description||"Thông tin công việc sẽ được tư vấn chi tiết khi ứng viên liên hệ.";
+  $("detailRequirements").textContent=job.requirements||"Trao đổi khi phỏng vấn.";
+  $("detailBenefits").textContent=job.benefits||"Trao đổi theo chính sách của doanh nghiệp tuyển dụng.";
+  $("detailDocuments").textContent=job.documents||"CCCD và hồ sơ theo yêu cầu của vị trí.";
+  $("detailPhone").textContent=(window.siteContent||defaultContent).phone||defaultContent.phone;
+  $("detailEmail").textContent=(window.siteContent||defaultContent).email||defaultContent.email;
+  $("jobModal").classList.remove("hidden"); $("jobModal").classList.add("flex"); document.body.classList.add("modal-open"); lucide.createIcons();
+}
+function openApplication(jobTitle="Đăng ký ứng tuyển chung"){
+  $("applicationPosition").textContent=jobTitle; $("applicationJob").value=jobTitle;
+  $("applicationModal").classList.remove("hidden"); $("applicationModal").classList.add("flex"); document.body.classList.add("modal-open");
+  setTimeout(()=>document.querySelector('[name="name"]').focus(),50);
+}
+function closeModal(id){$(id).classList.add("hidden");$(id).classList.remove("flex");document.body.classList.remove("modal-open");}
+function runFilters(){
+  const filters={keyword:$("searchKeyword").value,location:$("searchLocation").value,category:$("searchCategory").value,type:$("searchType").value};
+  renderJobs(allJobs.filter(j=>jobMatches(j,filters)));
+}
+function setCategory(category){
+  document.querySelectorAll(".job-filter").forEach(b=>{b.className="job-filter rounded-full border border-slate-300 px-4 py-2 text-sm";});
+  const active=[...document.querySelectorAll(".job-filter")].find(b=>b.dataset.filter===category); if(active) active.className="job-filter rounded-full bg-brand px-4 py-2 text-sm font-bold text-white";
+  renderJobs(category==="all"?allJobs:allJobs.filter(j=>j.active!==false && j.category===category));
+}
+
+$("searchForm").addEventListener("submit",e=>{e.preventDefault();runFilters();$("jobs").scrollIntoView({behavior:"smooth"});});
+document.querySelectorAll(".job-filter").forEach(b=>b.addEventListener("click",()=>setCategory(b.dataset.filter)));
+$("jobGrid").addEventListener("click",e=>{
+  const detail=e.target.closest(".detail-job"), apply=e.target.closest(".apply-job");
+  if(detail){const job=allJobs.find(j=>j.id===detail.dataset.id);if(job)openJob(job);}
+  if(apply){const job=allJobs.find(j=>j.id===apply.dataset.id);if(job)openApplication(job.title);}
+});
+$("detailApply").onclick=$("detailApply2").onclick=()=>{closeModal("jobModal");openApplication(selectedJob?.title||"Đăng ký ứng tuyển");};
+$("closeJobModal").onclick=()=>closeModal("jobModal");
+$("closeApplication").onclick=()=>closeModal("applicationModal");
+$("jobModal").addEventListener("click",e=>{if(e.target.id==="jobModal")closeModal("jobModal")});
+$("applicationModal").addEventListener("click",e=>{if(e.target.id==="applicationModal")closeModal("applicationModal")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeModal("jobModal");closeModal("applicationModal");}});
+$("generalApply").onclick=$("heroApply").onclick=()=>openApplication();
+document.querySelectorAll(".general-apply").forEach(b=>b.onclick=()=>openApplication());
+$("menuBtn").onclick=()=>$("mobileMenu").classList.toggle("hidden");
+document.querySelectorAll("#mobileMenu a").forEach(a=>a.addEventListener("click",()=>$("mobileMenu").classList.add("hidden")));
+
+$("applicationForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const button=e.target.querySelector('button[type="submit"]'), message=$("applicationMessage");
+  button.disabled=true; button.textContent="Đang gửi...";
+  const data={...Object.fromEntries(new FormData(e.target)),createdAt:new Date().toISOString(),status:"new"};
+  try{
+    await push(ref(db,"applications"),data);
+    message.textContent="Đã gửi hồ sơ. Tâm Đức sẽ liên hệ với bạn sớm.";
+    message.className="text-center text-sm font-bold text-emerald-700";
+    button.textContent="Đã gửi hồ sơ"; e.target.reset();
+    notify("Gửi hồ sơ thành công");
+  }catch(err){
+    console.error(err); message.textContent="Không thể gửi hồ sơ. Vui lòng thử lại.";
+    message.className="text-center text-sm font-bold text-red-600"; button.disabled=false; button.textContent="Gửi hồ sơ ứng tuyển";
+  }
+});
+
+onValue(ref(db,"site/content"),snap=>{
+  window.siteContent={...defaultContent,...(snap.val()||{})}; applyContent(window.siteContent);
+});
+onValue(ref(db,"site/jobs"),snap=>{
+  allJobs=normalizeList(snap.val()).filter(j=>j.active!==false);
+  renderJobs(allJobs);
+  $("statJobs").textContent=allJobs.length?`${allJobs.length}+`:"0";
+});
+onValue(ref(db,"site/news"),snap=>{
+  const news=normalizeList(snap.val()).filter(n=>n.active!==false);
+  const items=news.length?news:defaultNews;
+  $("newsGrid").innerHTML=items.slice(0,6).map(n=>`<article class="overflow-hidden rounded-2xl border border-slate-200 bg-white"><img src="${esc(n.image||fallbackImage)}" alt="${esc(n.title)}" class="h-44 w-full object-cover"><div class="p-5"><p class="text-xs font-bold text-orange">${esc(n.category||"TIN TỨC")} · ${esc(n.date||"")}</p><h3 class="mt-3 text-lg font-bold line-clamp-2">${esc(n.title)}</h3><p class="mt-2 text-sm leading-6 text-slate-500 line-clamp-3">${esc(n.summary||"")}</p></div></article>`).join("");
+  lucide.createIcons();
+});
+$("copyrightYear").textContent=new Date().getFullYear();
+lucide.createIcons();
+</script>
+</body>
+</html>

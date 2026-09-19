@@ -1,46 +1,268 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quản trị NEXA Human Capital</title>
+  <title>TÂM ĐỨC | Quản trị website</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{ink:'#14233C',navy:'#1E3A8A',amber:'#F59E0B',paper:'#F5F7FB'}}}}</script>
+  <script>
+    tailwind.config={theme:{extend:{colors:{ink:"#102A43",brand:"#174A96",sky:"#EAF3FF",orange:"#F59E0B",paper:"#F6F8FB"}}}};
+  </script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <style>body{font-family:'Times New Roman',Times,serif}h1,h2,h3{font-family:'Times New Roman',Times,serif}.panel{box-shadow:0 12px 35px rgba(20,35,60,.07)}.tab.active{background:#1E3A8A;color:#fff}</style>
+  <style>
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .panel{box-shadow:0 12px 35px rgba(20,35,60,.07)}
+    .tab.active{background:#174A96;color:#fff}
+  </style>
 </head>
 <body class="min-h-screen bg-paper text-ink">
-  <header class="bg-navy text-white"><div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 lg:px-8"><a href="index.html" class="flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-xl bg-amber text-lg font-extrabold text-ink">N</span><span class="font-bold tracking-tight">NEXA <span class="font-normal text-blue-200">/ QUẢN TRỊ</span></span></a><a href="index.html" class="inline-flex items-center gap-2 text-sm text-blue-100 hover:text-white"><i data-lucide="external-link" class="h-4 w-4"></i>Xem website</a></div></header>
-  <main class="mx-auto max-w-7xl px-5 py-10 lg:px-8"><div class="mb-9 flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p class="text-xs font-bold uppercase tracking-[.2em] text-amber-600">Bảng điều khiển</p><h1 class="mt-2 text-3xl font-extrabold">Quản lý nội dung website</h1><p class="mt-2 text-sm text-slate-500">Cập nhật thông tin và việc làm. Thay đổi được lưu ngay trên trình duyệt này.</p></div><div class="flex gap-2"><button id="exportBtn" class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-bold hover:border-navy"><i data-lucide="download" class="h-4 w-4"></i>Xuất dữ liệu</button><label class="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-navy px-4 py-2 text-sm font-bold text-white hover:bg-blue-900"><i data-lucide="upload" class="h-4 w-4"></i>Nhập dữ liệu<input id="importInput" type="file" accept="application/json" class="hidden" /></label></div></div>
-    <div class="mb-6 flex flex-wrap gap-2"><button class="tab active rounded-lg px-4 py-2 text-sm font-bold" data-tab="overview">Tổng quan</button><button class="tab rounded-lg px-4 py-2 text-sm font-bold text-slate-600 hover:bg-white" data-tab="jobs">Cơ hội việc làm</button><button class="tab rounded-lg px-4 py-2 text-sm font-bold text-slate-600 hover:bg-white" data-tab="content">Nội dung website</button></div>
-    <section id="overview" class="tab-panel"><div class="grid gap-5 sm:grid-cols-3"><div class="panel rounded-2xl bg-white p-6"><p class="text-sm text-slate-500">Tổng việc làm</p><p id="jobCount" class="mt-3 text-4xl font-extrabold text-navy">0</p></div><div class="panel rounded-2xl bg-white p-6"><p class="text-sm text-slate-500">Nhà tuyển dụng</p><p id="companyCount" class="mt-3 text-4xl font-extrabold text-navy">500+</p></div><div class="panel rounded-2xl bg-white p-6"><p class="text-sm text-slate-500">Trạng thái lưu trữ</p><p class="mt-3 flex items-center gap-2 text-lg font-bold text-emerald-700"><span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>Đang hoạt động</p></div></div><div class="panel mt-5 rounded-2xl bg-white p-6"><h2 class="text-lg font-extrabold">Bắt đầu nhanh</h2><div class="mt-5 grid gap-3 sm:grid-cols-2"><button data-go="jobs" class="go-button flex items-center gap-3 rounded-xl border border-slate-200 p-4 text-left hover:border-navy"><span class="grid h-10 w-10 place-items-center rounded-lg bg-blue-50 text-navy"><i data-lucide="briefcase-business" class="h-5 w-5"></i></span><span><b class="block">Thêm cơ hội việc làm</b><small class="text-slate-500">Đăng vị trí mới lên website</small></span></button><button data-go="content" class="go-button flex items-center gap-3 rounded-xl border border-slate-200 p-4 text-left hover:border-navy"><span class="grid h-10 w-10 place-items-center rounded-lg bg-amber-50 text-amber-700"><i data-lucide="pencil" class="h-5 w-5"></i></span><span><b class="block">Sửa thông tin website</b><small class="text-slate-500">Hero, liên hệ và chỉ số</small></span></button></div></div></section>
-    <section id="jobs" class="tab-panel hidden"><div class="grid gap-6 lg:grid-cols-[360px_1fr]"><form id="jobForm" class="panel h-fit rounded-2xl bg-white p-6"><div class="flex items-center justify-between"><h2 id="jobFormTitle" class="text-lg font-extrabold">Thêm việc làm</h2><button id="cancelEdit" type="button" class="hidden text-sm font-bold text-slate-500">Hủy sửa</button></div><input id="jobId" type="hidden" /><div class="mt-5 grid gap-4"><label class="text-sm font-bold">Tên vị trí<input id="jobTitle" required class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal outline-none focus:border-navy" placeholder="Ví dụ: Trưởng phòng kinh doanh" /></label><label class="text-sm font-bold">Công ty & địa điểm<input id="jobCompany" required class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal outline-none focus:border-navy" placeholder="Tên công ty · Hà Nội" /></label><div class="grid grid-cols-2 gap-3"><label class="text-sm font-bold">Loại việc<select id="jobType" class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 font-normal outline-none"><option value="full-time">Toàn thời gian</option><option value="part-time">Bán thời gian</option><option value="remote">Từ xa</option></select></label><label class="text-sm font-bold">Ngành nghề<input id="jobCategory" required class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal outline-none" placeholder="Công nghệ" /></label></div><label class="text-sm font-bold">Nhãn hiển thị<input id="jobBadge" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal outline-none" placeholder="Đang tuyển gấp" /></label></div><button class="mt-5 flex w-full items-center justify-center gap-2 rounded-lg bg-amber px-4 py-3 font-bold text-ink hover:bg-amber-400"><i data-lucide="save" class="h-4 w-4"></i>Lưu việc làm</button></form><div class="panel rounded-2xl bg-white p-6"><div class="flex items-center justify-between"><div><h2 class="text-lg font-extrabold">Danh sách việc làm</h2><p class="mt-1 text-sm text-slate-500">Các vị trí đang hiển thị trên trang chủ.</p></div><span id="jobListCount" class="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-navy"></span></div><div id="jobList" class="mt-5 divide-y divide-slate-100"></div></div></div></section>
-    <section id="content" class="tab-panel hidden"><form id="contentForm" class="panel rounded-2xl bg-white p-6 sm:p-8"><div class="grid gap-6 lg:grid-cols-2"><div class="lg:col-span-2"><h2 class="text-lg font-extrabold">Thông tin thương hiệu</h2><p class="mt-1 text-sm text-slate-500">Các trường này được lưu để sử dụng cho những phần nội dung động.</p></div><label class="text-sm font-bold">Tên công ty<input id="siteName" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal outline-none focus:border-navy" /></label><label class="text-sm font-bold">Email nhận đăng ký<input id="siteEmail" type="email" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal outline-none focus:border-navy" /></label><label class="text-sm font-bold lg:col-span-2">Tiêu đề chính<textarea id="siteHero" rows="2" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal outline-none focus:border-navy"></textarea></label><label class="text-sm font-bold lg:col-span-2">Mô tả ngắn<textarea id="siteDescription" rows="3" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal outline-none focus:border-navy"></textarea></label><div class="lg:col-span-2"><h2 class="text-lg font-extrabold">Chỉ số nổi bật</h2></div><label class="text-sm font-bold">Đối tác<input id="statCompanies" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal outline-none" /></label><label class="text-sm font-bold">Ứng viên đã được tuyển<input id="statCandidates" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal outline-none" /></label><label class="text-sm font-bold">Mức độ hài lòng<input id="statSatisfaction" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal outline-none" /></label></div><div class="mt-7 flex items-center gap-4"><button class="rounded-lg bg-navy px-5 py-3 font-bold text-white hover:bg-blue-900">Lưu nội dung</button><span id="contentMessage" class="hidden text-sm font-bold text-emerald-700">Đã lưu thay đổi.</span></div></form></section>
-  </main>
-  <div id="toast" class="fixed bottom-5 right-5 hidden rounded-xl bg-ink px-5 py-3 text-sm font-bold text-white shadow-xl"></div>
-  <script type="module">
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
-    import { getDatabase, onValue, ref, set } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js';
-    const firebaseConfig={apiKey:'AIzaSyAcGa-GuvLu-sVkdy-WSv98vBsN4jGO-J0',authDomain:'cungungnhanluctamduc-46aa8.firebaseapp.com',projectId:'cungungnhanluctamduc-46aa8',databaseURL:'https://cungungnhanluctamduc-46aa8-default-rtdb.firebaseio.com',storageBucket:'cungungnhanluctamduc-46aa8.firebasestorage.app',messagingSenderId:'788092165512',appId:'1:788092165512:web:b80f92816505e269062e3d',measurementId:'G-2F2E9W7EZP'};
-    const firebaseApp=initializeApp(firebaseConfig); const database=getDatabase(firebaseApp); const databaseUrl=firebaseConfig.databaseURL; const jobsRef=ref(database,'site/jobs'); const contentRef=ref(database,'site/content');
-    lucide.createIcons();
-    const defaultJobs=[{id:'job-1',title:'Quản lý sản phẩm cấp cao',company:'Venture Labs · Thành phố Hồ Chí Minh',type:'full-time',category:'Công nghệ',badge:'Đang tuyển gấp'},{id:'job-2',title:'Trưởng phòng vận hành',company:'Lumen Group · Từ xa / Hà Nội',type:'remote',category:'Vận hành',badge:'Mới đăng hôm nay'},{id:'job-3',title:'Kiểm soát tài chính',company:'Satori Foods · Đà Nẵng',type:'part-time',category:'Tài chính',badge:'Đội ngũ đang phát triển'}];
-    const defaultContent={name:'NEXA Human Capital',email:'nguyentienchuc.08082004@gmail.com',hero:'Những con người đưa doanh nghiệp tiến về phía trước.',description:'Kết nối các doanh nghiệp đầy khát vọng với những nhân sự xuất sắc.',companies:'500+',candidates:'10k+',satisfaction:'98%'};
-    let jobs=JSON.parse(localStorage.getItem('nexaJobs')||'null')||defaultJobs; let content={...defaultContent,...JSON.parse(localStorage.getItem('nexaSiteContent')||'{}')};
-    const $=id=>document.getElementById(id); const saveJobs=()=>{localStorage.setItem('nexaJobs',JSON.stringify(jobs));renderJobs();updateStats();return fetch(`${databaseUrl}/site/jobs.json`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(jobs)}).then(response=>{if(!response.ok)throw new Error('Firebase write failed')})}; const notify=message=>{const toast=$('toast');toast.textContent=message;toast.classList.remove('hidden');setTimeout(()=>toast.classList.add('hidden'),2200)};
-    function renderJobs(){ $('jobList').innerHTML=jobs.length?jobs.map(job=>`<div class="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between"><div><div class="flex flex-wrap items-center gap-2"><b>${job.title}</b><span class="rounded-full bg-blue-50 px-2 py-1 text-xs font-bold text-navy">${job.badge||'Đang tuyển'}</span></div><p class="mt-1 text-sm text-slate-500">${job.company} · ${job.category} · ${job.type==='remote'?'Từ xa':job.type==='part-time'?'Bán thời gian':'Toàn thời gian'}</p></div><div class="flex gap-2"><button data-edit="${job.id}" class="rounded-lg border border-slate-200 px-3 py-2 text-sm font-bold hover:border-navy">Sửa</button><button data-delete="${job.id}" class="rounded-lg border border-red-100 px-3 py-2 text-sm font-bold text-red-600 hover:bg-red-50">Xóa</button></div></div>`).join(''):'<p class="py-8 text-center text-sm text-slate-500">Chưa có việc làm nào.</p>'; $('jobListCount').textContent=`${jobs.length} vị trí`; $('jobList').querySelectorAll('[data-edit]').forEach(button=>button.onclick=()=>editJob(button.dataset.edit)); $('jobList').querySelectorAll('[data-delete]').forEach(button=>button.onclick=()=>{if(confirm('Xóa vị trí này?')){jobs=jobs.filter(job=>job.id!==button.dataset.delete);saveJobs().then(()=>notify('Đã xóa việc làm')).catch(()=>notify('Không thể lưu Firebase. Kiểm tra Realtime Database Rules.'))}}); }
-    function updateStats(){$('jobCount').textContent=jobs.length;$('companyCount').textContent=content.companies||'0'}
-    function editJob(id){const job=jobs.find(item=>item.id===id);$('jobId').value=job.id;$('jobTitle').value=job.title;$('jobCompany').value=job.company;$('jobType').value=job.type;$('jobCategory').value=job.category;$('jobBadge').value=job.badge||'';$('jobFormTitle').textContent='Sửa việc làm';$('cancelEdit').classList.remove('hidden');document.querySelector('[data-tab="jobs"]').click();window.scrollTo({top:0,behavior:'smooth'})}
-    $('jobForm').onsubmit=event=>{event.preventDefault();const id=$('jobId').value||`job-${Date.now()}`;const value={id,title:$('jobTitle').value.trim(),company:$('jobCompany').value.trim(),type:$('jobType').value,category:$('jobCategory').value.trim(),badge:$('jobBadge').value.trim()};const existing=jobs.findIndex(job=>job.id===id);if(existing>-1)jobs[existing]=value;else jobs.push(value);saveJobs().then(()=>notify(existing>-1?'Đã cập nhật việc làm':'Đã thêm việc làm')).catch(()=>notify('Không thể lưu Firebase. Kiểm tra Realtime Database Rules.'));event.target.reset();$('jobId').value='';$('jobFormTitle').textContent='Thêm việc làm';$('cancelEdit').classList.add('hidden')};
-    $('cancelEdit').onclick=()=>{$('jobForm').reset();$('jobId').value='';$('jobFormTitle').textContent='Thêm việc làm';$('cancelEdit').classList.add('hidden')};
-    function loadContent(){Object.entries({siteName:'name',siteEmail:'email',siteHero:'hero',siteDescription:'description',statCompanies:'companies',statCandidates:'candidates',statSatisfaction:'satisfaction'}).forEach(([field,key])=>$(field).value=content[key]||'')}; $('contentForm').onsubmit=event=>{event.preventDefault();content={name:$('siteName').value,email:$('siteEmail').value,hero:$('siteHero').value,description:$('siteDescription').value,companies:$('statCompanies').value,candidates:$('statCandidates').value,satisfaction:$('statSatisfaction').value};localStorage.setItem('nexaSiteContent',JSON.stringify(content));const contentMessage=$('contentMessage');contentMessage.classList.add('hidden');fetch(`${databaseUrl}/site/content.json`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(content)}).then(response=>{if(!response.ok)throw new Error('Firebase write failed');contentMessage.textContent='Đã lưu trên Firebase.';contentMessage.classList.remove('hidden');notify('Đã lưu nội dung website trên Firebase')}).catch(()=>{contentMessage.textContent='Không thể lưu Firebase. Kiểm tra Realtime Database Rules.';contentMessage.className='mt-3 text-sm font-bold text-red-600';contentMessage.classList.remove('hidden');notify('Không thể lưu Firebase. Kiểm tra Realtime Database Rules.')});updateStats()};
-    document.querySelectorAll('.tab,.go-button').forEach(button=>button.onclick=()=>{const tab=button.dataset.tab||button.dataset.go;document.querySelectorAll('.tab').forEach(item=>item.classList.toggle('active',item.dataset.tab===tab));document.querySelectorAll('.tab-panel').forEach(panel=>panel.classList.toggle('hidden',panel.id!==tab))});
-    $('exportBtn').onclick=()=>{const data=JSON.stringify({jobs,content},null,2);const link=document.createElement('a');link.href=URL.createObjectURL(new Blob([data],{type:'application/json'}));link.download='nexa-backup.json';link.click();URL.revokeObjectURL(link.href)}; $('importInput').onchange=event=>{const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(reader.result);if(data.jobs)jobs=data.jobs;if(data.content)content={...content,...data.content};localStorage.setItem('nexaJobs',JSON.stringify(jobs));localStorage.setItem('nexaSiteContent',JSON.stringify(content));loadContent();saveJobs();set(contentRef,content);notify('Đã nhập dữ liệu thành công')}catch(error){notify('Tệp dữ liệu không hợp lệ')}};reader.readAsText(file)};
-    onValue(jobsRef,snapshot=>{const remoteJobs=snapshot.val();if(remoteJobs){jobs=Array.isArray(remoteJobs)?remoteJobs:Object.values(remoteJobs);localStorage.setItem('nexaJobs',JSON.stringify(jobs));renderJobs();updateStats()}});
-    onValue(contentRef,snapshot=>{const remoteContent=snapshot.val();if(remoteContent){content={...content,...remoteContent};localStorage.setItem('nexaSiteContent',JSON.stringify(content));loadContent();updateStats()}});
-    fetch(`${databaseUrl}/site/jobs.json`).then(response=>response.json()).then(remoteJobs=>{if(remoteJobs){jobs=Array.isArray(remoteJobs)?remoteJobs:Object.values(remoteJobs);localStorage.setItem('nexaJobs',JSON.stringify(jobs));renderJobs();updateStats()}}).catch(()=>{});
-    fetch(`${databaseUrl}/site/content.json`).then(response=>response.json()).then(remoteContent=>{if(remoteContent){content={...content,...remoteContent};localStorage.setItem('nexaSiteContent',JSON.stringify(content));loadContent();updateStats()}}).catch(()=>{});
-    loadContent();renderJobs();updateStats();
-  </script>
+<header class="bg-brand text-white">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+    <a href="index.html" class="flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-lg bg-orange font-extrabold text-ink">TĐ</span><span class="font-extrabold">TÂM ĐỨC <span class="font-normal text-blue-200">/ QUẢN TRỊ</span></span></a>
+    <a href="index.html" target="_blank" class="inline-flex items-center gap-2 text-sm text-blue-100 hover:text-white"><i data-lucide="external-link" class="h-4 w-4"></i>Xem website</a>
+  </div>
+</header>
+
+<main class="mx-auto max-w-7xl px-5 py-8 lg:px-8">
+  <div class="mb-7 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+    <div><p class="text-xs font-bold uppercase tracking-[.2em] text-orange-600">Bảng điều khiển</p><h1 class="mt-2 text-3xl font-extrabold">Quản lý website Tâm Đức</h1><p class="mt-2 text-sm text-slate-500">Dữ liệu được lưu trong Firebase Realtime Database.</p></div>
+    <div class="flex flex-wrap gap-2">
+      <button id="exportBtn" class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-bold"><i data-lucide="download" class="h-4 w-4"></i>Xuất dữ liệu</button>
+      <label class="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-brand px-4 py-2 text-sm font-bold text-white"><i data-lucide="upload" class="h-4 w-4"></i>Nhập dữ liệu<input id="importInput" type="file" accept="application/json" class="hidden"></label>
+    </div>
+  </div>
+
+  <div class="mb-6 flex flex-wrap gap-2">
+    <button class="tab active rounded-lg px-4 py-2 text-sm font-bold" data-tab="overview">Tổng quan</button>
+    <button class="tab rounded-lg px-4 py-2 text-sm font-bold text-slate-600 hover:bg-white" data-tab="jobs">Việc làm</button>
+    <button class="tab rounded-lg px-4 py-2 text-sm font-bold text-slate-600 hover:bg-white" data-tab="applications">Ứng viên</button>
+    <button class="tab rounded-lg px-4 py-2 text-sm font-bold text-slate-600 hover:bg-white" data-tab="news">Tin tức</button>
+    <button class="tab rounded-lg px-4 py-2 text-sm font-bold text-slate-600 hover:bg-white" data-tab="content">Nội dung website</button>
+  </div>
+
+  <section id="overview" class="tab-panel">
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+      <div class="panel rounded-2xl bg-white p-5"><p class="text-sm text-slate-500">Việc đang tuyển</p><p id="statJobs" class="mt-2 text-3xl font-extrabold text-brand">0</p></div>
+      <div class="panel rounded-2xl bg-white p-5"><p class="text-sm text-slate-500">Tổng hồ sơ</p><p id="statApplications" class="mt-2 text-3xl font-extrabold text-brand">0</p></div>
+      <div class="panel rounded-2xl bg-white p-5"><p class="text-sm text-slate-500">Hồ sơ mới</p><p id="statNewApplications" class="mt-2 text-3xl font-extrabold text-orange-600">0</p></div>
+      <div class="panel rounded-2xl bg-white p-5"><p class="text-sm text-slate-500">Tin tức</p><p id="statNews" class="mt-2 text-3xl font-extrabold text-brand">0</p></div>
+      <div class="panel rounded-2xl bg-white p-5"><p class="text-sm text-slate-500">Kết nối Firebase</p><p id="firebaseStatus" class="mt-2 font-bold text-emerald-700">Đang kiểm tra...</p></div>
+    </div>
+    <div class="panel mt-5 rounded-2xl bg-white p-6"><h2 class="text-lg font-extrabold">Bắt đầu nhanh</h2><div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <button data-go="jobs" class="go-button rounded-xl border border-slate-200 p-4 text-left hover:border-brand"><b class="block">Thêm việc làm</b><small class="text-slate-500">Đăng vị trí mới</small></button>
+      <button data-go="applications" class="go-button rounded-xl border border-slate-200 p-4 text-left hover:border-brand"><b class="block">Xem hồ sơ</b><small class="text-slate-500">Theo dõi ứng viên</small></button>
+      <button data-go="news" class="go-button rounded-xl border border-slate-200 p-4 text-left hover:border-brand"><b class="block">Thêm tin tức</b><small class="text-slate-500">Cập nhật nội dung</small></button>
+      <button data-go="content" class="go-button rounded-xl border border-slate-200 p-4 text-left hover:border-brand"><b class="block">Sửa website</b><small class="text-slate-500">Banner, liên hệ, chỉ số</small></button>
+    </div></div>
+  </section>
+
+  <section id="jobs" class="tab-panel hidden">
+    <div class="grid gap-6 lg:grid-cols-[390px_1fr]">
+      <form id="jobForm" class="panel h-fit rounded-2xl bg-white p-6">
+        <div class="flex items-center justify-between"><h2 id="jobFormTitle" class="text-lg font-extrabold">Thêm việc làm</h2><button id="cancelJob" type="button" class="hidden text-sm font-bold text-slate-500">Hủy sửa</button></div>
+        <input id="jobId" type="hidden">
+        <div class="mt-5 grid gap-4">
+          <label class="text-sm font-bold">Tên vị trí<input id="jobTitle" required class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Công nhân sản xuất"></label>
+          <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            <label class="text-sm font-bold">Công ty<input id="jobCompany" required class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Tên công ty"></label>
+            <label class="text-sm font-bold">Địa điểm<input id="jobLocation" required class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Thuận An, Bình Dương"></label>
+          </div>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <label class="text-sm font-bold">Mức lương<input id="jobSalary" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="8 - 10 triệu"></label>
+            <label class="text-sm font-bold">Số lượng<input id="jobQuantity" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="20"></label>
+          </div>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <label class="text-sm font-bold">Ca làm<input id="jobShift" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Ca ngày / ca đêm"></label>
+            <label class="text-sm font-bold">Hạn tuyển<input id="jobDeadline" type="date" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+          </div>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <label class="text-sm font-bold">Loại việc<select id="jobType" class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 font-normal"><option value="full-time">Toàn thời gian</option><option value="part-time">Bán thời gian</option><option value="remote">Từ xa</option><option value="temporary">Thời vụ</option></select></label>
+            <label class="text-sm font-bold">Ngành nghề<select id="jobCategory" class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 font-normal"><option>Sản xuất</option><option>Kho vận</option><option>Văn phòng</option><option>Kỹ thuật</option><option>Nhân sự</option><option>Thời vụ</option></select></label>
+          </div>
+          <label class="text-sm font-bold">Nhãn hiển thị<input id="jobBadge" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="ĐANG TUYỂN / TUYỂN GẤP"></label>
+          <label class="text-sm font-bold">Ảnh công việc (URL)<input id="jobImage" type="url" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="https://..."></label>
+          <label class="text-sm font-bold">Mô tả công việc<textarea id="jobDescription" rows="4" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Nội dung mô tả..."></textarea></label>
+          <label class="text-sm font-bold">Yêu cầu<textarea id="jobRequirements" rows="3" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Yêu cầu ứng viên..."></textarea></label>
+          <label class="text-sm font-bold">Quyền lợi<textarea id="jobBenefits" rows="3" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Lương, phụ cấp, bảo hiểm..."></textarea></label>
+          <label class="text-sm font-bold">Hồ sơ cần chuẩn bị<textarea id="jobDocuments" rows="2" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="CCCD, hồ sơ..."></textarea></label>
+          <label class="flex items-center gap-3 text-sm font-bold"><input id="jobActive" type="checkbox" checked class="h-4 w-4 accent-brand"> Đang hiển thị / đang tuyển</label>
+        </div>
+        <button class="mt-5 flex w-full items-center justify-center gap-2 rounded-lg bg-orange px-4 py-3 font-bold text-ink"><i data-lucide="save" class="h-4 w-4"></i>Lưu việc làm</button>
+      </form>
+      <div class="panel rounded-2xl bg-white p-6">
+        <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-center"><div><h2 class="text-lg font-extrabold">Danh sách việc làm</h2><p class="mt-1 text-sm text-slate-500">Thêm, sửa, xóa hoặc tắt tuyển dụng.</p></div><span id="jobListCount" class="rounded-full bg-sky px-3 py-1 text-xs font-bold text-brand"></span></div>
+        <div id="jobList" class="mt-5 divide-y divide-slate-100"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="applications" class="tab-panel hidden">
+    <div class="panel rounded-2xl bg-white p-6">
+      <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-center"><div><h2 class="text-lg font-extrabold">Quản lý ứng viên</h2><p class="mt-1 text-sm text-slate-500">Theo dõi trạng thái hồ sơ từ mới đến nhận việc.</p></div><select id="applicationFilter" class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm"><option value="">Tất cả</option><option value="new">Mới</option><option value="contacted">Đã liên hệ</option><option value="interview">Phỏng vấn</option><option value="passed">Đạt</option><option value="failed">Không đạt</option></select></div>
+      <div class="mt-5 overflow-x-auto"><table class="w-full min-w-[900px] text-left text-sm"><thead><tr class="border-b border-slate-200 text-xs uppercase text-slate-500"><th class="p-3">Ứng viên</th><th class="p-3">Vị trí</th><th class="p-3">Liên hệ</th><th class="p-3">Ngày gửi</th><th class="p-3">Trạng thái</th><th class="p-3">Thao tác</th></tr></thead><tbody id="applicationList"></tbody></table></div>
+    </div>
+  </section>
+
+  <section id="news" class="tab-panel hidden">
+    <div class="grid gap-6 lg:grid-cols-[390px_1fr]">
+      <form id="newsForm" class="panel h-fit rounded-2xl bg-white p-6">
+        <div class="flex items-center justify-between"><h2 id="newsFormTitle" class="text-lg font-extrabold">Thêm tin tức</h2><button id="cancelNews" type="button" class="hidden text-sm font-bold text-slate-500">Hủy sửa</button></div>
+        <input id="newsId" type="hidden">
+        <div class="mt-5 grid gap-4">
+          <label class="text-sm font-bold">Tiêu đề<input id="newsTitle" required class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Cơ hội việc làm mới"></label>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <label class="text-sm font-bold">Chuyên mục<input id="newsCategory" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="THÔNG TIN TUYỂN DỤNG"></label>
+            <label class="text-sm font-bold">Ngày đăng<input id="newsDate" type="date" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+          </div>
+          <label class="text-sm font-bold">Ảnh (URL)<input id="newsImage" type="url" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+          <label class="text-sm font-bold">Mô tả<textarea id="newsSummary" rows="4" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></textarea></label>
+          <label class="flex items-center gap-3 text-sm font-bold"><input id="newsActive" type="checkbox" checked class="h-4 w-4 accent-brand"> Hiển thị</label>
+        </div>
+        <button class="mt-5 w-full rounded-lg bg-brand px-4 py-3 font-bold text-white">Lưu tin tức</button>
+      </form>
+      <div class="panel rounded-2xl bg-white p-6"><h2 class="text-lg font-extrabold">Danh sách tin tức</h2><div id="newsList" class="mt-5 grid gap-4 md:grid-cols-2"></div></div>
+    </div>
+  </section>
+
+  <section id="content" class="tab-panel hidden">
+    <form id="contentForm" class="panel rounded-2xl bg-white p-6 sm:p-8">
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div class="lg:col-span-2"><h2 class="text-lg font-extrabold">Nội dung website</h2><p class="mt-1 text-sm text-slate-500">Các trường này được dùng trực tiếp trên trang chủ.</p></div>
+        <label class="text-sm font-bold">Tên thương hiệu<input id="siteName" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+        <label class="text-sm font-bold">Email<input id="siteEmail" type="email" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+        <label class="text-sm font-bold">Hotline<input id="sitePhone" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+        <label class="text-sm font-bold">Địa chỉ<input id="siteAddress" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+        <label class="text-sm font-bold lg:col-span-2">Tiêu đề Hero <small class="font-normal text-slate-400">(dùng dấu | để xuống dòng: KẾT NỐI...|THÚC ĐẨY...)</small><input id="siteHero" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+        <label class="text-sm font-bold lg:col-span-2">Mô tả Hero<textarea id="siteDescription" rows="3" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></textarea></label>
+        <label class="text-sm font-bold">Tiêu đề giới thiệu<input id="siteAboutTitle" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+        <label class="text-sm font-bold">Mô tả giới thiệu<textarea id="siteAboutText" rows="3" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></textarea></label>
+        <label class="text-sm font-bold">Ảnh Hero URL<input id="siteHeroImage" type="url" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+        <label class="text-sm font-bold">Ảnh giới thiệu URL<input id="siteAboutImage" type="url" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+        <div class="lg:col-span-2"><h3 class="text-lg font-extrabold">Chỉ số nổi bật</h3></div>
+        <label class="text-sm font-bold">Doanh nghiệp<input id="statCompaniesInput" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+        <label class="text-sm font-bold">Ứng viên<input id="statCandidatesInput" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+        <label class="text-sm font-bold">Vị trí tuyển dụng<input id="statJobsInput" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+        <label class="text-sm font-bold">Hài lòng<input id="statSatisfactionInput" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+        <div class="lg:col-span-2"><h3 class="text-lg font-extrabold">Mạng xã hội</h3></div>
+        <label class="text-sm font-bold">Facebook URL<input id="siteFacebook" type="url" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+        <label class="text-sm font-bold">Zalo URL<input id="siteZalo" type="url" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+        <label class="text-sm font-bold">TikTok URL<input id="siteTiktok" type="url" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label>
+      </div>
+      <div class="mt-7 flex items-center gap-4"><button class="rounded-lg bg-brand px-5 py-3 font-bold text-white">Lưu nội dung</button><span id="contentMessage" class="hidden text-sm font-bold"></span></div>
+    </form>
+  </section>
+</main>
+<div id="toast" class="fixed bottom-5 right-5 z-[120] hidden rounded-xl bg-ink px-5 py-3 text-sm font-bold text-white shadow-xl"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getDatabase, onValue, ref, set, push, update, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAcGa-GuvLu-sVkdy-WSv98vBsN4jGO-J0",
+  authDomain: "cungungnhanluctamduc-46aa8.firebaseapp.com",
+  projectId: "cungungnhanluctamduc-46aa8",
+  databaseURL: "https://cungungnhanluctamduc-46aa8-default-rtdb.firebaseio.com",
+  storageBucket: "cungungnhanluctamduc-46aa8.firebasestorage.app",
+  messagingSenderId: "788092165512",
+  appId: "1:788092165512:web:b80f92816505e269062e3d"
+};
+const db=getDatabase(initializeApp(firebaseConfig));
+const $=id=>document.getElementById(id);
+const defaultContent={name:"TÂM ĐỨC",email:"nguyentienchuc.08082004@gmail.com",phone:"0901 234 567",address:"Bình Dương, Việt Nam",hero:"KẾT NỐI NHÂN TÀI|THÚC ĐẨY DOANH NGHIỆP",description:"Tâm Đức đồng hành cùng ứng viên và doanh nghiệp trên hành trình phát triển.",aboutTitle:"Đúng người, đúng việc, đúng thời điểm.",aboutText:"Công ty CP Cung Ứng Nhân Lực Tâm Đức cung cấp giải pháp tuyển dụng và cung ứng nhân lực đáng tin cậy.",companies:"500+",candidates:"10.000+",jobsStat:"Nhiều",satisfaction:"98%",heroImage:"",aboutImage:"",facebook:"#",zalo:"#",tiktok:"#"};
+let jobs=[],applications=[],news=[],content={...defaultContent};
+
+function normalize(data){if(!data)return[];return Array.isArray(data)?data:Object.entries(data).map(([id,v])=>({id,...v}));}
+function esc(v=""){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
+function notify(msg){const t=$("toast");t.textContent=msg;t.classList.remove("hidden");clearTimeout(notify.t);notify.t=setTimeout(()=>t.classList.add("hidden"),2400);}
+function switchTab(tab){document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));document.querySelectorAll(".tab-panel").forEach(p=>p.classList.toggle("hidden",p.id!==tab));window.scrollTo({top:0,behavior:"smooth"});}
+document.querySelectorAll(".tab,.go-button").forEach(b=>b.addEventListener("click",()=>switchTab(b.dataset.tab||b.dataset.go)));
+
+function updateStats(){
+  const activeJobs=jobs.filter(j=>j.active!==false);
+  $("statJobs").textContent=activeJobs.length;
+  $("statApplications").textContent=applications.length;
+  $("statNewApplications").textContent=applications.filter(a=>(a.status||"new")==="new").length;
+  $("statNews").textContent=news.filter(n=>n.active!==false).length;
+}
+function fillJobForm(job){
+  const ids=["jobId","jobTitle","jobCompany","jobLocation","jobSalary","jobQuantity","jobShift","jobDeadline","jobBadge","jobImage","jobDescription","jobRequirements","jobBenefits","jobDocuments"];
+  const keys=["id","title","company","location","salary","quantity","shift","deadline","badge","image","description","requirements","benefits","documents"];
+  ids.forEach((id,i)=>$(id).value=job?.[keys[i]]||"");
+  $("jobType").value=job?.type||"full-time"; $("jobCategory").value=job?.category||"Sản xuất"; $("jobActive").checked=job?.active!==false;
+  $("jobFormTitle").textContent=job?"Sửa việc làm":"Thêm việc làm"; $("cancelJob").classList.toggle("hidden",!job);
+  switchTab("jobs");
+}
+function renderJobs(){
+  const active=jobs.filter(j=>j.active!==false);
+  $("jobListCount").textContent=`${active.length} đang tuyển / ${jobs.length} tổng`;
+  $("jobList").innerHTML=jobs.length?jobs.map(j=>`<div class="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between ${j.active===false?"opacity-50":""}">
+    <div class="min-w-0"><div class="flex flex-wrap items-center gap-2"><b class="truncate">${esc(j.title||"Chưa có tên")}</b><span class="rounded-full ${j.active===false?"bg-slate-100 text-slate-500":"bg-sky text-brand"} px-2 py-1 text-xs font-bold">${j.active===false?"ĐÃ TẮT":esc(j.badge||"ĐANG TUYỂN")}</span></div>
+    <p class="mt-1 text-sm text-slate-500">${esc(j.company||"")} · ${esc(j.location||"")} · ${esc(j.salary||"Liên hệ")}</p></div>
+    <div class="flex shrink-0 gap-2"><button data-edit-job="${esc(j.id)}" class="rounded-lg border border-slate-200 px-3 py-2 text-sm font-bold">Sửa</button><button data-toggle-job="${esc(j.id)}" class="rounded-lg border border-amber-200 px-3 py-2 text-sm font-bold text-amber-700">${j.active===false?"Bật":"Tắt"}</button><button data-delete-job="${esc(j.id)}" class="rounded-lg border border-red-100 px-3 py-2 text-sm font-bold text-red-600">Xóa</button></div>
+  </div>`).join(""):`<p class="py-10 text-center text-sm text-slate-500">Chưa có việc làm.</p>`;
+}
+$("jobList").addEventListener("click",async e=>{
+  const edit=e.target.closest("[data-edit-job]"),toggle=e.target.closest("[data-toggle-job]"),del=e.target.closest("[data-delete-job]");
+  try{
+    if(edit){fillJobForm(jobs.find(j=>j.id===edit.dataset.editJob));return;}
+    if(toggle){const j=jobs.find(x=>x.id===toggle.dataset.toggleJob);if(j){j.active=j.active===false;await set(ref(db,"site/jobs"),jobs);notify("Đã cập nhật trạng thái");}return;}
+    if(del && confirm("Bạn có chắc muốn xóa việc làm này?")){jobs=jobs.filter(j=>j.id!==del.dataset.deleteJob);await set(ref(db,"site/jobs"),jobs);notify("Đã xóa việc làm");}
+  }catch(err){console.error(err);notify("Không thể lưu. Kiểm tra Firebase Rules.");}
+});
+$("jobForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const id=$("jobId").value||`job-${Date.now()}`;
+  const value={id,title:$("jobTitle").value.trim(),company:$("jobCompany").value.trim(),location:$("jobLocation").value.trim(),salary:$("jobSalary").value.trim(),quantity:$("jobQuantity").value.trim(),shift:$("jobShift").value.trim(),deadline:$("jobDeadline").value,badge:$("jobBadge").value.trim(),image:$("jobImage").value.trim(),type:$("jobType").value,category:$("jobCategory").value,description:$("jobDescription").value.trim(),requirements:$("jobRequirements").value.trim(),benefits:$("jobBenefits").value.trim(),documents:$("jobDocuments").value.trim(),active:$("jobActive").checked};
+  try{
+    const index=jobs.findIndex(j=>j.id===id); if(index>=0)jobs[index]=value; else jobs.push(value);
+    await set(ref(db,"site/jobs"),jobs); notify(index>=0?"Đã cập nhật việc làm":"Đã thêm việc làm"); e.target.reset();$("jobId").value="";$("jobActive").checked=true;fillJobForm(null);
+  }catch(err){console.error(err);notify("Không thể lưu Firebase. Kiểm tra Realtime Database Rules.");}
+});
+$("cancelJob").onclick=()=>{ $("jobForm").reset(); $("jobId").value=""; $("jobActive").checked=true; fillJobForm(null); };
+
+function renderApplications(){
+  const filter=$("applicationFilter").value;
+  const list=applications.filter(a=>!filter||((a.status||"new")===filter)).sort((a,b)=>String(b.createdAt||"").localeCompare(String(a.createdAt||"")));
+  const colors={new:"bg-blue-50 text-brand",contacted:"bg-amber-50 text-amber-700",interview:"bg-purple-50 text-purple-700",passed:"bg-emerald-50 text-emerald-700",failed:"bg-red-50 text-red-700"};
+  const labels={new:"Mới",contacted:"Đã liên hệ",interview:"Phỏng vấn",passed:"Đạt",failed:"Không đạt"};
+  $("applicationList").innerHTML=list.length?list.map(a=>`<tr class="border-b border-slate-100 align-top">
+    <td class="p-3"><b>${esc(a.name||"")}</b><div class="mt-1 text-xs text-slate-500">${esc(a.gender||"")} ${a.birthYear?`· ${esc(a.birthYear)}`:""}</div></td>
+    <td class="p-3">${esc(a.position||"Đăng ký chung")}<div class="mt-1 text-xs text-slate-500">${esc(a.preferredArea||"")}</div></td>
+    <td class="p-3">${esc(a.phone||"")}<div class="mt-1 text-xs text-slate-500">${esc(a.email||"")}</div>${a.cvUrl?`<a class="mt-1 inline-block text-xs font-bold text-brand" target="_blank" rel="noopener" href="${esc(a.cvUrl)}">Xem CV</a>`:""}</td>
+    <td class="p-3 whitespace-nowrap">${a.createdAt?new Date(a.createdAt).toLocaleString("vi-VN"):"-"}</td>
+    <td class="p-3"><select data-status="${esc(a.id||"")}" class="rounded-lg border border-slate-200 px-2 py-2 text-xs font-bold ${colors[a.status||"new"]||colors.new}"><option value="new" ${a.status==="new"?"selected":""}>Mới</option><option value="contacted" ${a.status==="contacted"?"selected":""}>Đã liên hệ</option><option value="interview" ${a.status==="interview"?"selected":""}>Phỏng vấn</option><option value="passed" ${a.status==="passed"?"selected":""}>Đạt</option><option value="failed" ${a.status==="failed"?"selected":""}>Không đạt</option></select></td>
+    <td class="p-3"><button data-delete-app="${esc(a.id||"")}" class="rounded-lg border border-red-100 px-3 py-2 text-xs font-bold text-red-600">Xóa</button></td>
+  </tr>`).join(""):`<tr><td colspan="6" class="p-10 text-center text-slate-500">Chưa có hồ sơ.</td></tr>`;
+}
+$("applicationFilter").addEventListener("change",renderApplications);
+$("applicationList").addEventListener("change",async e=>{const s=e.target.closest("[data-status]");if(!s)return;try{await update(ref(db,`applications/${s.dataset.status}`),{status:s.value});notify("Đã cập nhật trạng thái");}catch(err){notify("Không thể cập nhật trạng thái.");}});
+$("applicationList").addEventListener("click",async e=>{const b=e.target.closest("[data-delete-app]");if(!b||!confirm("Xóa hồ sơ này?"))return;try{await remove(ref(db,`applications/${b.dataset.deleteApp}`));notify("Đã xóa hồ sơ");}catch(err){notify("Không thể xóa hồ sơ.");}});
+
+function fillNewsForm(n){
+  $("newsId").value=n?.id||"";$("newsTitle").value=n?.title||"";$("newsCategory").value=n?.category||"THÔNG TIN TUYỂN DỤNG";$("newsDate").value=n?.date||"";$("newsImage").value=n?.image||"";$("newsSummary").value=n?.summary||"";$("newsActive").checked=n?.active!==false;
+  $("newsFormTitle").textContent=n?"Sửa tin tức":"Thêm tin tức";$("cancelNews").classList.toggle("hidden",!n);switchTab("news");
+}
+function renderNews(){
+  $("newsList").innerHTML=news.length?news.map(n=>`<article class="overflow-hidden rounded-xl border border-slate-200 ${n.active===false?"opacity-50":""}"><img src="${esc(n.image||"https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=700&q=80")}" class="h-36 w-full object-cover" alt=""><div class="p-4"><p class="text-xs font-bold text-orange-600">${esc(n.category||"TIN TỨC")} · ${esc(n.date||"")}</p><h3 class="mt-2 font-bold">${esc(n.title||"")}</h3><p class="mt-2 line-clamp-2 text-sm text-slate-500">${esc(n.summary||"")}</p><div class="mt-4 flex gap-2"><button data-edit-news="${esc(n.id)}" class="rounded-lg border px-3 py-2 text-xs font-bold">Sửa</button><button data-delete-news="${esc(n.id)}" class="rounded-lg border border-red-100 px-3 py-2 text-xs font-bold text-red-600">Xóa</button></div></div></article>`).join(""):`<p class="py-10 text-center text-sm text-slate-500">Chưa có tin tức.</p>`;
+}
+$("newsList").addEventListener("click",async e=>{const edit=e.target.closest("[data-edit-news]"),del=e.target.closest("[data-delete-news]");if(edit){fillNewsForm(news.find(n=>n.id===edit.dataset.editNews));}if(del&&confirm("Xóa tin này?")){try{news=news.filter(n=>n.id!==del.dataset.deleteNews);await set(ref(db,"site/news"),news);notify("Đã xóa tin tức");}catch(err){notify("Không thể xóa tin tức.");}}});
+$("newsForm").addEventListener("submit",async e=>{e.preventDefault();const id=$("newsId").value||`news-${Date.now()}`;const value={id,title:$("newsTitle").value.trim(),category:$("newsCategory").value.trim(),date:$("newsDate").value,image:$("newsImage").value.trim(),summary:$("newsSummary").value.trim(),active:$("newsActive").checked};try{const i=news.findIndex(n=>n.id===id);if(i>=0)news[i]=value;else news.unshift(value);await set(ref(db,"site/news"),news);notify(i>=0?"Đã cập nhật tin tức":"Đã thêm tin tức");e.target.reset();$("newsId").value="";$("newsActive").checked=true;fillNewsForm(null);}catch(err){notify("Không thể lưu tin tức.");}});
+$("cancelNews").onclick=()=>{ $("newsForm").reset();$("newsId").value="";$("newsActive").checked=true;fillNewsForm(null); };
+
+const contentFields={siteName:"name",siteEmail:"email",sitePhone:"phone",siteAddress:"address",siteHero:"hero",siteDescription:"description",siteAboutTitle:"aboutTitle",siteAboutText:"aboutText",siteHeroImage:"heroImage",siteAboutImage:"aboutImage",statCompaniesInput:"companies",statCandidatesInput:"candidates",statJobsInput:"jobsStat",statSatisfactionInput:"satisfaction",siteFacebook:"facebook",siteZalo:"zalo",siteTiktok:"tiktok"};
+function loadContent(){Object.entries(contentFields).forEach(([id,key])=>$(id).value=content[key]??"");}
+$("contentForm").addEventListener("submit",async e=>{e.preventDefault();const next={};Object.entries(contentFields).forEach(([id,key])=>next[key]=$(id).value.trim());try{await set(ref(db,"site/content"),next);content=next;$("contentMessage").textContent="Đã lưu trên Firebase."; $("contentMessage").className="text-sm font-bold text-emerald-700";$("contentMessage").classList.remove("hidden");notify("Đã lưu nội dung website");}catch(err){console.error(err);$("contentMessage").textContent="Không thể lưu. Kiểm tra Firebase Rules."; $("contentMessage").className="text-sm font-bold text-red-600";$("contentMessage").classList.remove("hidden");}});
+
+$("exportBtn").onclick=()=>{const data={content,jobs,news,applications};const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/json"}));a.download=`tam-duc-backup-${new Date().toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
+$("importInput").onchange=e=>{const file=e.target.files[0];if(!file)return;const r=new FileReader();r.onload=async()=>{try{const data=JSON.parse(r.result);if(data.content)await set(ref(db,"site/content"),data.content);if(data.jobs)await set(ref(db,"site/jobs"),data.jobs);if(data.news)await set(ref(db,"site/news"),data.news);notify("Đã nhập dữ liệu lên Firebase");}catch(err){console.error(err);notify("Tệp JSON không hợp lệ");}};r.readAsText(file);};
+
+onValue(ref(db,"site/jobs"),s=>{jobs=normalize(s.val());renderJobs();updateStats();$("firebaseStatus").textContent="Đã kết nối";$("firebaseStatus").className="mt-2 font-bold text-emerald-700";});
+onValue(ref(db,"applications"),s=>{applications=normalize(s.val());renderApplications();updateStats();});
+onValue(ref(db,"site/news"),s=>{news=normalize(s.val());renderNews();updateStats();});
+onValue(ref(db,"site/content"),s=>{content={...defaultContent,...(s.val()||{})};loadContent();});
+$("firebaseStatus").textContent="Đang kết nối...";
+loadContent();renderJobs();renderApplications();renderNews();updateStats();lucide.createIcons();
+</script>
 </body>
 </html>
