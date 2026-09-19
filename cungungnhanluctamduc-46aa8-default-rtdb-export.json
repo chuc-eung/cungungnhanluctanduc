@@ -1,0 +1,48 @@
+{
+	"site": {
+		"content": {
+			"name": "NEXA Human Capital",
+			"email": "nguyentienchuc.08082004@gmail.com",
+			"hero": "Những con người đưa doanh nghiệp tiến về phía trước.",
+			"description": "Kết nối các doanh nghiệp đầy khát vọng với những nhân sự xuất sắc.",
+			"companies": "500+",
+			"candidates": "10k+",
+			"satisfaction": "98%"
+		},
+		"jobs": [
+			{
+				"id": "job-1",
+				"title": "Quản lý sản phẩm cấp cao",
+				"company": "Venture Labs · Thành phố Hồ Chí Minh",
+				"type": "full-time",
+				"category": "Công nghệ",
+				"badge": "Đang tuyển gấp"
+			},
+			{
+				"id": "job-2",
+				"title": "Trưởng phòng vận hành",
+				"company": "Lumen Group · Từ xa / Hà Nội",
+				"type": "remote",
+				"category": "Vận hành",
+				"badge": "Mới đăng hôm nay"
+			},
+			{
+				"id": "job-3",
+				"title": "Kiểm soát tài chính",
+				"company": "Satori Foods · Đà Nẵng",
+				"type": "part-time",
+				"category": "Tài chính",
+				"badge": "Đội ngũ đang phát triển"
+			},
+			{
+				"id": "job-4",
+				"title": "Chuyên viên tuyển dụng",
+				"company": "NEXA Human Capital · Hà Nội",
+				"type": "full-time",
+				"category": "Nhân sự",
+				"badge": "Cơ hội mới"
+			}
+		]
+	},
+	"requests": {}
+}
