@@ -80,7 +80,7 @@
             <label class="text-sm font-bold">Ngành nghề<select id="jobCategory" class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 font-normal"><option>Sản xuất</option><option>Kho vận</option><option>Văn phòng</option><option>Kỹ thuật</option><option>Nhân sự</option><option>Thời vụ</option></select></label>
           </div>
           <label class="text-sm font-bold">Nhãn hiển thị<input id="jobBadge" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="ĐANG TUYỂN / TUYỂN GẤP"></label>
-          <label class="text-sm font-bold">Ảnh công việc (URL)<input id="jobImage" type="url" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="https://..."></label>
+          <label class="text-sm font-bold">Ảnh công việc<input id="jobImage" type="hidden"><input id="jobImageFile" type="file" accept="image/*" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal file:mr-3 file:rounded-md file:border-0 file:bg-brand file:px-3 file:py-2 file:font-bold file:text-white"><span id="jobImageStatus" class="mt-2 block text-xs font-normal text-slate-500">Chọn ảnh từ laptop để tải lên.</span></label>
           <label class="text-sm font-bold">Mô tả công việc<textarea id="jobDescription" rows="4" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Nội dung mô tả..."></textarea></label>
           <label class="text-sm font-bold">Yêu cầu<textarea id="jobRequirements" rows="3" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Yêu cầu ứng viên..."></textarea></label>
           <label class="text-sm font-bold">Quyền lợi<textarea id="jobBenefits" rows="3" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Lương, phụ cấp, bảo hiểm..."></textarea></label>
@@ -167,13 +167,15 @@ const firebaseConfig = {
   messagingSenderId: "788092165512",
   appId: "1:788092165512:web:b80f92816505e269062e3d"
 };
-const db=getDatabase(initializeApp(firebaseConfig));
+const app=initializeApp(firebaseConfig);
+const db=getDatabase(app);
 const $=id=>document.getElementById(id);
 const defaultContent={name:"TÂM ĐỨC",email:"nguyentienchuc.08082004@gmail.com",phone:"0901 234 567",address:"Bình Dương, Việt Nam",hero:"KẾT NỐI NHÂN TÀI|THÚC ĐẨY DOANH NGHIỆP",description:"Tâm Đức đồng hành cùng ứng viên và doanh nghiệp trên hành trình phát triển.",aboutTitle:"Đúng người, đúng việc, đúng thời điểm.",aboutText:"Công ty CP Cung Ứng Nhân Lực Tâm Đức cung cấp giải pháp tuyển dụng và cung ứng nhân lực đáng tin cậy.",companies:"500+",candidates:"10.000+",jobsStat:"Nhiều",satisfaction:"98%",heroImage:"",aboutImage:"",facebook:"#",zalo:"#",tiktok:"#"};
 let jobs=[],applications=[],news=[],content={...defaultContent};
 
 function normalize(data){if(!data)return[];return Array.isArray(data)?data:Object.entries(data).map(([id,v])=>({id,...v}));}
 function esc(v=""){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
+function readFileAsDataUrl(file){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(file);});}
 function notify(msg){const t=$("toast");t.textContent=msg;t.classList.remove("hidden");clearTimeout(notify.t);notify.t=setTimeout(()=>t.classList.add("hidden"),2400);}
 function switchTab(tab){document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));document.querySelectorAll(".tab-panel").forEach(p=>p.classList.toggle("hidden",p.id!==tab));window.scrollTo({top:0,behavior:"smooth"});}
 document.querySelectorAll(".tab,.go-button").forEach(b=>b.addEventListener("click",()=>switchTab(b.dataset.tab||b.dataset.go)));
@@ -189,6 +191,7 @@ function fillJobForm(job){
   const ids=["jobId","jobTitle","jobCompany","jobLocation","jobSalary","jobQuantity","jobShift","jobDeadline","jobBadge","jobImage","jobDescription","jobRequirements","jobBenefits","jobDocuments"];
   const keys=["id","title","company","location","salary","quantity","shift","deadline","badge","image","description","requirements","benefits","documents"];
   ids.forEach((id,i)=>$(id).value=job?.[keys[i]]||"");
+  $("jobImageFile").value=""; $("jobImageStatus").textContent=job?.image?"Đang dùng ảnh hiện tại. Chọn ảnh mới nếu muốn thay.":"Chọn ảnh từ laptop để tải lên.";
   $("jobType").value=job?.type||"full-time"; $("jobCategory").value=job?.category||"Sản xuất"; $("jobActive").checked=job?.active!==false;
   $("jobFormTitle").textContent=job?"Sửa việc làm":"Thêm việc làm"; $("cancelJob").classList.toggle("hidden",!job);
   switchTab("jobs");
@@ -213,13 +216,23 @@ $("jobList").addEventListener("click",async e=>{
 $("jobForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const id=$("jobId").value||`job-${Date.now()}`;
-  const value={id,title:$("jobTitle").value.trim(),company:$("jobCompany").value.trim(),location:$("jobLocation").value.trim(),salary:$("jobSalary").value.trim(),quantity:$("jobQuantity").value.trim(),shift:$("jobShift").value.trim(),deadline:$("jobDeadline").value,badge:$("jobBadge").value.trim(),image:$("jobImage").value.trim(),type:$("jobType").value,category:$("jobCategory").value,description:$("jobDescription").value.trim(),requirements:$("jobRequirements").value.trim(),benefits:$("jobBenefits").value.trim(),documents:$("jobDocuments").value.trim(),active:$("jobActive").checked};
   try{
+    const file=$("jobImageFile").files[0];
+    let image=$("jobImage").value.trim();
+    if(file){
+      $("jobImageStatus").textContent="Đang chuẩn bị ảnh...";
+      image=await readFileAsDataUrl(file);
+    }
+    const value={id,title:$("jobTitle").value.trim(),company:$("jobCompany").value.trim(),location:$("jobLocation").value.trim(),salary:$("jobSalary").value.trim(),quantity:$("jobQuantity").value.trim(),shift:$("jobShift").value.trim(),deadline:$("jobDeadline").value,badge:$("jobBadge").value.trim(),image,type:$("jobType").value,category:$("jobCategory").value,description:$("jobDescription").value.trim(),requirements:$("jobRequirements").value.trim(),benefits:$("jobBenefits").value.trim(),documents:$("jobDocuments").value.trim(),active:$("jobActive").checked};
     const index=jobs.findIndex(j=>j.id===id); if(index>=0)jobs[index]=value; else jobs.push(value);
     await set(ref(db,"site/jobs"),jobs); notify(index>=0?"Đã cập nhật việc làm":"Đã thêm việc làm"); e.target.reset();$("jobId").value="";$("jobActive").checked=true;fillJobForm(null);
   }catch(err){console.error(err);notify("Không thể lưu Firebase. Kiểm tra Realtime Database Rules.");}
 });
 $("cancelJob").onclick=()=>{ $("jobForm").reset(); $("jobId").value=""; $("jobActive").checked=true; fillJobForm(null); };
+$("jobImageFile").addEventListener("change",e=>{
+  const file=e.target.files[0];
+  if(file) $("jobImageStatus").textContent=`Ảnh đã chọn: ${file.name}`;
+});
 
 function renderApplications(){
   const filter=$("applicationFilter").value;
