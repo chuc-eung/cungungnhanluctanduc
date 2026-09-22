@@ -42,7 +42,6 @@
       <a href="#jobs" class="hover:text-orange">Việc làm</a>
       <a href="#candidates" class="hover:text-orange">Ứng viên</a>
       <a href="#employers" class="hover:text-orange">Doanh nghiệp</a>
-      <a href="#news" class="hover:text-orange">Tin tức</a>
       <a href="#contact" class="hover:text-orange">Liên hệ</a>
     </nav>
     <div class="hidden items-center gap-3 lg:flex">
@@ -56,7 +55,7 @@
   <div id="mobileMenu" class="hidden border-t border-white/15 px-5 pb-5 pt-4 lg:hidden">
     <div class="grid gap-4 text-sm font-semibold">
       <a href="#about">Giới thiệu</a><a href="#jobs">Việc làm</a><a href="#candidates">Ứng viên</a>
-      <a href="#employers">Doanh nghiệp</a><a href="#news">Tin tức</a><a href="#contact">Liên hệ</a>
+      <a href="#employers">Doanh nghiệp</a><a href="#contact">Liên hệ</a>
     </div>
   </div>
 </header>
@@ -191,12 +190,6 @@
     </div>
   </section>
 
-  <section id="news" class="bg-paper py-20">
-    <div class="container mx-auto px-5 lg:px-8">
-      <div class="flex items-end justify-between gap-4"><div><p class="text-sm font-bold uppercase tracking-[.2em] text-brand">Cập nhật mới nhất</p><h2 class="mt-3 text-3xl font-extrabold">Tin tức tuyển dụng</h2></div></div>
-      <div id="newsGrid" class="mt-9 grid gap-5 md:grid-cols-3"></div>
-    </div>
-  </section>
 </main>
 
 <footer id="contact" class="bg-ink text-white">
@@ -206,7 +199,7 @@
       <p id="footerDescription" class="mt-5 max-w-sm text-sm leading-6 text-slate-300">Công ty CP Cung Ứng Nhân Lực Tâm Đức - cầu nối tin cậy giữa người lao động và doanh nghiệp.</p>
       <p class="mt-4 whitespace-pre-line text-sm text-slate-400"><span id="footerAddress">Bình Dương, Việt Nam</span><br>Hotline: <span id="footerPhone">0901 234 567</span><br>Email: <span id="footerEmail">nguyentienchuc.08082004@gmail.com</span></p>
     </div>
-    <div><h3 class="font-bold">Liên kết nhanh</h3><div class="mt-4 grid gap-3 text-sm text-slate-300"><a href="#home">Trang chủ</a><a href="#about">Giới thiệu</a><a href="#jobs">Việc làm</a><a href="#candidates">Ứng viên</a><a href="#employers">Doanh nghiệp</a><a href="#news">Tin tức</a></div></div>
+    <div><h3 class="font-bold">Liên kết nhanh</h3><div class="mt-4 grid gap-3 text-sm text-slate-300"><a href="#home">Trang chủ</a><a href="#about">Giới thiệu</a><a href="#jobs">Việc làm</a><a href="#candidates">Ứng viên</a><a href="#employers">Doanh nghiệp</a></div></div>
     <div><h3 class="font-bold">Kết nối với Tâm Đức</h3><p class="mt-4 text-sm leading-6 text-slate-300">Theo dõi thông tin việc làm mới và nhận tư vấn từ đội ngũ của chúng tôi.</p><div class="mt-5 flex gap-3"><a id="facebookLink" href="#" target="_blank" rel="noopener" aria-label="Facebook" class="grid h-9 w-9 place-items-center rounded-full border border-slate-600"><i data-lucide="facebook" class="h-4 w-4"></i></a><a id="zaloLink" href="#" target="_blank" rel="noopener" class="grid h-9 w-9 place-items-center rounded-full border border-slate-600 text-xs font-bold">Zalo</a><a id="tiktokLink" href="#" target="_blank" rel="noopener" class="grid h-9 w-9 place-items-center rounded-full border border-slate-600"><i data-lucide="music-2" class="h-4 w-4"></i></a></div></div>
   </div>
   <div class="border-t border-slate-700 py-5 text-center text-xs text-slate-400">© <span id="copyrightYear"></span> CÔNG TY CP CUNG ỨNG NHÂN LỰC TÂM ĐỨC. Tất cả quyền được bảo lưu.</div>
@@ -448,12 +441,6 @@ onValue(ref(db,"site/jobs"),snap=>{
   allJobs=normalizeList(snap.val()).filter(j=>j.active!==false);
   renderJobs(allJobs);
   $("statJobs").textContent=allJobs.length?`${allJobs.length}+`:"0";
-});
-onValue(ref(db,"site/news"),snap=>{
-  const news=normalizeList(snap.val()).filter(n=>n.active!==false);
-  const items=news.length?news:defaultNews;
-  $("newsGrid").innerHTML=items.slice(0,6).map(n=>`<article class="overflow-hidden rounded-2xl border border-slate-200 bg-white"><img src="${esc(n.image||fallbackImage)}" alt="${esc(n.title)}" class="h-44 w-full object-cover"><div class="p-5"><p class="text-xs font-bold text-orange">${esc(n.category||"TIN TỨC")} · ${esc(n.date||"")}</p><h3 class="mt-3 text-lg font-bold line-clamp-2">${esc(n.title)}</h3><p class="mt-2 text-sm leading-6 text-slate-500 line-clamp-3">${esc(n.summary||"")}</p></div></article>`).join("");
-  lucide.createIcons();
 });
 $("copyrightYear").textContent=new Date().getFullYear();
 lucide.createIcons();
