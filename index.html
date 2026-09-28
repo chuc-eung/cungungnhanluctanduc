@@ -10,7 +10,7 @@
     tailwind.config = {
       theme: {
         extend: {
-          colors: { ink:"#102A43", brand:"#174A96", hero:"#5B9BD5", sky:"#EAF3FF", orange:"#F59E0B", paper:"#F6F8FB" },
+          colors: { ink:"#102A43", brand:"#1976D2", lightBlue:"#1976D2", hero:"#1976D2", sky:"#E3F2FD", orange:"#F59E0B", paper:"#F6F8FB" },
           boxShadow: { soft:"0 16px 42px rgba(16,42,67,.10)" }
         }
       }
@@ -30,7 +30,7 @@
   </style>
 </head>
 <body class="bg-white">
-<header class="sticky top-0 z-50 bg-brand text-white shadow-sm">
+<header class="sticky top-0 z-50 bg-lightBlue text-white shadow-sm">
   <div class="container mx-auto flex items-center justify-between px-5 py-4 lg:px-8">
     <a href="#home" class="flex items-center gap-3">
       <span class="grid h-10 w-10 place-items-center rounded-lg bg-orange font-extrabold text-ink">TĐ</span>
@@ -69,7 +69,7 @@
           <span class="h-px w-8 bg-orange"></span> Cung ứng nhân lực uy tín
         </p>
         <h1 id="heroTitle" class="max-w-2xl text-4xl font-extrabold uppercase leading-[1.1] sm:text-5xl lg:text-6xl">KẾT NỐI NHÂN TÀI<br><span class="text-orange">THÚC ĐẨY DOANH NGHIỆP</span></h1>
-        <p id="heroDescription" class="mt-6 max-w-xl text-lg leading-8 text-blue-100">Tâm Đức đồng hành cùng ứng viên và doanh nghiệp trên hành trình phát triển, từ tìm việc phù hợp đến xây dựng đội ngũ vững mạnh.</p>
+        <p id="heroDescription" class="mt-6 max-w-xl text-lg leading-8 text-blue-50">Tâm Đức đồng hành cùng ứng viên và doanh nghiệp trên hành trình phát triển, từ tìm việc phù hợp đến xây dựng đội ngũ vững mạnh.</p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a href="#jobs" class="inline-flex items-center gap-2 rounded-lg bg-orange px-5 py-3 font-bold text-ink">Tìm việc làm <i data-lucide="arrow-right" class="h-4 w-4"></i></a>
           <button id="heroApply" class="rounded-lg border border-white/30 px-5 py-3 font-bold hover:bg-white/10">Đăng ký ứng tuyển</button>
@@ -151,10 +151,10 @@
 
   <section class="py-20">
     <div class="container mx-auto grid gap-5 px-5 md:grid-cols-2 lg:px-8">
-      <div id="candidates" class="rounded-2xl bg-brand p-8 text-white">
+      <div id="candidates" class="rounded-2xl bg-lightBlue p-8 text-white">
         <i data-lucide="user-round-plus" class="h-8 w-8 text-orange"></i>
         <h2 class="mt-6 text-2xl font-extrabold">Bạn đang tìm việc?</h2>
-        <p class="mt-3 leading-7 text-blue-100">Đăng ký để nhận thông tin những vị trí phù hợp với kinh nghiệm và mong muốn của bạn.</p>
+        <p class="mt-3 leading-7 text-blue-50">Đăng ký để nhận thông tin những vị trí phù hợp với kinh nghiệm và mong muốn của bạn.</p>
         <button class="general-apply mt-7 rounded-lg bg-orange px-5 py-3 font-bold text-ink">Tìm việc ngay</button>
       </div>
       <div id="employers" class="rounded-2xl border border-slate-200 p-8">
