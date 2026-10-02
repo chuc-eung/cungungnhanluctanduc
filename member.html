@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TÂM ĐỨC | Khu vực thành viên</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config={theme:{extend:{colors:{ink:"#102A43",brand:"#1976D2",paper:"#F6F8FB",orange:"#F59E0B"}}}};
+  </script>
+</head>
+<body class="min-h-screen bg-paper text-ink">
+<div id="loginScreen" class="fixed inset-0 z-20 grid place-items-center bg-ink px-5">
+  <form id="loginForm" class="w-full max-w-md rounded-2xl bg-white p-7 shadow-2xl">
+    <p class="text-xs font-bold uppercase tracking-[.2em] text-brand">Tâm Đức</p>
+    <h1 class="mt-2 text-2xl font-extrabold">Đăng nhập thành viên</h1>
+    <p class="mt-2 text-sm text-slate-500">Bạn chỉ xem được các dự án được phân công.</p>
+    <div class="mt-6 grid gap-4">
+      <label class="text-sm font-bold">Email<input id="loginEmail" type="email" required autocomplete="username" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-3 font-normal"></label>
+      <label class="text-sm font-bold">Mật khẩu<input id="loginPassword" type="password" required autocomplete="current-password" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-3 font-normal"></label>
+    </div>
+    <button class="mt-5 w-full rounded-lg bg-brand px-4 py-3 font-bold text-white">Đăng nhập</button>
+    <p id="loginMessage" class="mt-3 hidden text-center text-sm font-bold text-red-600"></p>
+  </form>
+</div>
+<div id="appShell" class="hidden">
+  <header class="bg-brand text-white">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+      <div><p class="text-xs font-bold uppercase tracking-[.2em] text-blue-100">Tâm Đức</p><h1 class="mt-1 text-lg font-extrabold">Khu vực quản lý dự án</h1></div>
+      <div class="flex items-center gap-4"><span id="currentUserLabel" class="hidden text-sm text-blue-100 sm:inline"></span><button id="logoutBtn" class="text-sm font-bold hover:text-orange">Đăng xuất</button></div>
+    </div>
+  </header>
+  <main class="mx-auto max-w-7xl px-5 py-8 lg:px-8">
+    <div class="mb-7"><p class="text-xs font-bold uppercase tracking-[.2em] text-orange-600">Bảng điều khiển thành viên</p><h2 class="mt-2 text-3xl font-extrabold">Dự án được phân công</h2><p id="projectLabel" class="mt-2 text-sm text-slate-500"></p></div>
+    <div class="grid gap-5 sm:grid-cols-3">
+      <div class="rounded-2xl bg-white p-5 shadow-sm"><p class="text-sm text-slate-500">Việc đang tuyển</p><p id="statJobs" class="mt-2 text-3xl font-extrabold text-brand">0</p></div>
+      <div class="rounded-2xl bg-white p-5 shadow-sm"><p class="text-sm text-slate-500">Tổng hồ sơ</p><p id="statApplications" class="mt-2 text-3xl font-extrabold text-brand">0</p></div>
+      <div class="rounded-2xl bg-white p-5 shadow-sm"><p class="text-sm text-slate-500">Hồ sơ mới</p><p id="statNewApplications" class="mt-2 text-3xl font-extrabold text-orange-600">0</p></div>
+    </div>
+    <section class="mt-6 rounded-2xl bg-white p-6 shadow-sm"><div><h3 class="text-lg font-extrabold">Đăng việc làm lên trang chính</h3><p class="mt-1 text-sm text-slate-500">Bài đăng sẽ hiển thị trên website sau khi lưu.</p></div><form id="jobForm" class="mt-5 grid gap-4 md:grid-cols-2"><label class="text-sm font-bold">Tên vị trí<input id="jobTitle" required class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Công nhân sản xuất"></label><label class="text-sm font-bold">Công ty<input id="jobCompany" required class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Tên công ty"></label><label class="text-sm font-bold">Địa điểm<input id="jobLocation" required class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Thuận An, Bình Dương"></label><label class="text-sm font-bold">Mức lương<input id="jobSalary" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="8 - 10 triệu"></label><label class="text-sm font-bold">Số lượng<input id="jobQuantity" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="20"></label><label class="text-sm font-bold">Ngành nghề<select id="jobCategory" class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 font-normal"><option>Sản xuất</option><option>Kho vận</option><option>Văn phòng</option><option>Kỹ thuật</option><option>Nhân sự</option><option>Thời vụ</option></select></label><label class="text-sm font-bold md:col-span-2">Mô tả công việc<textarea id="jobDescription" rows="3" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Nội dung mô tả..."></textarea></label><div class="flex flex-wrap items-center gap-4 md:col-span-2"><button class="rounded-lg bg-orange px-5 py-3 font-bold text-ink">Đăng lên trang chính</button><span id="jobMessage" class="hidden text-sm font-bold"></span></div></form></section>
+    <section class="mt-6 rounded-2xl bg-white p-6 shadow-sm"><div class="flex items-center justify-between gap-4"><div><h3 class="text-lg font-extrabold">Danh sách việc làm</h3><p class="mt-1 text-sm text-slate-500">Chỉ hiển thị việc thuộc dự án của bạn.</p></div><span id="firebaseStatus" class="text-sm font-bold text-slate-500">Đang kết nối...</span></div><div id="jobList" class="mt-5 divide-y divide-slate-100"></div></section>
+    <section class="mt-6 rounded-2xl bg-white p-6 shadow-sm"><div class="flex items-center justify-between gap-4"><div><h3 class="text-lg font-extrabold">Hồ sơ ứng viên</h3><p class="mt-1 text-sm text-slate-500">Các hồ sơ thuộc dự án được phân công.</p></div><span id="applicationCount" class="text-sm text-slate-500"></span></div><div class="mt-5 overflow-x-auto"><table class="w-full min-w-[720px] text-left text-sm"><thead><tr class="border-b border-slate-200 text-xs uppercase text-slate-500"><th class="p-3">Ứng viên</th><th class="p-3">Vị trí</th><th class="p-3">Liên hệ</th><th class="p-3">Trạng thái</th></tr></thead><tbody id="applicationList"></tbody></table></div></section>
+  </main>
+</div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getDatabase, onValue, push, ref } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const firebaseConfig={apiKey:"AIzaSyAcGa-GuvLu-sVkdy-WSv98vBsN4jGO-J0",authDomain:"cungungnhanluctamduc-46aa8.firebaseapp.com",projectId:"cungungnhanluctamduc-46aa8",databaseURL:"https://cungungnhanluctamduc-46aa8-default-rtdb.firebaseio.com",storageBucket:"cungungnhanluctamduc-46aa8.firebasestorage.app",messagingSenderId:"788092165512",appId:"1:788092165512:web:b80f92816505e269062e3d"};
+const app=initializeApp(firebaseConfig),db=getDatabase(app),auth=getAuth(app),$=id=>document.getElementById(id);
+let profile=null;
+const normalize=data=>!data?[]:Array.isArray(data)?data:Object.entries(data).map(([id,value])=>({id,...value}));
+const projectIds=()=>Array.isArray(profile?.projectIds)?profile.projectIds:Object.keys(profile?.projectIds||{});
+const canSee=item=>projectIds().includes(String(item?.projectId||""));
+const esc=value=>String(value||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c]));
+function renderJobs(items){$("statJobs").textContent=items.filter(item=>item.active!==false).length;$("jobList").innerHTML=items.length?items.map(item=>`<div class="py-4"><div class="flex flex-wrap items-center gap-2"><b>${esc(item.title||"Chưa có tên")}</b><span class="rounded-full bg-blue-50 px-2 py-1 text-xs font-bold text-brand">${esc(item.projectId)}</span></div><p class="mt-1 text-sm text-slate-500">${esc(item.company)} · ${esc(item.location)} · ${esc(item.salary||"Liên hệ")}</p></div>`).join(""):"<p class=\"py-8 text-center text-sm text-slate-500\">Chưa có việc làm được phân công.</p>";}
+function renderApplications(items){const visible=items.filter(canSee);$("statApplications").textContent=visible.length;$("statNewApplications").textContent=visible.filter(item=>(item.status||"new")==="new").length;$("applicationCount").textContent=`${visible.length} hồ sơ`;$("applicationList").innerHTML=visible.length?visible.map(item=>`<tr class="border-b border-slate-100"><td class="p-3"><b>${esc(item.name)}</b></td><td class="p-3">${esc(item.position||"Đăng ký chung")}</td><td class="p-3">${esc(item.phone)}<div class="text-xs text-slate-500">${esc(item.email)}</div></td><td class="p-3">${esc(item.status||"new")}</td></tr>`).join(""):"<tr><td colspan=\"4\" class=\"p-8 text-center text-slate-500\">Chưa có hồ sơ.</td></tr>";}
+function startListeners(){onValue(ref(db,"site/jobs"),snapshot=>{renderJobs(normalize(snapshot.val()).filter(canSee));$("firebaseStatus").textContent="Đã kết nối";$("firebaseStatus").className="text-sm font-bold text-emerald-700";});onValue(ref(db,"applications"),snapshot=>renderApplications(normalize(snapshot.val())));$("projectLabel").textContent=projectIds().length?`Mã dự án: ${projectIds().join(", ")}`:"Chưa được gán dự án";}
+$("jobForm").addEventListener("submit",async event=>{event.preventDefault();const projectId=projectIds()[0],message=$("jobMessage");if(!projectId){message.textContent="Tài khoản chưa được gán dự án.";message.className="text-sm font-bold text-red-600";return;}message.textContent="Đang đăng bài...";message.className="text-sm font-bold text-slate-500";try{await push(ref(db,"site/jobs"),{title:$("jobTitle").value.trim(),company:$("jobCompany").value.trim(),location:$("jobLocation").value.trim(),salary:$("jobSalary").value.trim(),quantity:$("jobQuantity").value.trim(),category:$("jobCategory").value,description:$("jobDescription").value.trim(),projectId,active:true,createdAt:Date.now(),type:"full-time",badge:"ĐANG TUYỂN"});event.target.reset();message.textContent="Đã đăng lên trang chính.";message.className="text-sm font-bold text-emerald-700";}catch(error){console.error(error);message.textContent="Không thể đăng bài. Kiểm tra Firebase Rules.";message.className="text-sm font-bold text-red-600";}});
+$("loginForm").addEventListener("submit",async event=>{event.preventDefault();try{await signInWithEmailAndPassword(auth,$("loginEmail").value.trim(),$("loginPassword").value);$("loginMessage").classList.add("hidden");}catch(error){$("loginMessage").textContent=error.code==="auth/invalid-credential"?"Email hoặc mật khẩu không đúng.":`Không thể đăng nhập (${error.code||"lỗi"}).`;$("loginMessage").classList.remove("hidden");}});
+$("logoutBtn").onclick=()=>signOut(auth);
+onAuthStateChanged(auth,async user=>{if(!user){$("loginScreen").classList.remove("hidden");$("appShell").classList.add("hidden");return;}const snapshot=await new Promise(resolve=>onValue(ref(db,`users/${user.uid}`),resolve,{onlyOnce:true}));profile=snapshot.val();if(profile?.role==="admin"){location.href="admin.html";return;}if(profile?.role!=="member"){await signOut(auth);$("loginMessage").textContent="Tài khoản chưa được cấp quyền thành viên.";$("loginMessage").classList.remove("hidden");return;}$("currentUserLabel").textContent=profile.name||user.email;$("loginScreen").classList.add("hidden");$("appShell").classList.remove("hidden");startListeners();});
+</script>
+</body>
+</html>

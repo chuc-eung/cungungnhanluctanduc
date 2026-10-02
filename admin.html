@@ -16,10 +16,18 @@
   </style>
 </head>
 <body class="min-h-screen bg-paper text-ink">
+<div id="loginScreen" class="fixed inset-0 z-[200] grid place-items-center bg-ink px-5">
+  <form id="loginForm" class="w-full max-w-md rounded-2xl bg-white p-7 shadow-2xl">
+    <div class="mb-6"><p class="text-xs font-bold uppercase tracking-[.2em] text-brand">Tâm Đức</p><h1 class="mt-2 text-2xl font-extrabold">Đăng nhập quản trị</h1><p class="mt-2 text-sm text-slate-500">Mỗi thành viên chỉ được xem các dự án được phân công.</p></div>
+    <div class="grid gap-4"><label class="text-sm font-bold">Email<input id="loginEmail" type="email" required autocomplete="username" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-3 font-normal"></label><label class="text-sm font-bold">Mật khẩu<input id="loginPassword" type="password" required autocomplete="current-password" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-3 font-normal"></label></div>
+    <button class="mt-5 w-full rounded-lg bg-brand px-4 py-3 font-bold text-white">Đăng nhập</button><p id="loginMessage" class="mt-3 hidden text-center text-sm font-bold text-red-600"></p>
+  </form>
+</div>
+<div id="appShell" class="hidden">
 <header class="bg-lightBlue text-white">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
     <a href="index.html" class="flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-lg bg-orange font-extrabold text-ink">TĐ</span><span class="font-extrabold">TÂM ĐỨC <span class="font-normal text-blue-200">/ QUẢN TRỊ</span></span></a>
-    <a href="index.html" target="_blank" class="inline-flex items-center gap-2 text-sm text-blue-100 hover:text-white"><i data-lucide="external-link" class="h-4 w-4"></i>Xem website</a>
+    <div class="flex items-center gap-4"><span id="currentUserLabel" class="hidden text-sm text-blue-100 sm:inline"></span><button id="logoutBtn" class="text-sm font-bold text-white hover:text-orange">Đăng xuất</button><a href="index.html" target="_blank" class="hidden items-center gap-2 text-sm text-blue-100 hover:text-white sm:inline-flex"><i data-lucide="external-link" class="h-4 w-4"></i>Xem website</a></div>
   </div>
 </header>
 
@@ -38,6 +46,7 @@
     <button class="tab rounded-lg px-4 py-2 text-sm font-bold text-slate-600 hover:bg-white" data-tab="applications">Ứng viên</button>
     <button class="tab rounded-lg px-4 py-2 text-sm font-bold text-slate-600 hover:bg-white" data-tab="news">Tin tức</button>
     <button class="tab rounded-lg px-4 py-2 text-sm font-bold text-slate-600 hover:bg-white" data-tab="content">Nội dung website</button>
+    <button id="membersTab" class="tab rounded-lg px-4 py-2 text-sm font-bold text-slate-600 hover:bg-white" data-tab="members">Thành viên</button>
   </div>
 
   <section id="overview" class="tab-panel">
@@ -79,6 +88,7 @@
             <label class="text-sm font-bold">Loại việc<select id="jobType" class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 font-normal"><option value="full-time">Toàn thời gian</option><option value="part-time">Bán thời gian</option><option value="remote">Từ xa</option><option value="temporary">Thời vụ</option></select></label>
             <label class="text-sm font-bold">Ngành nghề<select id="jobCategory" class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 font-normal"><option>Sản xuất</option><option>Kho vận</option><option>Văn phòng</option><option>Kỹ thuật</option><option>Nhân sự</option><option>Thời vụ</option></select></label>
           </div>
+          <label class="text-sm font-bold">Mã dự án<input id="jobProjectId" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="VD: du-an-a"><small class="mt-1 block font-normal text-slate-400">Member chỉ thấy việc thuộc mã dự án này.</small></label>
           <label class="text-sm font-bold">Nhãn hiển thị<input id="jobBadge" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="ĐANG TUYỂN / TUYỂN GẤP"></label>
           <label class="text-sm font-bold">Ảnh công việc<input id="jobImage" type="hidden"><input id="jobImageFile" type="file" accept="image/*" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal file:mr-3 file:rounded-md file:border-0 file:bg-brand file:px-3 file:py-2 file:font-bold file:text-white"><span id="jobImageStatus" class="mt-2 block text-xs font-normal text-slate-500">Chọn ảnh từ laptop để tải lên.</span></label>
           <label class="text-sm font-bold">Mô tả công việc<textarea id="jobDescription" rows="4" class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="Nội dung mô tả..."></textarea></label>
@@ -151,12 +161,24 @@
       <div class="mt-7 flex items-center gap-4"><button class="rounded-lg bg-brand px-5 py-3 font-bold text-white">Lưu nội dung</button><span id="contentMessage" class="hidden text-sm font-bold"></span></div>
     </form>
   </section>
+
+  <section id="members" class="tab-panel hidden">
+    <div class="grid gap-6 lg:grid-cols-[390px_1fr]">
+      <form id="memberForm" class="panel h-fit rounded-2xl bg-white p-6">
+        <h2 class="text-lg font-extrabold">Tạo tài khoản thành viên</h2><p class="mt-1 text-sm text-slate-500">Chỉ admin tổng mới nhìn thấy khu vực này.</p>
+        <div class="mt-5 grid gap-4"><label class="text-sm font-bold">Tên thành viên<input id="memberName" required class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label><label class="text-sm font-bold">Email<input id="memberEmail" type="email" required class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label><label class="text-sm font-bold">Mật khẩu tạm thời<input id="memberPassword" type="password" minlength="6" required class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal"></label><label class="text-sm font-bold">Mã dự án được quản lý<input id="memberProjects" required class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 font-normal" placeholder="du-an-a, du-an-b"></label></div>
+        <button class="mt-5 w-full rounded-lg bg-brand px-4 py-3 font-bold text-white">Tạo thành viên</button><p id="memberMessage" class="mt-3 hidden text-sm font-bold"></p>
+      </form>
+      <div class="panel rounded-2xl bg-white p-6"><h2 class="text-lg font-extrabold">Danh sách thành viên</h2><div id="memberList" class="mt-5 divide-y divide-slate-100"></div></div>
+    </div>
+  </section>
 </main>
 <div id="toast" class="fixed bottom-5 right-5 z-[120] hidden rounded-xl bg-ink px-5 py-3 text-sm font-bold text-white shadow-xl"></div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getDatabase, onValue, ref, set, push, update, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcGa-GuvLu-sVkdy-WSv98vBsN4jGO-J0",
@@ -169,9 +191,16 @@ const firebaseConfig = {
 };
 const app=initializeApp(firebaseConfig);
 const db=getDatabase(app);
+const auth=getAuth(app);
+const memberApp=initializeApp(firebaseConfig,"memberCreator");
+const memberAuth=getAuth(memberApp);
+const bootstrapAdminEmails=["admin@email.com","loi@gmail.com"];
 const $=id=>document.getElementById(id);
 const defaultContent={name:"TÂM ĐỨC",email:"nguyentienchuc.08082004@gmail.com",phone:"0901 234 567",address:"Bình Dương, Việt Nam",hero:"KẾT NỐI NHÂN TÀI|THÚC ĐẨY DOANH NGHIỆP",description:"Tâm Đức đồng hành cùng ứng viên và doanh nghiệp trên hành trình phát triển.",aboutTitle:"Đúng người, đúng việc, đúng thời điểm.",aboutText:"Công ty CP Cung Ứng Nhân Lực Tâm Đức cung cấp giải pháp tuyển dụng và cung ứng nhân lực đáng tin cậy.",companies:"500+",candidates:"10.000+",jobsStat:"Nhiều",satisfaction:"98%",heroImage:"",aboutImage:"",facebook:"#",zalo:"#",tiktok:"#"};
-let jobs=[],applications=[],news=[],content={...defaultContent};
+let jobs=[],rawJobs=[],applications=[],news=[],content={...defaultContent}, currentUser=null, profile=null;
+const isAdmin=()=>profile?.role==="admin";
+const projectIds=()=>Array.isArray(profile?.projectIds)?profile.projectIds:Object.keys(profile?.projectIds||{});
+const canSeeProject=item=>isAdmin()||projectIds().includes(String(item?.projectId||""));
 
 function normalize(data){if(!data)return[];return Array.isArray(data)?data:Object.entries(data).map(([id,v])=>({id,...v}));}
 function esc(v=""){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
@@ -182,14 +211,15 @@ document.querySelectorAll(".tab,.go-button").forEach(b=>b.addEventListener("clic
 
 function updateStats(){
   const activeJobs=jobs.filter(j=>j.active!==false);
+  const visibleApplications=applications.filter(canSeeProject);
   $("statJobs").textContent=activeJobs.length;
-  $("statApplications").textContent=applications.length;
-  $("statNewApplications").textContent=applications.filter(a=>(a.status||"new")==="new").length;
+  $("statApplications").textContent=visibleApplications.length;
+  $("statNewApplications").textContent=visibleApplications.filter(a=>(a.status||"new")==="new").length;
   $("statNews").textContent=news.filter(n=>n.active!==false).length;
 }
 function fillJobForm(job){
-  const ids=["jobId","jobTitle","jobCompany","jobLocation","jobSalary","jobQuantity","jobShift","jobDeadline","jobBadge","jobImage","jobDescription","jobRequirements","jobBenefits","jobDocuments"];
-  const keys=["id","title","company","location","salary","quantity","shift","deadline","badge","image","description","requirements","benefits","documents"];
+  const ids=["jobId","jobTitle","jobCompany","jobLocation","jobSalary","jobQuantity","jobShift","jobDeadline","jobProjectId","jobBadge","jobImage","jobDescription","jobRequirements","jobBenefits","jobDocuments"];
+  const keys=["id","title","company","location","salary","quantity","shift","deadline","projectId","badge","image","description","requirements","benefits","documents"];
   ids.forEach((id,i)=>$(id).value=job?.[keys[i]]||"");
   $("jobImageFile").value=""; $("jobImageStatus").textContent=job?.image?"Đang dùng ảnh hiện tại. Chọn ảnh mới nếu muốn thay.":"Chọn ảnh từ laptop để tải lên.";
   $("jobType").value=job?.type||"full-time"; $("jobCategory").value=job?.category||"Sản xuất"; $("jobActive").checked=job?.active!==false;
@@ -209,8 +239,8 @@ $("jobList").addEventListener("click",async e=>{
   const edit=e.target.closest("[data-edit-job]"),toggle=e.target.closest("[data-toggle-job]"),del=e.target.closest("[data-delete-job]");
   try{
     if(edit){fillJobForm(jobs.find(j=>j.id===edit.dataset.editJob));return;}
-    if(toggle){const j=jobs.find(x=>x.id===toggle.dataset.toggleJob);if(j){j.active=j.active===false;await set(ref(db,"site/jobs"),jobs);notify("Đã cập nhật trạng thái");}return;}
-    if(del && confirm("Bạn có chắc muốn xóa việc làm này?")){jobs=jobs.filter(j=>j.id!==del.dataset.deleteJob);await set(ref(db,"site/jobs"),jobs);notify("Đã xóa việc làm");}
+    if(toggle){const j=rawJobs.find(x=>x.id===toggle.dataset.toggleJob);if(j){j.active=j.active===false;await set(ref(db,"site/jobs"),rawJobs);notify("Đã cập nhật trạng thái");}return;}
+    if(del && confirm("Bạn có chắc muốn xóa việc làm này?")){rawJobs=rawJobs.filter(j=>j.id!==del.dataset.deleteJob);jobs=rawJobs.filter(canSeeProject);await set(ref(db,"site/jobs"),rawJobs);notify("Đã xóa việc làm");}
   }catch(err){console.error(err);notify("Không thể lưu. Kiểm tra Firebase Rules.");}
 });
 $("jobForm").addEventListener("submit",async e=>{
@@ -223,9 +253,9 @@ $("jobForm").addEventListener("submit",async e=>{
       $("jobImageStatus").textContent="Đang chuẩn bị ảnh...";
       image=await readFileAsDataUrl(file);
     }
-    const value={id,title:$("jobTitle").value.trim(),company:$("jobCompany").value.trim(),location:$("jobLocation").value.trim(),salary:$("jobSalary").value.trim(),quantity:$("jobQuantity").value.trim(),shift:$("jobShift").value.trim(),deadline:$("jobDeadline").value,badge:$("jobBadge").value.trim(),image,type:$("jobType").value,category:$("jobCategory").value,description:$("jobDescription").value.trim(),requirements:$("jobRequirements").value.trim(),benefits:$("jobBenefits").value.trim(),documents:$("jobDocuments").value.trim(),active:$("jobActive").checked};
-    const index=jobs.findIndex(j=>j.id===id); if(index>=0)jobs[index]=value; else jobs.push(value);
-    await set(ref(db,"site/jobs"),jobs); notify(index>=0?"Đã cập nhật việc làm":"Đã thêm việc làm"); e.target.reset();$("jobId").value="";$("jobActive").checked=true;fillJobForm(null);
+    const value={id,title:$("jobTitle").value.trim(),company:$("jobCompany").value.trim(),location:$("jobLocation").value.trim(),salary:$("jobSalary").value.trim(),quantity:$("jobQuantity").value.trim(),shift:$("jobShift").value.trim(),deadline:$("jobDeadline").value,projectId:$("jobProjectId").value.trim(),badge:$("jobBadge").value.trim(),image,type:$("jobType").value,category:$("jobCategory").value,description:$("jobDescription").value.trim(),requirements:$("jobRequirements").value.trim(),benefits:$("jobBenefits").value.trim(),documents:$("jobDocuments").value.trim(),active:$("jobActive").checked};
+    const index=rawJobs.findIndex(j=>j.id===id); if(index>=0)rawJobs[index]=value; else rawJobs.push(value);
+    jobs=rawJobs.filter(canSeeProject); await set(ref(db,"site/jobs"),rawJobs); notify(index>=0?"Đã cập nhật việc làm":"Đã thêm việc làm"); e.target.reset();$("jobId").value="";$("jobActive").checked=true;fillJobForm(null);
   }catch(err){console.error(err);notify("Không thể lưu Firebase. Kiểm tra Realtime Database Rules.");}
 });
 $("cancelJob").onclick=()=>{ $("jobForm").reset(); $("jobId").value=""; $("jobActive").checked=true; fillJobForm(null); };
@@ -236,7 +266,7 @@ $("jobImageFile").addEventListener("change",e=>{
 
 function renderApplications(){
   const filter=$("applicationFilter").value;
-  const list=applications.filter(a=>!filter||((a.status||"new")===filter)).sort((a,b)=>String(b.createdAt||"").localeCompare(String(a.createdAt||"")));
+  const list=applications.filter(a=>canSeeProject(a)&&(!filter||((a.status||"new")===filter))).sort((a,b)=>String(b.createdAt||"").localeCompare(String(a.createdAt||"")));
   const colors={new:"bg-blue-50 text-brand",contacted:"bg-amber-50 text-amber-700",interview:"bg-purple-50 text-purple-700",passed:"bg-emerald-50 text-emerald-700",failed:"bg-red-50 text-red-700"};
   const labels={new:"Mới",contacted:"Đã liên hệ",interview:"Phỏng vấn",passed:"Đạt",failed:"Không đạt"};
   $("applicationList").innerHTML=list.length?list.map(a=>`<tr class="border-b border-slate-100 align-top">
@@ -267,15 +297,34 @@ const contentFields={siteName:"name",siteEmail:"email",sitePhone:"phone",siteAdd
 function loadContent(){Object.entries(contentFields).forEach(([id,key])=>$(id).value=content[key]??"");}
 $("contentForm").addEventListener("submit",async e=>{e.preventDefault();const next={};Object.entries(contentFields).forEach(([id,key])=>next[key]=$(id).value.trim());try{await set(ref(db,"site/content"),next);content=next;$("contentMessage").textContent="Đã lưu trên Firebase."; $("contentMessage").className="text-sm font-bold text-emerald-700";$("contentMessage").classList.remove("hidden");notify("Đã lưu nội dung website");}catch(err){console.error(err);$("contentMessage").textContent="Không thể lưu. Kiểm tra Firebase Rules."; $("contentMessage").className="text-sm font-bold text-red-600";$("contentMessage").classList.remove("hidden");}});
 
+function renderMembers(data){
+  const entries=Object.entries(data||{});
+  $("memberList").innerHTML=entries.length?entries.map(([uid,m])=>`<div class="flex flex-col gap-2 py-4 sm:flex-row sm:items-center sm:justify-between"><div><b>${esc(m.name||m.email||uid)}</b><p class="text-sm text-slate-500">${esc(m.email||"")} · Dự án: ${esc((Array.isArray(m.projectIds)?m.projectIds:Object.keys(m.projectIds||{})).join(", ")||"Chưa gán")}</p></div><button data-delete-member="${esc(uid)}" class="rounded-lg border border-red-100 px-3 py-2 text-sm font-bold text-red-600">Xóa quyền</button></div>`).join(""):"<p class=\"py-8 text-sm text-slate-500\">Chưa có thành viên.</p>";
+}
+$("memberList").addEventListener("click",async e=>{const button=e.target.closest("[data-delete-member]");if(!button||!confirm("Xóa quyền quản lý của thành viên này?"))return;try{await remove(ref(db,`users/${button.dataset.deleteMember}`));notify("Đã xóa quyền thành viên");}catch(err){notify("Không thể xóa quyền thành viên.");}});
+$("memberForm").addEventListener("submit",async e=>{e.preventDefault();if(!isAdmin())return;const message=$("memberMessage");message.className="mt-3 text-sm font-bold text-slate-500";message.textContent="Đang tạo tài khoản...";message.classList.remove("hidden");try{const credential=await createUserWithEmailAndPassword(memberAuth,$("memberEmail").value.trim(),$("memberPassword").value);const projects=$("memberProjects").value.split(",").map(v=>v.trim()).filter(Boolean);await set(ref(db,`users/${credential.user.uid}`),{name:$("memberName").value.trim(),email:$('memberEmail').value.trim(),role:"member",projectIds:projects});await signOut(memberAuth);e.target.reset();message.textContent="Đã tạo thành viên.";message.className="mt-3 text-sm font-bold text-emerald-700";notify("Đã tạo tài khoản thành viên");}catch(err){console.error(err);message.textContent=err.code==="auth/email-already-in-use"?"Email đã tồn tại.":"Không thể tạo tài khoản. Kiểm tra Firebase Authentication.";message.className="mt-3 text-sm font-bold text-red-600";}});
+
 $("exportBtn").onclick=()=>{const data={content,jobs,news,applications};const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/json"}));a.download=`tam-duc-backup-${new Date().toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
 $("importInput").onchange=e=>{const file=e.target.files[0];if(!file)return;const r=new FileReader();r.onload=async()=>{try{const data=JSON.parse(r.result);if(data.content)await set(ref(db,"site/content"),data.content);if(data.jobs)await set(ref(db,"site/jobs"),data.jobs);if(data.news)await set(ref(db,"site/news"),data.news);notify("Đã nhập dữ liệu lên Firebase");}catch(err){console.error(err);notify("Tệp JSON không hợp lệ");}};r.readAsText(file);};
 
-onValue(ref(db,"site/jobs"),s=>{jobs=normalize(s.val());renderJobs();updateStats();$("firebaseStatus").textContent="Đã kết nối";$("firebaseStatus").className="mt-2 font-bold text-emerald-700";});
-onValue(ref(db,"applications"),s=>{applications=normalize(s.val());renderApplications();updateStats();});
-onValue(ref(db,"site/news"),s=>{news=normalize(s.val());renderNews();updateStats();});
-onValue(ref(db,"site/content"),s=>{content={...defaultContent,...(s.val()||{})};loadContent();});
-$("firebaseStatus").textContent="Đang kết nối...";
-loadContent();renderJobs();renderApplications();renderNews();updateStats();lucide.createIcons();
+function startDataListeners(){
+  onValue(ref(db,"site/jobs"),s=>{rawJobs=normalize(s.val());jobs=rawJobs.filter(canSeeProject);renderJobs();updateStats();$("firebaseStatus").textContent="Đã kết nối";$("firebaseStatus").className="mt-2 font-bold text-emerald-700";});
+  onValue(ref(db,"applications"),s=>{applications=normalize(s.val());renderApplications();updateStats();});
+  onValue(ref(db,"site/news"),s=>{news=normalize(s.val());renderNews();updateStats();});
+  onValue(ref(db,"site/content"),s=>{content={...defaultContent,...(s.val()||{})};loadContent();});
+  if(isAdmin()) onValue(ref(db,"users"),s=>renderMembers(s.val()));
+  $("firebaseStatus").textContent="Đang kết nối...";loadContent();renderJobs();renderApplications();renderNews();updateStats();
+}
+function applyPermissions(){
+  $("currentUserLabel").textContent=profile?.name||currentUser.email;
+  $("membersTab").classList.toggle("hidden",!isAdmin());
+  ["content","news"].forEach(tab=>document.querySelector(`[data-tab=\"${tab}\"]`)?.classList.toggle("hidden",!isAdmin()));
+  ["exportBtn","importInput"].forEach(id=>$(id).closest("label,button")?.classList.toggle("hidden",!isAdmin()));
+}
+$("loginForm").addEventListener("submit",async e=>{e.preventDefault();const message=$("loginMessage");try{await signInWithEmailAndPassword(auth,$("loginEmail").value.trim(),$("loginPassword").value);message.classList.add("hidden");}catch(err){const errors={"auth/invalid-credential":"Email hoặc mật khẩu không đúng.","auth/user-not-found":"Tài khoản chưa được tạo trong Firebase Authentication.","auth/wrong-password":"Mật khẩu không đúng.","auth/operation-not-allowed":"Chưa bật đăng nhập Email/Mật khẩu trong Firebase Authentication.","auth/invalid-api-key":"Firebase API key không hợp lệ."};message.textContent=errors[err.code]||`Không thể đăng nhập (${err.code||"lỗi không xác định"}).`;message.classList.remove("hidden");}});
+$("logoutBtn").onclick=()=>signOut(auth);
+onAuthStateChanged(auth,async user=>{currentUser=user;if(!user){$("loginScreen").classList.remove("hidden");$("appShell").classList.add("hidden");return;}try{const snapshot=await new Promise(resolve=>onValue(ref(db,`users/${user.uid}`),resolve,{onlyOnce:true}));profile=snapshot.val();if(!profile&&bootstrapAdminEmails.includes(user.email?.toLowerCase())){profile={name:"Quản trị viên",email:user.email,role:"admin",projectIds:[]};await set(ref(db,`users/${user.uid}`),profile);}if(profile?.role==="member"){location.href="member.html";return;}if(!profile){await signOut(auth);$("loginMessage").textContent="Tài khoản đã đăng nhập nhưng chưa được cấp quyền quản trị.";$("loginMessage").classList.remove("hidden");return;}$("loginMessage").classList.add("hidden");$("loginScreen").classList.add("hidden");$("appShell").classList.remove("hidden");applyPermissions();startDataListeners();lucide.createIcons();}catch(err){console.error(err);await signOut(auth);$("loginMessage").textContent="Không thể đọc hồ sơ quyền trên Firebase. Kiểm tra Realtime Database Rules.";$("loginMessage").classList.remove("hidden");}});
 </script>
+</div>
 </body>
 </html>

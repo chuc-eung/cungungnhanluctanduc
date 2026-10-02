@@ -238,6 +238,7 @@
     <p id="applicationPosition" class="mt-2 text-sm font-medium text-slate-500"></p>
     <form id="applicationForm" class="mt-6 grid gap-4">
       <input id="applicationJob" type="hidden" name="position">
+      <input id="applicationProjectId" type="hidden" name="projectId">
       <label class="text-sm font-bold">Họ và tên<input required name="name" type="text" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-brand" placeholder="Nguyễn Văn A"></label>
       <div class="grid gap-4 sm:grid-cols-2">
         <label class="text-sm font-bold">Số điện thoại<input required name="phone" type="tel" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none focus:border-brand" placeholder="0901 234 567"></label>
@@ -383,8 +384,9 @@ function openJob(job){
   $("detailEmail").textContent=(window.siteContent||defaultContent).email||defaultContent.email;
   $("jobModal").classList.remove("hidden"); $("jobModal").classList.add("flex"); document.body.classList.add("modal-open"); lucide.createIcons();
 }
-function openApplication(jobTitle="Đăng ký ứng tuyển chung"){
-  $("applicationPosition").textContent=jobTitle; $("applicationJob").value=jobTitle;
+function openApplication(jobOrTitle="Đăng ký ứng tuyển chung"){
+  const job=typeof jobOrTitle==="object"?jobOrTitle:null, jobTitle=job?.title||jobOrTitle;
+  $("applicationPosition").textContent=jobTitle; $("applicationJob").value=jobTitle; $("applicationProjectId").value=job?.projectId||"";
   $("applicationModal").classList.remove("hidden"); $("applicationModal").classList.add("flex"); document.body.classList.add("modal-open");
   setTimeout(()=>document.querySelector('[name="name"]').focus(),50);
 }
@@ -404,9 +406,9 @@ document.querySelectorAll(".job-filter").forEach(b=>b.addEventListener("click",(
 $("jobGrid").addEventListener("click",e=>{
   const detail=e.target.closest(".detail-job"), apply=e.target.closest(".apply-job");
   if(detail){const job=allJobs.find(j=>j.id===detail.dataset.id);if(job)openJob(job);}
-  if(apply){const job=allJobs.find(j=>j.id===apply.dataset.id);if(job)openApplication(job.title);}
+  if(apply){const job=allJobs.find(j=>j.id===apply.dataset.id);if(job)openApplication(job);}
 });
-$("detailApply").onclick=$("detailApply2").onclick=()=>{closeModal("jobModal");openApplication(selectedJob?.title||"Đăng ký ứng tuyển");};
+$("detailApply").onclick=$("detailApply2").onclick=()=>{closeModal("jobModal");openApplication(selectedJob||"Đăng ký ứng tuyển");};
 $("closeJobModal").onclick=()=>closeModal("jobModal");
 $("closeApplication").onclick=()=>closeModal("applicationModal");
 $("jobModal").addEventListener("click",e=>{if(e.target.id==="jobModal")closeModal("jobModal")});
